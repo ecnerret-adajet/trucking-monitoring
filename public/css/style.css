@@ -1,0 +1,182 @@
+
+
+
+/* unvisited link */
+a:link {
+    text-decoration: none ! important;
+    color: inherit;
+}
+
+/* visited link */
+a:visited {
+    text-decoration: none ! important;
+        color: inherit;
+
+}
+
+/* mouse over link */
+a:hover {
+    text-decoration: none ! important;
+        color: inherit;
+
+}
+
+/* selected link */
+a:active {
+    text-decoration: none ! important;
+        color: inherit;
+
+}
+
+
+.legend li{
+border: 0 ! important;
+padding-left: 0 ! important;
+padding-right: 0 ! important;
+}
+
+.legend li .badge{
+border-radius: 0 ! important;
+}
+
+
+#truck{
+border-radius: 0 ! important;
+padding: 20px;
+width: 100%;
+
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius:0 ! important;
+    -webkit-appearance: none;
+}
+
+.select2-container .select2-choices .select2-search-field input,
+.select2-container .select2-choice,
+.select2-container .select2-choices {
+  background: none;
+  padding: 12px;
+  border-color: #cccccc;
+  border-radius: 0 ! important;
+}
+
+
+.table-style-custom{
+  margin-bottom: 20px;
+  margin-right: 200px;
+  color: #fff ! important;
+
+}
+
+
+.logo-front{
+  font-size: 30px;
+  font-weight: 300;
+  
+}
+
+/**************************
+  DEFAULT BOOTSTRAP STYLES
+**************************/
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 22px;
+  padding: 10px 16px;
+}
+  
+.btn-lg {
+  font-size: 15px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+
+/***********************
+  ROUND BUTTONS
+************************/
+.round {
+  border-radius: 20px;
+}
+
+/***********************
+  CUSTON BTN VALUES
+************************/
+
+.btn {
+    padding: 10px 20px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: #0099cc;
+    color: #ffffff;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #33a6cc;
+}
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+}
+
+/***********************
+  table design customer
+************************/
+.customer-th > th{
+text-transform: uppercase;
+color: #2c3e50;
+font-size: 10px;
+}
+
+/***********************
+ Action Fa-icon style
+************************/
+
+.action{
+  color: #95a5a6;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+
+
+

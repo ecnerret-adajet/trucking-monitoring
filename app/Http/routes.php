@@ -11,6 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/', function () {
+    return view('auth.login');
+});
+
+
+Route::auth(); 
+
+Route::resource('tracks','TracksController');    
+Route::resource('customers','CustomersController');  
+Route::resource('trucks','TrucksController');  
+
+Route::get('api/customers', function() {
+	return App\Customer::latest()->get();
+});
+
+
+Route::get('/home', 'HomeController@index');
+    
+Route::get('/reports', 'HomeController@report');
+Route::post('/reports', 'HomeController@getreport');
+
+Route::get('/manage', 'PagesController@manage');
 });
