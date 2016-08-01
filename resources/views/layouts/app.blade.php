@@ -153,7 +153,8 @@
 
 
             <li><a href="{{url('/tracks')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
-            <li><a href="" class="bootstrap-modal-form-open" data-toggle="modal" data-target=".bs-example-modal-lg" ><i class="fa fa-plus" ></i> <span>Deploy</span></a></li>
+            <li><a href={{url('/tracks/create')}} ><i class="fa fa-plus" ></i> <span>Delivery truck</span></a></li>
+            <li><a href={{url('/tracks/create')}} ><i class="fa fa-plus" ></i> <span>Pick-up truck</span></a></li>
             
                <li class="treeview">
               <a href="#">
@@ -273,6 +274,7 @@
    <!-- vue js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
     <script src="{{asset('/js/customers-table.js')}}"></script>
+    <script src="{{asset('/js/trucks-table.js')}}"></script>
 
 
     <!-- datapicker -->
@@ -385,6 +387,34 @@
         $("[data-mask]").inputmask();
       });
     </script>
+
+
+      <script>
+    $(function () {
+      $('input').keyup(function() {
+        $.ajax({
+            method: 'get',
+            url: 'app/trucks' + $(this).val(),
+            dataType: "json",
+            success: function(data){
+               $('#name').text(data.name);           
+            },
+            statusCode: {
+                500: function() {
+                    // 
+                },
+                422: function(data) {
+                    // 
+                }
+            }
+        });         
+      });
+    });
+  </script>
+
+
+
+
 
     
 @yield('footer')

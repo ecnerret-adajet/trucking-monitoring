@@ -23,8 +23,12 @@ Route::resource('tracks','TracksController');
 Route::resource('customers','CustomersController');  
 Route::resource('trucks','TrucksController');  
 
+
 Route::get('api/customers', function() {
 	return App\Customer::latest()->get();
+});
+Route::get('api/trucks', function() {
+	return App\Truck::latest()->get();
 });
 
 

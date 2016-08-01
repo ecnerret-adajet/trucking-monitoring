@@ -87,9 +87,14 @@ class TracksController extends Controller
         $tracks = Track::all();
         $trucks = Truck::lists('plate_no','id');
         $customers = Customer::lists('customer_name','id');
-         $base_time = Carbon::now('Asia/Manila');
+        $statuses = Status::lists('name','id');
+        $base_time = Carbon::now('Asia/Manila');
         
-        return view('tracks.create', compact('trucks','customers','tracks'));
+        return view('tracks.create', 
+            compact('trucks',
+                'customers',
+                'statuses',
+                'tracks'));
     }
 
     /**
