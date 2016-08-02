@@ -231,11 +231,6 @@
 
 
 
-
-
- @include ('deploy')
-
-
  <!-- show trucks and customer data -->
  @foreach($tracks as $track)
 <!-- modal edit form -->

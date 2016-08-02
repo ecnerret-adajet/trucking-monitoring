@@ -8,7 +8,7 @@
 
 
 
-<div id="search" class="form-group{{ $errors->has('truck_list') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('truck_list') ? ' has-error' : '' }}">
 <label class="col-md-4 control-label"> 
 {!! Form::label('truck_list', 'Truck Plate #:')  !!} 
 </label>

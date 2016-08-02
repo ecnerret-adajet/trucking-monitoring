@@ -42,4 +42,27 @@ class Truck extends Model
     public function status(){
         return $this->belongsToMany('App\Status');
     }
+
+
+    /* list all trucks */
+    public function drivers(){
+        return $this->belongsToMany('App\Driver')->withTimestamps();
+    }
+
+    public function getDriverListAttribute()
+    {
+        return $this->drivers->lists('id')->all();
+    }
+
+
+    /* list all schdule trucks */
+    public function schedules()
+    {
+        return $this->belongsToMany('App\Schedule')->withTimestamps();
+    }
+
+    public function getScheduleListAttribute()
+    {
+        return $this->schedules->lists('id')->all();
+    }
 }

@@ -24,5 +24,16 @@ class Customer extends Model
     }
 
 
+    public function schedules()
+    {
+        return $this->belongsToMany('App\Schedule')->withTimestamps();
+    }
+
+    public function getScheduleListAttribute()
+    {
+        return $this->schedules->lists('id')->all();
+    }
+
+
 
 }
