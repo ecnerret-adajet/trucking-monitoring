@@ -72,8 +72,7 @@
                         {!! Form::label('phone', 'Phone Number:')  !!}
                         </label>
                         <div class="col-md-4 ">
-                      
-                       <input type="text" name="phone" class="form-control" data-inputmask="'mask': ['9999-999-9999', '+099 99 99 9999[9]-9999']" data-mask />   
+                        {!! Form::text('phone', null,  ['class' => 'form-control']) !!}     
 
                         @if ($errors->has('phone'))
                         <span class="help-block">

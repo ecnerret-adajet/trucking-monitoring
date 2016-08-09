@@ -29,7 +29,7 @@
 
                 
 
-                   <table  id="list-truck" class="table  table-hover table-padding">
+                   <table  id="list-truck" class="table table-bordered  table-hover table-padding">
                 <thead>
                       <tr>
                           <th></th>    

@@ -79,6 +79,6 @@
                         
                     </tr>
                     @endforeach
-                    @endforeach
+              
                     
                 </table>

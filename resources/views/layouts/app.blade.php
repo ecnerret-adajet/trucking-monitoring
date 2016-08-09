@@ -173,8 +173,7 @@
                 <li><a href="{{url('/trucks')}}"><i class="fa fa-circle-o"></i>All Trucks</a></li>
                 <li><a href="{{url('/trucks/create')}}"><i class="fa fa-circle-o"></i>Add Trucks</a></li>
                 <li><a href="{{url('/trucks/create')}}"><i class="fa fa-circle-o"></i>Add Driver</a></li>
-                  <li><a href="#"><i class="fa fa-circle-o"></i>Available Trucks</a></li>
-                <li><a href="#"><i class="fa fa-circle-o"></i>For Repair Trucks</a></li>
+                 
               </ul>
             </li>
             <li><a href="{{url('/reports')}}"><i class="fa fa-line-chart"></i> <span>Reports</span></a></li>

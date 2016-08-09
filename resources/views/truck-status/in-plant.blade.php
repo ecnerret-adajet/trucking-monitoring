@@ -25,7 +25,7 @@
                     
                     
                     @foreach($tracks as $track)
-       <tr class="{{ ($track->in_plant == '-0001-11-30 00:00:00' || $track->out_plant == '-0001-11-30 00:00:00' ? ($track->in_plant->diffInHours($base_time) < $total ? '' : 'danger') : 'info') }}">
+       <tr class="{{ ($track->in_plant == '-0001-11-30 00:00:00' || $track->out_plant == '-0001-11-30 00:00:00' ? ( $track->in_plant->diffInHours($base_time) > $total ? 'danger' : '') : 'info') }}">
 
                     
                          <td>
@@ -72,19 +72,16 @@
                             </td>
 
                             <td>
-
-                            @foreach($track->customers as $customer)
-                                <?php
-                                  $total = 0;
-                                  $total = $customer->time_to_origin + $customer->time_to_customer;
-                                ?>
-                                {{$total}} Hour(s)
-                             @endforeach    
-
+                           
+                          @foreach($track->customers as $customer)
+                            {{$customer->total_hours}}
+                          @endforeach
+                           <?php
+                              $total = $customer->total_hours;
+                            ?>
                             </td>
                         
                     </tr>
-                    @endforeach
                     @endforeach
                     
                 </table>

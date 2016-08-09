@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
 use App\Customer;
 use App\Truck;
 use App\Track;
+use App\Schedule;
 use Carbon\Carbon;
 use User;
 
@@ -28,7 +29,10 @@ class CustomersController extends Controller
      */
     public function index()
     {
-         return view('customers.index', compact('customers'));
+
+           $customers = Customer::all();
+           $schedules = Schedule::all(); 
+         return view('customers.index', compact('customers','schedules'));
     }
 
     /**

@@ -247,117 +247,161 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">View details</h4>
+        <span class="modal-title">HAULER DETAILS</span>
       </div>
       <div class="modal-body">
               <div class="row">
         <div class="col-md-12">
                 <div class="panel-body"> 
 
-<h3>Customer Information</h3>
+
+                <center style="padding-bottom: 20px;">
+          @foreach($track->trucks as $truck)
+             <img class="img-responsive img-circle" style="width: 100px; height:auto;" src="{{asset('/img/trucks/'.$truck->truck_avatar)}}">
+          @endforeach      
+          </center>
+
+
+  <ul class="nav nav-tabs">
+  <li class="active"><a href="#customer-information-{{$track->id}}" data-toggle="tab" aria-expanded="true"><i class="fa fa-user" aria-hidden="true"></i> Customer Information</a></li>
+  <li class=""><a href="#trucks-information-{{$track->id}}" data-toggle="tab" aria-expanded="false"><i class="fa fa-truck" aria-hidden="true"></i> Truck Information</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active in" id="customer-information-{{$track->id}}">
+    <p style="padding: 10px">
+
 
 <table class="table  table-hover table-responsive" width="100%">
  <tbody>
+ @foreach($track->customers as $customer)
     <tr>
-      <td class="text-uppercase col-md-6">Customer Name:</td>
-      <td>   @foreach($track->customers as $customer)
-                            {{ $customer->customer_name }}
-                         @endforeach</td>
+      <td class="text-uppercase col-md-6"><strong>Customer Name:</strong></td>
+      <td>   
+          {{ $customer->customer_name }}
+       </td>
       
     </tr>
 
     <tr>
-      <td class="text-uppercase col-md-6">Origin:</td>
-      <td>   @foreach($track->customers as $customer)
-                            {{ $customer->origin }}
-                         @endforeach</td>
-      
-    </tr>
-
-        <tr>
-      <td class="text-uppercase col-md-6">Destination:</td>
-      <td>   @foreach($track->customers as $customer)
-                            {{ $customer->destination }}
-                         @endforeach</td>
-      
-    </tr>
-
-    <tr>
-      <td class="text-uppercase col-md-6">Estimated Time Travel:</td>
-      <td>   @foreach($track->customers as $customer)
-                            {{ $customer->time_to_customer }} hours
-        @endforeach
+      <td class="text-uppercase col-md-6"><strong>Origin:</strong></td>
+      <td>   
+              {{ $customer->origin }}
         </td>
       
     </tr>
 
-    
+        <tr>
+      <td class="text-uppercase col-md-6"><strong>Destination:</strong></td>
+      <td>  
+      {{ $customer->destination }}
+       </td>
+      
+    </tr>
 
-
- 
-
-    
+    <tr>
+      <td class="text-uppercase col-md-6"><strong>Estimated Time Travel:</strong></td>
+      <td>   
+  {{ $customer->total_hours }} hours
+     
+        </td>
+      
+    </tr>
+ @endforeach
+  
   </tbody>
 </table> 
 
 
-<h3>Truck Information</h3>
-
-
+    </p>
+  </div>
+  <div class="tab-pane fade" id="trucks-information-{{$track->id}}">
+   <p style="padding: 10px">
 
 <table class="table table-hover table-responsive">
  <tbody>
+ @foreach($track->trucks as $truck)
+
     <tr>
-      <td class="text-uppercase col-md-6">Plate Number:</td>
-      <td>   @foreach($track->trucks as $truck)
-                            {{ $truck->plate_no }}
-                         @endforeach</td>
+      <td class="text-uppercase col-md-6"><strong>Plate Number:</strong></td>
+      <td>   
+          {{ $truck->plate_no }}
+      </td>
       
     </tr>
 
     <tr>
-      <td class="text-uppercase col-md-6">Location</td>
-      <td>   @foreach($track->trucks as $truck)
-                            {{ $truck->location }}
-                         @endforeach</td>
+      <td class="text-uppercase col-md-6"><strong>Location:</strong></td>
+      <td>  
+      {{ $truck->location }}
+      </td>
       
     </tr>
 
         <tr>
-      <td class="text-uppercase col-md-6">Driver Name:</td>
-      <td>   @foreach($track->trucks as $truck)
-                            {{ $truck->driver }}
-                         @endforeach</td>
-      
-    </tr>
-
-    <tr>
-      <td class="text-uppercase col-md-6">Truck type:</td>
-      <td>   @foreach($track->trucks as $truck)
-                            {{ $truck->truck_type }} 
-        @endforeach
+      <td class="text-uppercase col-md-6"><strong>Driver Name:</strong></td>
+      <td>  
+          {{ $truck->driver }}
         </td>
       
     </tr>
 
-    
+      <tr>
+      <td class="text-uppercase col-md-6"><strong>Phone Number:</strong></td>
+      <td>  
+          {{ $truck->phone }}
+        </td>
+      
+    </tr>
 
-    
+    <tr>
+      <td class="text-uppercase col-md-6"><strong>Truck type:</strong></td>
+      <td>   
+
+     {{ $truck->truck_type }} 
+        
+        </td>
+      
+    </tr>
+
+      <tr>
+      <td class="text-uppercase col-md-6"><strong>Vendor Name:</strong></td>
+      <td>   
+
+     {{ $truck->vendor_name }} 
+        
+        </td>
+      
+    </tr>
+
+    <tr>
+      <td class="text-uppercase col-md-6"><strong>Vendor Name:</strong></td>
+      <td>   
+
+     {{ $truck->subcon_vendor }} 
+        
+        </td>
+      
+    </tr>
+
+       <tr>
+      <td class="text-uppercase col-md-6"><strong>Vehicle Type:</strong></td>
+      <td>   
+
+     {{ $truck->vehicle_type }} 
+        
+        </td>
+      
+    </tr>
 
 
- 
-
-    
+    @endforeach
   </tbody>
 </table>          
-<h3>Progress Meter</h3>                  
-<div class="progress progress-striped active">
 
-  <div class="progress-bar" style="{{ ($track->out_customer != '-0001-11-30 00:00:00' ? 'width:100%' : '')  }}"></div>
- 
+
+   </p>
+  </div>
 </div>
- 
-
 
                     
                 </div>

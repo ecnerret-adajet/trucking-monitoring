@@ -47,21 +47,7 @@
                         </div>
 
 
-                        <div class="form-group hide{{ $errors->has('status_list') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label"> 
-                        {!! Form::label('status_list', 'Status:')  !!} 
-                        </label>
-                        <div class="col-md-6">
-                        {!! Form::select('status_list', $statuses, null, ['class' => 'form-control']) !!}
-
-                        @if ($errors->has('status_list'))
-                        <span class="help-block">
-                        <strong>{{ $errors->first('status_list') }}</strong>
-                        </span>
-                        @endif
-                        </div>
-                        </div>
-
+      
 
                          <div class="col-md-3 col-md-offset-4">
 
