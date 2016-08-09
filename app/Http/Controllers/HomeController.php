@@ -11,7 +11,6 @@ use App\Track;
 use App\Truck;
 use App\Customer;
 use App\User;
-use App\Status;
 use Carbon\Carbon;
 use DB;
 
@@ -51,13 +50,6 @@ class HomeController extends Controller
                 ->take(5)
                 ->get();
 
-      $in_plant = Status::where('id', '=', '1')->get();
-      $transit_customer = Status::where('id', '=', '2')->get();
-      $in_customer = Status::where('id', '=', '3')->get();
-      $transit_plant = Status::where('id', '=', '4')->get();
-
-      $statuses = Status::lists('name','id');
-
       $base_time = Carbon::now();
 
        return view('report', 
@@ -74,8 +66,7 @@ class HomeController extends Controller
             'in_plant',
             'transit_customer',
             'in_customer',
-            'transit_plant',
-            'statuses'));
+            'transit_plant'));
     }
 
 

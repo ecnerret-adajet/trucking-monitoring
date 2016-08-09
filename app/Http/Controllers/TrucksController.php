@@ -15,6 +15,7 @@ use App\Track;
 use Carbon\Carbon;
 use User;
 use Image;
+use App\Schedule;
 
 class TrucksController extends Controller
 {
@@ -30,7 +31,8 @@ class TrucksController extends Controller
     public function index()
     {
         $trucks = Truck::all();
-        return view('trucks.index', compact('trucks'));
+        $schedules = Schedule::lists('name','id');
+        return view('trucks.index', compact('trucks','schedules'));
     }
 
     /**
@@ -40,7 +42,8 @@ class TrucksController extends Controller
      */
     public function create()
     {
-        return view('trucks.create');
+        $schedules = Schedule::lists('name','id');
+        return view('trucks.create', compact('schedules'));
     }
 
     /**
@@ -52,6 +55,8 @@ class TrucksController extends Controller
     public function store(TruckRequest $request)
     {
           $truck = Auth::user()->trucks()->create($request->all());
+
+          $truck->schedules()->attach($request->input('schedule_list'));
 
         if($request->hasFile('truck_avatar')){
             $truck_avatar = $request->file('truck_avatar');
@@ -73,7 +78,9 @@ class TrucksController extends Controller
      */
     public function show(Truck $truck)
     {
-        return view('trucks.show', compact('truck'));
+
+        $schedules = Schedule::lists('name','id');
+        return view('trucks.show', compact('truck','schedules'));
     }
 
     /**
@@ -84,7 +91,8 @@ class TrucksController extends Controller
      */
     public function edit(Truck $truck)
     {
-        return view('trucks.edit',compact('truck'));
+        $schedules = Schedule::lists('name','id');
+        return view('trucks.edit',compact('truck','schedules'));
     }
 
     /**
@@ -98,6 +106,8 @@ class TrucksController extends Controller
     {
         $truck->update($request->all());
 
+        $truck->schedules()->sync((!$request->input('schedule_list') ? [] : $request->input('schedule_list')));
+
             if($request->hasFile('truck_avatar')){
             $truck_avatar = $request->file('truck_avatar');
             $filename = time() . '.' .$truck_avatar->getClientOriginalExtension();
@@ -105,9 +115,6 @@ class TrucksController extends Controller
             $truck->truck_avatar = $filename;
             $truck->save();
         }
-
-
-
         return redirect('trucks');
     }
 

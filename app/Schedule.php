@@ -17,6 +17,6 @@ class Schedule extends Model
 
    	public function customers()
    	{
-   		reutnr $this->belongsToMany('App\Customer');
+   		return $this->belongsToMany('App\Customer');
    	}
 }

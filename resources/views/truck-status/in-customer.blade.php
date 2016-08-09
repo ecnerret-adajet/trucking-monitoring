@@ -25,8 +25,7 @@
         </tfoot>   
                     
                     
-                    @foreach($in_customer as $in_customers)
-                    @foreach($in_customers->tracks as $track)
+                   @foreach($tracks as $track)
           <tr class="{{ $track->in_customer == '-0001-11-30 00:00:00' || $track->out_customer == '-0001-11-30 00:00:00' ? '' : 'danger' }}">
 
                             <td>

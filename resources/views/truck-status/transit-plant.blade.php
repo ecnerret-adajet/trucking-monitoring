@@ -25,8 +25,7 @@
         </tfoot>   
                     
                     
-                    @foreach($transit_plant as $transit_plants)
-                    @foreach($transit_plants->tracks as $track)
+                    @foreach($tracks as $track)
           <tr class="{{ $track->out_customer == '-0001-11-30 00:00:00' || $track->back_plant == '-0001-11-30 00:00:00' ? '' : 'danger' }}">
 
                         

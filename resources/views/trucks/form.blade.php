@@ -4,6 +4,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('schedule_list') ? ' has-error' : '' }}">
+                        <label class="col-md-4 control-label"> 
+                        {!! Form::label('schedule_list', 'For Schedule:')  !!}
+                        </label>
+                           <div class="col-md-4">
+                        {!! Form::select('schedule_list[]', $schedules, null,  ['class' => 'form-control']) !!}     
+                        @if ($errors->has('schedule_list'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('schedule_list') }}</strong>
+                        </span>
+                        @endif
+                        </div>
+                        </div>
+
 
                         <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label"> 

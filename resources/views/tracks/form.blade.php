@@ -52,7 +52,7 @@
                         {!! Form::label('status_list', 'Status:')  !!} 
                         </label>
                         <div class="col-md-6">
-                        {!! Form::select('status_list', $statuses, null, ['class' => 'form-control hide']) !!}
+                        {!! Form::select('status_list', $statuses, null, ['class' => 'form-control']) !!}
 
                         @if ($errors->has('status_list'))
                         <span class="help-block">

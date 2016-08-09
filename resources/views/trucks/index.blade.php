@@ -38,7 +38,7 @@
                           <th>PLATE NO</th>    
                           <th>TRUCK TYPE</th>    
                           <th>VENDOR NAME</th>    
-                          <th>PHONE</th> 
+                          <th>SCHEDULE</th> 
                           <th>EDIT</th>
                           <th>DELETE</th>
 
@@ -46,16 +46,15 @@
                 </thead> 
             <tfoot>
                  <tr>
-                       <th></th>    
+                          <th></th>    
                           <th>LOCATION</th>    
                           <th>DRIVER NAME</th>    
                           <th>PLATE NO</th>    
                           <th>TRUCK TYPE</th>    
                           <th>VENDOR NAME</th>    
-                          <th>PHONE</th>  
-                         <th>EDIT</th>
-                          <th>DELETE</th>  
-                 
+                          <th>SCHEDULE</th> 
+                          <th>EDIT</th>
+                          <th>DELETE</th>
                </tr>
         </tfoot>   
                     
@@ -68,7 +67,11 @@
                       <td>{{$truck->plate_no}}</td>   
                       <td>{{$truck->truck_type}}</td>   
                       <td>{{$truck->vendor_name}}</td>   
-                      <td>{{$truck->phone}}</td>   
+                      <td>
+                      @foreach($truck->schedules as $schedule)
+                        {{ $schedule->name }}
+                      @endforeach
+                      </td>   
                         <td><a href="{{url('trucks/'.$truck->id.'/edit')}}"> <i class="fa fa-cog action" aria-hidden="true"></i></a></td>
       <td><a href="#"><i class="fa fa-trash action" aria-hidden="true"></i> </td>
                         

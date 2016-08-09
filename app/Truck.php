@@ -38,12 +38,6 @@ class Truck extends Model
         return $this->conditions->lists('id')->all();
     }
 
-
-    public function status(){
-        return $this->belongsToMany('App\Status');
-    }
-
-
     /* list all trucks */
     public function drivers(){
         return $this->belongsToMany('App\Driver')->withTimestamps();

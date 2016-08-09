@@ -24,8 +24,7 @@
         </tfoot>   
                     
                     
-                    @foreach($in_plant as $in_plants)
-                    @foreach($in_plants->tracks as $track)
+                    @foreach($tracks as $track)
        <tr class="{{ ($track->in_plant == '-0001-11-30 00:00:00' || $track->out_plant == '-0001-11-30 00:00:00' ? ($track->in_plant->diffInHours($base_time) < $total ? '' : 'danger') : 'info') }}">
 
                     

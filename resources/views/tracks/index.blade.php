@@ -207,7 +207,11 @@
                 <span class="info-box-icon"><i class="ion ion-ios-timer-outline"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Available Trucks</span>
-                  <span class="info-box-number">{{ $users->count()}}</span>
+                  <span class="info-box-number">
+                  @foreach($schedules->slice(2,1) as $schedule)
+                          {{ $schedule->trucks->count() }}
+                      @endforeach
+                  </span>
                   
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
@@ -217,7 +221,11 @@
                 <span class="info-box-icon"><i class="ion ion-ios-gear-outline"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Unavailable trucks</span>
-                  <span class="info-box-number">{{ $users->count()}}</span>
+                  <span class="info-box-number">
+                  @foreach($schedules->slice(1,1) as $schedule)
+                          {{ $schedule->trucks->count() }}
+                      @endforeach
+                  </span>
                   
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->

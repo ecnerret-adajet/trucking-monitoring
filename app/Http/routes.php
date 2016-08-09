@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => 'web'], function () {
     Route::get('/', function () {
     return view('auth.login');
 });
@@ -38,4 +38,8 @@ Route::get('/reports', 'HomeController@report');
 Route::post('/reports', 'HomeController@getreport');
 
 Route::get('/manage', 'PagesController@manage');
+
+
+
+
 });

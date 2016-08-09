@@ -25,17 +25,7 @@ class Track extends Model
         'back_plant',
     ];
 
-    /*list all status */
-    public function statuses()
-    {
-        return $this->belongsToMany('App\Status')->withTimestamps();
-    }
 
-    public function getStatusListAttribute()
-    {
-        return $this->statuses->lists('id')->all();
-    }
-    
     
     
     /* list all trucks */

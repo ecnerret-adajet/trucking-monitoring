@@ -13,12 +13,12 @@ use App\Track;
 use App\Truck;
 use App\Customer;
 use App\User;
-use App\Status;
 use Carbon\Carbon;
 use DB;
 use Response;
 use Input;
 use DateTime;
+use App\Schedule;
 
 class TracksController extends Controller
 {
@@ -46,14 +46,10 @@ class TracksController extends Controller
                 ->take(5)
                 ->get();
 
-      $in_plant = Status::where('id', '=', '1')->get();
-      $transit_customer = Status::where('id', '=', '2')->get();
-      $in_customer = Status::where('id', '=', '3')->get();
-      $transit_plant = Status::where('id', '=', '4')->get();
+      $schedules = Schedule::with('trucks')->get();
+      $total = 0;
 
-      $statuses = Status::lists('name','id');
-
-      $base_time = Carbon::now();
+      $base_time = Carbon::now()->setTimezone('Asia/Manila');
 
        return view('tracks.index', 
         compact('tracks',
@@ -63,14 +59,15 @@ class TracksController extends Controller
             'all_customers',
             'all_trucks',
             'users',
+            'total',
             'trackings',
             'trucks',
             'customers',
             'in_plant',
             'transit_customer',
+            'schedules',
             'in_customer',
-            'transit_plant',
-            'statuses'));
+            'transit_plant'));
     }
 
 
@@ -87,13 +84,11 @@ class TracksController extends Controller
         $tracks = Track::all();
         $trucks = Truck::lists('plate_no','id');
         $customers = Customer::lists('customer_name','id');
-        $statuses = Status::lists('name','id');
         $base_time = Carbon::now('Asia/Manila');
         
         return view('tracks.create', 
             compact('trucks',
                 'customers',
-                'statuses',
                 'tracks'));
     }
 
@@ -112,7 +107,6 @@ class TracksController extends Controller
         
         $track->trucks()->attach($request->input('truck_list'));
         $track->customers()->attach($request->input('customer_list'));
-        $track->statuses()->attach($request->input('status_list'));
         
         return redirect('tracks');
     }
