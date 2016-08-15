@@ -63,11 +63,7 @@ class TracksController extends Controller
             'trackings',
             'trucks',
             'customers',
-            'in_plant',
-            'transit_customer',
-            'schedules',
-            'in_customer',
-            'transit_plant'));
+            'schedules'));
     }
 
 
@@ -82,7 +78,12 @@ class TracksController extends Controller
    public function create()
     {
         $tracks = Track::all();
-        $trucks = Truck::lists('plate_no','id');
+
+
+       $trucks  = Truck::lists('plate_no','id'); 
+
+
+
         $customers = Customer::lists('customer_name','id');
         $base_time = Carbon::now('Asia/Manila');
         
@@ -103,8 +104,7 @@ class TracksController extends Controller
     public function store(TrackRequest $request)
     {
         $track = Auth::user()->tracks()->create($request->all());
-
-        
+    
         $track->trucks()->attach($request->input('truck_list'));
         $track->customers()->attach($request->input('customer_list'));
         

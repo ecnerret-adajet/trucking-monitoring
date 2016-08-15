@@ -4,27 +4,27 @@
 /* unvisited link */
 a:link {
     text-decoration: none ! important;
-    color: inherit;
+    color: #fff;
 }
 
 /* visited link */
 a:visited {
     text-decoration: none ! important;
-        color: inherit;
+     color: #fff;
 
 }
 
 /* mouse over link */
 a:hover {
     text-decoration: none ! important;
-        color: inherit;
+      color: #fff;
 
 }
 
 /* selected link */
 a:active {
     text-decoration: none ! important;
-        color: inherit;
+       color: #fff;
 
 }
 

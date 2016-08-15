@@ -14,6 +14,15 @@ $(function () {
         placeholder: "Select a plate number",
         allowClear: true,
     });
+
+
+    $(".multiple-select").select2();
+
+
+
+
+
+
     //end select 2 form truck
  //end function js   
 });

@@ -55,7 +55,7 @@
                           
 
                             <td>
-                               {{  ($track->in_plant->format('Y-m-d h:i:s A')  == '-0001-11-30 12:00:00 AM' ? '0000-00-00 00:00:00 ' : $track->in_plant->format('Y-m-d h:i:s A')   ) }}
+                               {{  ($track->entry_plant->format('Y-m-d h:i:s A')  == '-0001-11-30 12:00:00 AM' ? '0000-00-00 00:00:00 ' : $track->entry_plant->format('Y-m-d h:i:s A')   ) }}
 
                             </td>
                     
@@ -67,7 +67,7 @@
 
                             <td>
 
-                                {{  ($track->out_plant->format('Y-m-d h:i:s A')  == '-0001-11-30 12:00:00 AM' ?  $track->in_plant->diffInHours($base_time).' Hour(s)' :   $track->in_plant->diffInHours($track->out_plant).' Hour(s)'   ) }}
+                                {{  ($track->out_plant->format('Y-m-d h:i:s A')  == '-0001-11-30 12:00:00 AM' ?  $track->entry_plant->diffInHours($base_time).' Hour(s)' :   $track->entry_plant->diffInHours($track->out_plant).' Hour(s)'   ) }}
 
                             </td>
 

@@ -19,7 +19,8 @@ class CreateTracksTable extends Migration
             $table->timestamp('out_plant');
             $table->timestamp('in_customer');
             $table->timestamp('out_customer');
-             $table->timestamp('back_plant');
+            $table->timestamp('back_plant');
+            $table->timestamp('entry_plant');
             
             
             $table->foreign('user_id')

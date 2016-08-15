@@ -38,6 +38,11 @@ class PagesController extends Controller
       return view('tracks.manage', compact('tracks','trucks','locations','customers'));
     }
 
+    public function documentation()
+    {
+      return view('tracks.documentation');
+    }
+
 
 
     

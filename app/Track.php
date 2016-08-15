@@ -12,7 +12,9 @@ class Track extends Model
         'out_plant',
         'in_customer',
         'out_customer',
-        'back_plant',
+        'help',
+        'entry_plant',
+        'back_plant'
     ];
     
     
@@ -21,12 +23,18 @@ class Track extends Model
         'out_plant',
         'in_customer',
         'out_customer',
+        'entry_plant',
         'base_time',
-        'back_plant',
+        'back_plant'
     ];
 
 
-    
+        
+    /* user list */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
     
     /* list all trucks */
     public function trucks()
@@ -50,82 +58,84 @@ class Track extends Model
     {
         return $this->customers->lists('id')->all();
     }
-    
 
 
-    
-    /*out plant*/
-    public function getOutPlantAttribute($date)
+
+
+     /* ENTRY PLANT */
+    public function setEntryPlantAttribute()
     {
-        return new Carbon($date);
-    }
-    
-    public function setOutPlantAttribute($date)
-    {
-        $this->attributes['out_plant'] = Carbon::parse()->setTimezone('Asia/Manila');
+       $this->attributes['entry_plant'] = Carbon::parse()->setTimezone('Asia/Manila');
     }
 
-
-
-    /* Plant In */
-     public function getInPlantAttribute($date)
+    public function getEntryPlantAttribute($date)
     {
-        return new Carbon($date);
+      return Carbon::parse($date);
     }
     
+
+    /* IN PLANT */
     public function setInPlantAttribute($date)
     {
-        $this->attributes['in_plant'] = Carbon::parse()->setTimezone('Asia/Manila');
+          $this->attributes['in_plant'] = Carbon::parse($date)->setTimezone('Asia/Manila');
     }
 
-    
-      /* In Customer */
-     public function getInCustomerAttribute($date)
+    public function getInPlantAttribute($date)
     {
-        return new Carbon($date);
+         return Carbon::parse($date);
     }
-    
+
+
+
+    /* OUT PLANT */
+    public function setOutPlantAttribute($date)
+    {
+          $this->attributes['out_plant'] =Carbon::parse($date)->setTimezone('Asia/Manila');   
+    }
+
+    public function getOutPlantAttribute($date)
+    {
+      return Carbon::parse($date);
+    }
+
+
+    /* IN CUSTOMER */
     public function setInCustomerAttribute($date)
     {
-        $this->attributes['in_customer'] = Carbon::parse()->setTimezone('Asia/Manila');
+          $this->attributes['in_customer'] = Carbon::parse($date)->setTimezone('Asia/Manila');
     }
 
-    
-    
-      /* Out Customer */
-     public function getOutCustomerAttribute($date)
+    public function getInCustomerAttribute($date)
     {
-        return new Carbon($date);
+         return Carbon::parse($date);
     }
-    
+
+
+    /* OUT CUSTOMER */
+
     public function setOutCustomerAttribute($date)
     {
-        $this->attributes['out_customer'] = Carbon::parse()->setTimezone('Asia/Manila');
+          $this->attributes['out_customer'] = Carbon::parse($date)->setTimezone('Asia/Manila');
     }
 
-
-         /* Out Customer */
-     public function getBackPlantAttribute($date)
+    public function getOutCustomerAttribute($date)
     {
-        return new Carbon($date);
+        return Carbon::parse($date);
     }
-    
+
+
+    /* BACK PLANT */
     public function setBackPlantAttribute($date)
     {
-        $this->attributes['back_plant'] = Carbon::parse()->setTimezone('Asia/Manila');
+          $this->attributes['back_plant'] = Carbon::parse($date)->setTimezone('Asia/Manila');
     }
-    
 
-    
-    
-    /* user list */
-    public function user()
+    public function getBackPlantAttribute($date)
     {
-        return $this->belongsTo('App\User');
+       return Carbon::parse($date);
     }
-
-
-
+  
     
+   
 
 }

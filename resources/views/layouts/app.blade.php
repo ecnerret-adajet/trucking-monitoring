@@ -107,7 +107,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="{{asset('/avatars/'.Auth::user()->avatar)}}" class="user-image" alt="User Image" />
+                  <img src="{{asset('/img/avatars/'.Auth::user()->avatar)}}" class="user-image" alt="User Image" />
                   <span class="hidden-xs">{{ Auth::user()->name }}</span>
                 </a>
                 <ul class="dropdown-menu" style="width:200px; border-left: 1px solid #95a5a6; border-bottom: 1px solid #95a5a6; border-radius:0;">
@@ -130,7 +130,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="{{asset('/avatars/'.Auth::user()->avatar)}}"  class="img-circle" alt="User Image" />
+              <img src="{{asset('/img/avatars/'.Auth::user()->avatar)}}"  class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
               <p>{{ Auth::user()->name }}</p>
@@ -153,9 +153,7 @@
 
 
             <li><a href="{{url('/tracks')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
-            <li><a href={{url('/tracks/create')}} ><i class="fa fa-plus" ></i> <span>Delivery truck</span></a></li>
-            <li><a href={{url('/tracks/create')}} ><i class="fa fa-plus" ></i> <span>Pick-up truck</span></a></li>
-            
+            <li><a href={{url('/tracks/create')}} ><i class="fa fa-plus" ></i> <span>Deploy truck</span></a></li>            
                <li class="treeview">
               <a href="#">
                 <i class="fa fa-heart"></i> <span>Manage Customer</span> <i class="fa fa-angle-left pull-right"></i>
@@ -172,12 +170,27 @@
               <ul class="treeview-menu">
                 <li><a href="{{url('/trucks')}}"><i class="fa fa-circle-o"></i>All Trucks</a></li>
                 <li><a href="{{url('/trucks/create')}}"><i class="fa fa-circle-o"></i>Add Trucks</a></li>
-                <li><a href="{{url('/trucks/create')}}"><i class="fa fa-circle-o"></i>Add Driver</a></li>
                  
               </ul>
             </li>
             <li><a href="{{url('/reports')}}"><i class="fa fa-line-chart"></i> <span>Reports</span></a></li>
-            <li><a href="#"><i class="fa fa-unlock-alt"></i> <span>User</span></a></li>
+
+               <li class="treeview">
+              <a href="#">
+                <i class="fa fa-unlock-alt"></i> <span>User</span> <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{url('/users')}}"><i class="fa fa-circle-o"></i>All User</a></li>
+                <li><a href="{{url('/roles')}}"><i class="fa fa-circle-o"></i>User roles</a></li>
+                 
+              </ul>
+            </li>
+
+
+
+
+
+            <li><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
 
 
 
