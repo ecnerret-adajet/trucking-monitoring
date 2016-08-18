@@ -173,7 +173,7 @@
                  
               </ul>
             </li>
-            <li><a href="{{url('/reports')}}"><i class="fa fa-line-chart"></i> <span>Reports</span></a></li>
+            <li><a href="{{url('/summary')}}"><i class="fa fa-line-chart"></i> <span>Reports</span></a></li>
 
                <li class="treeview">
               <a href="#">
@@ -374,9 +374,7 @@
     } );
     </script>
     
- 
-
-       <script>
+    <script>
      $(document).ready(function() {
     $('#report-tracks').DataTable( {
         dom: "<'row table-style-custom'<'col-sm-6'><'col-sm-6 text-right'B>>"+"<'row'<'col-sm-6'l><'col-sm-6'f>>R" +
@@ -384,12 +382,66 @@
     "<'row'<'col-sm-5'i><'col-sm-7'p>>", 
         buttons: [
           
-
             { extend: 'excelHtml5', className: 'btn-sm btn-success text-uppercase' },
             { extend: 'csvHtml5', className: 'btn-sm btn-success text-uppercase' },
             { extend: 'pdfHtml5', className: 'btn-sm btn-success text-uppercase' }
         ]
     } );
+
+} );
+    </script>
+
+
+      <script>
+     $(document).ready(function() {
+    $('#report-tracks-2').DataTable( {
+        dom: "<'row table-style-custom'<'col-sm-6'><'col-sm-6 text-right'B>>"+"<'row'<'col-sm-6'l><'col-sm-6'f>>R" +
+    "<'row'<'col-sm-12'tr>>" +
+    "<'row'<'col-sm-5'i><'col-sm-7'p>>", 
+        buttons: [
+          
+            { extend: 'excelHtml5', className: 'btn-sm btn-success text-uppercase' },
+            { extend: 'csvHtml5', className: 'btn-sm btn-success text-uppercase' },
+            { extend: 'pdfHtml5', className: 'btn-sm btn-success text-uppercase' }
+        ]
+    } );
+
+} );
+    </script>
+
+
+          <script>
+     $(document).ready(function() {
+    $('#report-tracks-3').DataTable( {
+        dom: "<'row table-style-custom'<'col-sm-6'><'col-sm-6 text-right'B>>"+"<'row'<'col-sm-6'l><'col-sm-6'f>>R" +
+    "<'row'<'col-sm-12'tr>>" +
+    "<'row'<'col-sm-5'i><'col-sm-7'p>>", 
+        buttons: [
+          
+            { extend: 'excelHtml5', className: 'btn-sm btn-success text-uppercase' },
+            { extend: 'csvHtml5', className: 'btn-sm btn-success text-uppercase' },
+            { extend: 'pdfHtml5', className: 'btn-sm btn-success text-uppercase' }
+        ]
+    } );
+
+} );
+    </script>
+
+
+              <script>
+     $(document).ready(function() {
+    $('#report-tracks-4').DataTable( {
+        dom: "<'row table-style-custom'<'col-sm-6'><'col-sm-6 text-right'B>>"+"<'row'<'col-sm-6'l><'col-sm-6'f>>R" +
+    "<'row'<'col-sm-12'tr>>" +
+    "<'row'<'col-sm-5'i><'col-sm-7'p>>", 
+        buttons: [
+          
+            { extend: 'excelHtml5', className: 'btn-sm btn-success text-uppercase' },
+            { extend: 'csvHtml5', className: 'btn-sm btn-success text-uppercase' },
+            { extend: 'pdfHtml5', className: 'btn-sm btn-success text-uppercase' }
+        ]
+    } );
+
 } );
     </script>
 

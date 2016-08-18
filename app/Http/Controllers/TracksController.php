@@ -39,7 +39,6 @@ class TracksController extends Controller
        $users = User::all();
        $trucks  = Truck::lists('plate_no','id'); 
        $customers = Customer::lists('customer_name', 'id');
-       
        $all_trucks = Truck::with('tracks')->get();
        $trackings = Track::orderBy('created_at', 'desc')->take(6)->get();
        $all_customers = Customer::has('tracks')
@@ -77,15 +76,14 @@ class TracksController extends Controller
      */
    public function create()
     {
-        $tracks = Track::all();
-
-
+       $tracks = Track::all();
+       $customers  = Customer::lists('customer_name','id'); 
        $trucks  = Truck::lists('plate_no','id'); 
 
 
 
-        $customers = Customer::lists('customer_name','id');
-        $base_time = Carbon::now('Asia/Manila');
+
+       $base_time = Carbon::now('Asia/Manila');
         
         return view('tracks.create', 
             compact('trucks',

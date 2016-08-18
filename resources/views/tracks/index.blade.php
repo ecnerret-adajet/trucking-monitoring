@@ -12,6 +12,39 @@
 
         </section>
 
+
+             <div class="row">
+          <div class="col-md-12">
+        @foreach($tracks as $track)
+        @if(  $track->help != 1 )
+        @else
+          
+         <div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+   @foreach($track->trucks as $truck)
+  <strong>
+ 
+   Truck <span style="color: #000"> {{$truck->plate_no}} </span> has an emergency 
+  
+  </strong>, 
+  
+  please attend immediately number <span style="color: #000"> {{ ($truck->phone == '' ? 'NO NUMBER' : $truck->phone)}}  </span>
+
+  @endforeach 
+</div>
+       
+        @endif
+           @endforeach
+          </div>
+          </div>
+
+
+
+
+
+
+
+
           <section class="content">
   
  <div class="row">

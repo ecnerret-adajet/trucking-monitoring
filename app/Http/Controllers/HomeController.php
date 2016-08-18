@@ -43,37 +43,23 @@ class HomeController extends Controller
        $users = User::all();
        $trucks  = Truck::lists('plate_no','id'); 
        $customers = Customer::lists('customer_name', 'id');
-       
-       $all_trucks = Truck::with('tracks')->get();
-       $trackings = Track::orderBy('created_at', 'desc')->take(6)->get();
-       $all_customers = Customer::has('tracks')
-                ->take(5)
-                ->get();
-
-      $base_time = Carbon::now();
+       $total = 0;
+       $base_time = Carbon::now();
 
        return view('report', 
         compact('tracks',
-            'trucksx',
-            'customersx',
             'base_time',
-            'all_customers',
-            'all_trucks',
+            'total',
             'users',
-            'trackings',
             'trucks',
-            'customers',
-            'in_plant',
-            'transit_customer',
-            'in_customer',
-            'transit_plant'));
+            'customers'));
     }
 
 
     public function getreport(Request $request)
     {
          $this->validate($request, [
-            'start_date' => 'required',
+           'start_date' => 'required',
             'end_date' => 'required'
         ]); 
          $base_time = Carbon::now('Asia/Manila');
@@ -87,7 +73,7 @@ class HomeController extends Controller
             ->where(DB::raw('DATE_FORMAT(created_at,"%Y-%m-%d")'),'<=',$end_date)
             ->get();
         
-        return redirect('reports', compact(
+        return view('report', compact(
             'tracks',
             'customers',
             'trucks',

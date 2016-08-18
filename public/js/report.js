@@ -73,7 +73,55 @@ $(function () {
             }
         }
     });
-    
+
+
+      $('#reports').highcharts({
+        data: {
+            table: 'reports'
+        },
+         credits: {
+             enabled: false
+         },
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Hits per destination'
+        },
+        yAxis: {
+            allowDecimals: false,
+            title: {
+                text: 'Units'
+            }
+        },
+         plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: -40,
+            y: 80,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            shadow: true
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    this.point.y + ' ' + this.point.name.toLowerCase();
+            }
+        }
+    });
+
+
+
     
         $('#owns').highcharts({
         data: {

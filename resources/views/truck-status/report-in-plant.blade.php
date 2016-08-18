@@ -1,4 +1,4 @@
- <table  id="track-plant"  class="dt-responsive nowrap display table-responsive table-hover table" width="100%">
+ <table  id="report-tracks"  class="dt-responsive nowrap display table-responsive table-hover table" width="100%">
                 <thead>
                       <tr>
                           <th></th>

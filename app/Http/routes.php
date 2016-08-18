@@ -44,8 +44,9 @@ Route::get('api/trucks', function() {
 
 Route::get('/home', 'HomeController@index');
     
-Route::get('/reports', 'HomeController@report');
-Route::post('/reports', 'HomeController@getreport');
+
+Route::get('/summary', 'HomeController@report');
+Route::get('/report', 'HomeController@getreport');
 
 Route::get('/manage', 'PagesController@manage');
 Route::get('/documentation', 'PagesController@documentation');
