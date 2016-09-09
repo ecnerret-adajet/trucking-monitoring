@@ -13,6 +13,7 @@ class Track extends Model
         'in_customer',
         'out_customer',
         'help',
+        'dispatch',
         'entry_plant',
         'back_plant'
     ];
@@ -24,6 +25,7 @@ class Track extends Model
         'in_customer',
         'out_customer',
         'entry_plant',
+        'dispatch',
         'base_time',
         'back_plant'
     ];
@@ -81,6 +83,18 @@ class Track extends Model
     }
 
     public function getInPlantAttribute($date)
+    {
+         return Carbon::parse($date);
+    }
+
+
+        /* IN PLANT */
+    public function setDispatchAttribute($date)
+    {
+          $this->attributes['dispatch'] = Carbon::parse($date)->setTimezone('Asia/Manila');
+    }
+
+    public function getDispatchAttribute($date)
     {
          return Carbon::parse($date);
     }

@@ -138,9 +138,10 @@ class TracksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Track $track)
     {
-        //
+        $track->updates($request->input('help'));
+        return redirect('tracks');
     }
 
     /**

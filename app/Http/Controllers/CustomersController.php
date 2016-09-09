@@ -9,12 +9,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
-use App\Customer;
-use App\Truck;
 use App\Track;
-use App\Schedule;
+use App\Truck;
+use App\Customer;
+use App\User;
 use Carbon\Carbon;
-use User;
+use DB;
+use Response;
+use Input;
+use DateTime;
+use App\Schedule;
 
 class CustomersController extends Controller
 {
@@ -53,7 +57,7 @@ class CustomersController extends Controller
      */
     public function store(CustomerRequest $request)
     {
-        $customer = Auth::user()->customers()->create($request->all());
+        $customer = Customer::create($request->all());
 
         return redirect('customers');
     }

@@ -17,10 +17,10 @@
 
 <div class="form-group hide">
 <label class="col-md-4 control-label"> 
-{!! Form::label('entry_plant', 'Entry Date:')  !!}
+{!! Form::label('dispatch', 'Entry Date:')  !!}
 </label>
 <div class="col-md-6">
-{!! Form::input('date', 'entry_plant', Carbon\Carbon::now()->format('Y-m-d'), ['class' => 'form-control']) !!}         
+{!! Form::input('date', 'dispatch', Carbon\Carbon::now()->format('Y-m-d'), ['class' => 'form-control']) !!}         
 </div>
 </div>
 

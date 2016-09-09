@@ -4,6 +4,7 @@
                           <th></th>
                           <th>TRUCK #</th>    
                           <th>DESTINATION</th>    
+                          <th>ATL DESPATCH</th>    
                           <th>IN PLANT</th>    
                           <th>OUT PLANT</th>    
                           <th>TIME IDLE</th>    
@@ -14,7 +15,8 @@
                  <tr>
                     <th></th>
                     <th>TRUCK #</th>    
-                    <th>DESTINATION</th>    
+                    <th>DESTINATION</th> 
+                     <th>ATL DESPATCH</th>      
                     <th>IN PLANT</th>    
                     <th>OUT PLANT</th>    
                     <th>TIME IDLE</th>    
@@ -50,6 +52,11 @@
                          @foreach($track->customers as $customer)
                             {{ str_limit($customer->customer_name,20) }}
                          @endforeach
+                            </td>
+
+                            <td>
+         {{  ($track->dispatch->format('Y-m-d h:i:s A')  == '-0001-11-30 12:00:00 AM' ? '0000-00-00 00:00:00 ' : $track->dispatch->format('Y-m-d h:i:s A')   ) }}
+
                             </td>
                        
                           

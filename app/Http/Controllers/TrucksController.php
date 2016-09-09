@@ -54,7 +54,7 @@ class TrucksController extends Controller
      */
     public function store(TruckRequest $request)
     {
-          $truck = Auth::user()->trucks()->create($request->all());
+          $truck = Truck::create($request->all());
 
           $truck->schedules()->attach($request->input('schedule_list'));
 

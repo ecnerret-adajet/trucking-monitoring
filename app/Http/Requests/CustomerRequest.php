@@ -24,7 +24,7 @@ class CustomerRequest extends Request
     public function rules()
     {
         return [
-            'customer_name' = > 'required',
+            'customer_name' => 'required',
             'destination' => 'required'
         ];
     }
@@ -32,7 +32,7 @@ class CustomerRequest extends Request
     public function messages()
     {
         return[
-        'customer_name.required' = > 'This field is required',
+        'customer_name.required' => 'This field is required',
         'destination.required' => 'This field is required'
         ];
     }
