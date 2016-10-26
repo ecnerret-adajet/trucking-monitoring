@@ -4,6 +4,7 @@
                           <th></th>
                           <th>TRUCK #</th>    
                           <th>DESTINATION</th>    
+                          <th>ATL DISPATCH</th>    
                           <th>IN PLANT</th>    
                           <th>OUT PLANT</th>    
                           <th>TIME IDLE</th>    
@@ -15,6 +16,7 @@
                     <th></th>
                     <th>TRUCK #</th>    
                     <th>DESTINATION</th>    
+                    <th>ATL DISPATCH</th>    
                     <th>IN PLANT</th>    
                     <th>OUT PLANT</th>    
                     <th>TIME IDLE</th>    
@@ -52,6 +54,11 @@
                          @endforeach
                             </td>
                        
+
+                             <td>
+                               {{  ($track->dispatch->format('Y-m-d h:i:s A')  == '-0001-11-30 12:00:00 AM' ? '0000-00-00 00:00:00 ' : $track->dispatch->format('Y-m-d h:i:s A')   ) }}
+
+                            </td>
                           
 
                             <td>

@@ -11,6 +11,11 @@
 |
 */
 
+@$num = $_GET['num'];
+@$port = $_GET['port'];
+@$message = $_GET['message'];
+@$time = $_GET['time'];
+
  Route::get('/', function () {
     return view('auth.login');
 });
@@ -32,14 +37,6 @@ Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RoleController@show']);
 Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RoleController@edit','middleware' => ['permission:role-edit']]);
 Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:role-edit']]);
 Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]); 
-
-
-Route::get('api/customers', function() {
-	return App\Customer::latest()->get();
-});
-Route::get('api/trucks', function() {
-	return App\Truck::latest()->get();
-});
 
 
 Route::get('/home', 'HomeController@index');

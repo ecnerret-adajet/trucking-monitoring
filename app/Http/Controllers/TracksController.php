@@ -34,7 +34,12 @@ class TracksController extends Controller
      */
     public function index()
     {
-       $tracks = Track::orderBy('created_at','desc')->get();
+       $tracks = Track::latest('created_at')->where('created_at', '>=', Carbon::now()->subDays(2))->get();
+
+       /*   
+            Carbon::now()->subDays(5)->diffForHumans();   
+            ->where('created_at', '<=', Carbon::now()) 
+       */
 
        $users = User::all();
        $trucks  = Truck::lists('plate_no','id'); 
@@ -138,10 +143,9 @@ class TracksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Track $track)
+    public function update(Request $request, $id)
     {
-        $track->updates($request->input('help'));
-        return redirect('tracks');
+        //
     }
 
     /**

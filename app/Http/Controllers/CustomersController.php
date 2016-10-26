@@ -9,16 +9,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
-use App\Track;
-use App\Truck;
 use App\Customer;
-use App\User;
-use Carbon\Carbon;
-use DB;
-use Response;
-use Input;
-use DateTime;
+use App\Truck;
+use App\Track;
 use App\Schedule;
+use Carbon\Carbon;
+use User;
 
 class CustomersController extends Controller
 {

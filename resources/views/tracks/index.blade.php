@@ -19,7 +19,7 @@
         @if(  $track->help != 1 )
         @else
           
-         <div class="alert alert-dismissible alert-danger" style="padding: 20px;">
+         <div class="alert alert-dismissible alert-danger">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
    @foreach($track->trucks as $truck)
   <strong>
@@ -31,14 +31,10 @@
   please attend immediately number <span style="color: #000"> {{ ($truck->phone == '' ? 'NO NUMBER' : $truck->phone)}}  </span>
 
   @endforeach 
-
 </div>
        
         @endif
            @endforeach
-
-
-    
           </div>
           </div>
 
@@ -65,7 +61,7 @@
 
 
 
-                  <li class="pull-left header"><i class="fa fa-map-o"></i> Overview</li>
+                  <li class="pull-left header"><i class="fa fa-map-o"></i> Overview - Today's dispatch</li>
                 </ul>
 
 

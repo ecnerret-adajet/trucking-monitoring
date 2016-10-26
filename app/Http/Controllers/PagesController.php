@@ -44,15 +44,6 @@ class PagesController extends Controller
     }
 
 
-      public function helps(Request $request, Track $track)
-    {
-       
-        $track->updates($request->input('help'));
-
-        return redirect('tracks');
-    }
-
-
 
     
    

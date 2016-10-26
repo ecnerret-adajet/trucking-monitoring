@@ -20,7 +20,7 @@
 {!! Form::label('dispatch', 'Entry Date:')  !!}
 </label>
 <div class="col-md-6">
-{!! Form::input('date', 'dispatch', Carbon\Carbon::now()->format('Y-m-d'), ['class' => 'form-control']) !!}         
+{!! Form::input('date', 'dispatch', Carbon\Carbon::now()->format('Y-m-d H:m:s'), ['class' => 'form-control']) !!}         
 </div>
 </div>
 

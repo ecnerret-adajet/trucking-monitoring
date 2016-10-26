@@ -67,7 +67,7 @@ class HomeController extends Controller
          $trucks = Truck::all();
          $start_date = $request->get('start_date');
          $end_date = $request->get('end_date');
-       
+        $total = 0;
         
         $tracks = Track::where(DB::raw('DATE_FORMAT(created_at,"%Y-%m-%d")'),'>=',$start_date)
             ->where(DB::raw('DATE_FORMAT(created_at,"%Y-%m-%d")'),'<=',$end_date)
@@ -75,6 +75,7 @@ class HomeController extends Controller
         
         return view('report', compact(
             'tracks',
+            'total',
             'customers',
             'trucks',
             'end_date',
