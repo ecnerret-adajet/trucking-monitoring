@@ -186,7 +186,9 @@
                       <div class="product-info">
                         <a href="javascript::;" class="product-title">
                        @foreach($tracking->customers as $customer)
-                        {{$customer->customer_name}}
+                      <span  style="color: #000 ! important" > 
+                       {{$customer->customer_name}}
+                       </span>
                        @endforeach
                         <span class="label label-warning pull-right">{{$tracking->created_at->diffForHumans()}}</span></a>
                         <span class="product-description">
@@ -236,32 +238,8 @@
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->
 
-                 <div class="info-box  bg-green">
-                <span class="info-box-icon"><i class="ion ion-ios-timer-outline"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Available Trucks</span>
-                  <span class="info-box-number">
-                  @foreach($schedules->slice(2,1) as $schedule)
-                          {{ $schedule->trucks->count() }}
-                      @endforeach
-                  </span>
-                  
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
+       
 
-
-                 <div class="info-box  bg-red">
-                <span class="info-box-icon"><i class="ion ion-ios-gear-outline"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Unavailable trucks</span>
-                  <span class="info-box-number">
-                  @foreach($schedules->slice(1,1) as $schedule)
-                          {{ $schedule->trucks->count() }}
-                      @endforeach
-                  </span>
-                  
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
          
 
               

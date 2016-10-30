@@ -19,6 +19,7 @@ use Response;
 use Input;
 use DateTime;
 use App\Schedule;
+use Flashy;
 
 class TracksController extends Controller
 {
@@ -34,13 +35,12 @@ class TracksController extends Controller
      */
     public function index()
     {
-       $tracks = Track::latest('created_at')->where('created_at', '>=', Carbon::now()->subDays(2))->get();
 
+       $tracks = Track::latest('created_at')->where('created_at', '>=' ,Carbon::now()->subDays(2))->get();
        /*   
             Carbon::now()->subDays(5)->diffForHumans();   
             ->where('created_at', '<=', Carbon::now()) 
        */
-
        $users = User::all();
        $trucks  = Truck::lists('plate_no','id'); 
        $customers = Customer::lists('customer_name', 'id');
@@ -110,7 +110,7 @@ class TracksController extends Controller
     
         $track->trucks()->attach($request->input('truck_list'));
         $track->customers()->attach($request->input('customer_list'));
-        
+         flashy()->success('Dispatch Successfully !');
         return redirect('tracks');
     }
 
@@ -136,6 +136,20 @@ class TracksController extends Controller
         //
     }
 
+    public function editPlant(Track $track){
+
+        $tracks = Track::all();
+        // latest('created_at')->where('created_at', '>=' ,Carbon::now())->get();
+        $customers = Customer::with('tracks')->get();
+        $trucks = Truck::with('tracks')->get();
+        return view('tracks.editPlant', compact(
+            'customers',
+            'trucks',
+            'tracks',
+            'track'));
+    }
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -146,6 +160,22 @@ class TracksController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function updatePlant(Request $request, Track $track){
+
+        $entry_plants['entry_plant'] = Carbon::now()->setTimezone('Asia/Manila');
+        $track->update($entry_plants);
+        flashy()->success('Plant in Successfully !');
+        return redirect()->back();
+    }
+
+    public function updatePlantOut(Request $request, Track $track){
+
+        $out_plants['out_plant'] = Carbon::now()->setTimezone('Asia/Manila');
+        $track->update($out_plants);
+        flashy()->success('Plant out Successfully !');
+        return redirect()->back();
     }
 
     /**

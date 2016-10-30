@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3e99bc7935102ff8f122053a9344eee1",
-    "content-hash": "6e1a44d5791a5b92a64f5db0d721e9b1",
+    "hash": "8e6288832bd32c61cf049d8fb6040ebd",
+    "content-hash": "aa1b5f07e20e0de910777561bd2b948c",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -735,6 +735,49 @@
                 "storage"
             ],
             "time": "2016-06-03 19:11:39"
+        },
+        {
+            "name": "mercuryseries/flashy",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mercuryseries/flashy.git",
+                "reference": "d27b6be07ab20a78cd57ce315c332232b2f08ddb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mercuryseries/flashy/zipball/d27b6be07ab20a78cd57ce315c332232b2f08ddb",
+                "reference": "d27b6be07ab20a78cd57ce315c332232b2f08ddb",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MercurySeries\\Flashy": "src/"
+                },
+                "files": [
+                    "src/MercurySeries/Flashy/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Honore Hounwanou",
+                    "email": "mercuryseries@gmail.com"
+                }
+            ],
+            "description": "Easy flash notifications",
+            "time": "2016-01-11 23:44:20"
         },
         {
             "name": "monolog/monolog",

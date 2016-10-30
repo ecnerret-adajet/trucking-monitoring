@@ -6,68 +6,13 @@
       <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <title>Trucking Monitoring</title>
-
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
-     <!-- Ionicons 2.0.0 -->
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- Styles -->
-
-    <!-- Datatables styles   -->
-    <link href="{{ asset('/css/dataTables.tableTools.css') }}" rel="stylesheet" >
-    <link href="{{ asset('/css/dataTables.bootstrap.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/css/responsive.bootstrap.min.css') }}" rel="stylesheet" />  
-    <link href="{{ asset('/css/buttons.bootstrap.min.css') }}" rel="stylesheet" />  
-
-
-        <!-- Theme style -->
-    <link href="{{asset('css/skins/_all-skins.min.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/AdminLTE.css') }}" rel="stylesheet"  />
-    <link href="{{asset('plugins/iCheck/flat/blue.css')}}" rel="stylesheet" />
-    <!-- Morris chart -->
-    <link href="{{asset('plugins/morris/morris.css')}}" rel="stylesheet" />
-  
-
-    <!-- Date Picker -->
-    <link href="{{asset('plugins/datepicker/datepicker3.css')}}" rel="stylesheet"  />
-    <!-- Daterange picker -->
-    <link href="{{asset('plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet"  />
-    
-
-
-    <!-- end theme style -->
-  
-    
-    <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
-   
-    <link href="{{ asset('/css/select2.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('/css/select2-bootstrap.min.css') }}" rel="stylesheet" />
-
-
-    <link href="{{asset('/css/style.css')}}" rel="stylesheet">
-    
-          
-
-
-
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-    <style>
-        body {
-            font-family: 'Lato';
-            font-weight: 400;
-            font-size: 13px;
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
-  
-
+    <!-- flash nice rendering -->
+    <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
+    <!-- All styles   -->
+    <link href="{{ asset('/css/all.css') }}" rel="stylesheet" >
+      
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -112,7 +57,6 @@
                 </a>
                 <ul class="dropdown-menu" style="width:200px; border-left: 1px solid #95a5a6; border-bottom: 1px solid #95a5a6; border-radius:0;">
                   <!-- User image -->
-                     <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i> Account Settings</a></li>
                     <li><a href="{{url('/logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a></li>
 
                 </ul>
@@ -137,21 +81,14 @@
             </div>
       
           </div>
-          <!-- search form
-          <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-              <input type="text" name="q" class="form-control" placeholder="Search..." />
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </form>
-           -->
+    
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-
-
+            @role('Personnel')
+              <li><a href="{{url('/edit-plant')}}"><i class="fa fa-truck"></i> <span>Truck list</span></i></a></li>
+              @endrole
+            @role('Administrator')
             <li><a href="{{url('/tracks')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
             <li><a href={{url('/tracks/create')}} ><i class="fa fa-plus" ></i> <span>Deploy truck</span></a></li>            
                <li class="treeview">
@@ -187,7 +124,7 @@
             </li>
 
 
-
+            @endrole
 
 
             <li><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
@@ -230,9 +167,9 @@
 
 
     <!-- JavaScripts -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+   <script src="{{asset('js/jquery.min.js')}}"></script>
+   @include('flashy::message')
+   <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
        <!-- datatables   -->  
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
@@ -248,240 +185,45 @@
     <script src="{{ asset('js/vfs_fonts.js') }}"></script>
     <script src="{{ asset('js/buttons.html5.min.js') }}"></script>
 
+          <!-- AdminLTE App -->
+  <script src="{{asset('/js/app.js')}}"></script>
+    <!-- report js for charts  -->
+  <script src="{{ asset('js/report.js') }}"></script>
+  <script src="{{ asset('js/custom.js') }}"></script>
 
-
-    <!-- theme javascript -->
-
-    <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" type="text/javascript"></script>
-
-
-
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script type="text/javascript">
-      $.widget.bridge('uibutton', $.ui.button);
-    </script>
-    <!-- Morris.js charts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="{{asset('/plugins/morris/morris.min.js')}}"></script>
     <!-- Sparkline -->
     <script src="{{asset('/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
-   
-
     <!-- jQuery Knob Chart -->
     <script src="{{asset('/plugins/knob/jquery.knob.js')}}"></script>
     <!-- daterangepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="{{asset('/plugins/daterangepicker/daterangepicker.js')}}" ></script>
     <!-- datepicker -->
     <script src="{{asset('/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
-  
     <!-- Slimscroll -->
     <script src="{{asset('/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
     <!-- FastClick -->
     <script src="{{asset('/plugins/fastclick/fastclick.min.js')}}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{asset('/js/app.js')}}"></script>
-   
-   <!-- vue js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js"></script>
-    <script src="{{asset('/js/customers-table.js')}}"></script>
-    <script src="{{asset('/js/trucks-table.js')}}"></script>
-
-
-    <!-- datapicker -->
-     <script src="{{asset('/plugins/daterangepicker/daterangepicker.js')}}" type="text/javascript"></script>
-
-
-
-    <!--end theme javascript -->
-
-
-    <script src="{{asset('/js/app-theme.js')}}"></script>
-
-    <script src="{{asset('/js/tables-data.js')}}"></script>
-
+    <!--select 2 -->
     <script src="{{ asset('/js/select2.min.js') }}"></script>
-
+    <!--laravel boostrap modal form -->
      <script src="{{ asset('/js/laravel-bootstrap-modal-form.js') }}"></script>
-
-    
       <!-- Highchartjs -->
-     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/data.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="http://highcharts.github.io/export-csv/export-csv.js"></script>
-    <script src="https://code.highcharts.com/highcharts-more.js"></script>
-
-
+     <script src="{{asset('js/highcharts.js')}}"></script>
+    <script src="{{asset('js/data.js')}}"></script>
+    <script src="{{asset('js/exporting.js')}}"></script>
+    <script src="{{asset('js/export-csv.js')}}"></script>
+    <script src="{{asset('js/highcharts-more.js')}}"></script>
        <!-- InputMask -->
     <script src="{{asset('/plugins/input-mask/jquery.inputmask.js')}}" ></script>
     <script src="{{asset('/plugins/input-mask/jquery.inputmask.date.extensions.js')}}" ></script>
     <script src="{{asset('/plugins/input-mask/jquery.inputmask.extensions.js')}}"></script>
-    
-     
      <!-- filesystem -->
      <script src="{{asset('/js/bootstrap-filestyle.min.js')}}" type="text/javascript"></script>
-       <script>
-       $(":file").filestyle({size: "sm", buttonName: "btn-primary", buttonBefore: true});
-
-     </script>
 
 
-
-    
-    <!-- report js for charts  -->
-    <script src="{{ asset('js/report.js') }}"></script>
-
-
-
-    
-     @include ('footer')
-
-      <script>    
-    $(document).ready(function() {
-    $('#list-truck').DataTable();
-      });
-    </script>
-
-      <script>    
-    $(document).ready(function() {
-    $('#track-plant').DataTable();
-      });
-    </script>
-
-     <script>    
-    $(document).ready(function() {
-    $('#transit-customer').DataTable();
-      });
-    </script>
-
-    <script>    
-    $(document).ready(function() {
-    $('#track-customer').DataTable();
-      });
-    </script>
-
-    <script>    
-    $(document).ready(function() {
-    $('#transit-plant').DataTable();
-      });
-    </script>
-    
-    <script>
-    $(document).ready(function() {
-    $('#track-customer').DataTable();
-    } );
-    </script>
-    
-    <script>
-     $(document).ready(function() {
-    $('#report-tracks').DataTable( {
-        dom: "<'row table-style-custom'<'col-sm-6'><'col-sm-6 text-right'B>>"+"<'row'<'col-sm-6'l><'col-sm-6'f>>R" +
-    "<'row'<'col-sm-12'tr>>" +
-    "<'row'<'col-sm-5'i><'col-sm-7'p>>", 
-        buttons: [
-          
-            { extend: 'excelHtml5', className: 'btn-sm btn-success text-uppercase' },
-            { extend: 'csvHtml5', className: 'btn-sm btn-success text-uppercase' },
-            { extend: 'pdfHtml5', className: 'btn-sm btn-success text-uppercase' }
-        ]
-    } );
-
-} );
-    </script>
-
-
-      <script>
-     $(document).ready(function() {
-    $('#report-tracks-2').DataTable( {
-        dom: "<'row table-style-custom'<'col-sm-6'><'col-sm-6 text-right'B>>"+"<'row'<'col-sm-6'l><'col-sm-6'f>>R" +
-    "<'row'<'col-sm-12'tr>>" +
-    "<'row'<'col-sm-5'i><'col-sm-7'p>>", 
-        buttons: [
-          
-            { extend: 'excelHtml5', className: 'btn-sm btn-success text-uppercase' },
-            { extend: 'csvHtml5', className: 'btn-sm btn-success text-uppercase' },
-            { extend: 'pdfHtml5', className: 'btn-sm btn-success text-uppercase' }
-        ]
-    } );
-
-} );
-    </script>
-
-
-          <script>
-     $(document).ready(function() {
-    $('#report-tracks-3').DataTable( {
-        dom: "<'row table-style-custom'<'col-sm-6'><'col-sm-6 text-right'B>>"+"<'row'<'col-sm-6'l><'col-sm-6'f>>R" +
-    "<'row'<'col-sm-12'tr>>" +
-    "<'row'<'col-sm-5'i><'col-sm-7'p>>", 
-        buttons: [
-          
-            { extend: 'excelHtml5', className: 'btn-sm btn-success text-uppercase' },
-            { extend: 'csvHtml5', className: 'btn-sm btn-success text-uppercase' },
-            { extend: 'pdfHtml5', className: 'btn-sm btn-success text-uppercase' }
-        ]
-    } );
-
-} );
-    </script>
-
-
-              <script>
-     $(document).ready(function() {
-    $('#report-tracks-4').DataTable( {
-        dom: "<'row table-style-custom'<'col-sm-6'><'col-sm-6 text-right'B>>"+"<'row'<'col-sm-6'l><'col-sm-6'f>>R" +
-    "<'row'<'col-sm-12'tr>>" +
-    "<'row'<'col-sm-5'i><'col-sm-7'p>>", 
-        buttons: [
-          
-            { extend: 'excelHtml5', className: 'btn-sm btn-success text-uppercase' },
-            { extend: 'csvHtml5', className: 'btn-sm btn-success text-uppercase' },
-            { extend: 'pdfHtml5', className: 'btn-sm btn-success text-uppercase' }
-        ]
-    } );
-
-} );
-    </script>
-
-<script type="text/javascript">
-      $(function () {
-
-        $("[data-mask]").inputmask();
-      });
-    </script>
-
-
-      <script>
-    $(function () {
-      $('input').keyup(function() {
-        $.ajax({
-            method: 'get',
-            url: 'app/trucks' + $(this).val(),
-            dataType: "json",
-            success: function(data){
-               $('#name').text(data.name);           
-            },
-            statusCode: {
-                500: function() {
-                    // 
-                },
-                422: function(data) {
-                    // 
-                }
-            }
-        });         
-      });
-    });
-  </script>
-
-
-
-
-
-    
-@yield('footer')
+      @include ('footer')
+      @yield('footer')
     
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>

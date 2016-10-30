@@ -26,7 +26,7 @@
                     
                     
                     @foreach($tracks as $track)
-          <tr class="{{ $track->out_customer == '-0001-11-30 00:00:00' || $track->back_plant == '-0001-11-30 00:00:00' ? '' : 'danger' }}">
+          <tr style="{{ $track->out_customer == '-0001-11-30 00:00:00' && $track->back_plant == '-0001-11-30 00:00:00' ? 'display:none' : '' }}">
 
                         
                               <td>

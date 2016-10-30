@@ -151,6 +151,7 @@ return [
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        MercurySeries\Flashy\FlashyServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -211,6 +212,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Input'     => Illuminate\Support\Facades\Input::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
 
     ],
 
