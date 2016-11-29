@@ -138,12 +138,16 @@ class TracksController extends Controller
 
     public function editPlant(Track $track){
 
-        $tracks = Track::all();
+        $tracks = Track::latest('created_at')->where('created_at', '>=' ,Carbon::now()->subDays(2))->get();
+        
+
+        $tracks_archive = Track::orderBy('created_at', 'desc')->get();
         // latest('created_at')->where('created_at', '>=' ,Carbon::now())->get();
         $customers = Customer::with('tracks')->get();
         $trucks = Truck::with('tracks')->get();
         return view('tracks.editPlant', compact(
             'customers',
+            'tracks_archive',  
             'trucks',
             'tracks',
             'track'));
@@ -162,7 +166,7 @@ class TracksController extends Controller
         //
     }
 
-    public function updatePlant(Request $request, Track $track){
+    public function inplant(Request $request, Track $track){
 
         $entry_plants['entry_plant'] = Carbon::now()->setTimezone('Asia/Manila');
         $track->update($entry_plants);
@@ -170,7 +174,7 @@ class TracksController extends Controller
         return redirect()->back();
     }
 
-    public function updatePlantOut(Request $request, Track $track){
+    public function outplant(Request $request, Track $track){
 
         $out_plants['out_plant'] = Carbon::now()->setTimezone('Asia/Manila');
         $track->update($out_plants);

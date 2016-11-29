@@ -88,7 +88,7 @@
             @role('Personnel')
               <li><a href="{{url('/edit-plant')}}"><i class="fa fa-truck"></i> <span>Truck list</span></i></a></li>
               @endrole
-            @role('Administrator')
+            @role(['Administrator','Dispatcher','User'])
             <li><a href="{{url('/tracks')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
             <li><a href={{url('/tracks/create')}} ><i class="fa fa-plus" ></i> <span>Deploy truck</span></a></li>            
                <li class="treeview">

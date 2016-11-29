@@ -1,6 +1,5 @@
 
-
-<table class="table table-bordered table-hover" style=" border: 2px solid #3498db;
+<table id="archive-plants"  class="dt-responsive nowrap display table-responsive table-hover table" width="100%" style=" border: 2px solid #3498db;
   border-radius: 3px;
   background-color: #fff;">
 <thead>
@@ -14,7 +13,7 @@
 </tr>
 </thead>
 <tbody>
-@forelse($tracks as $track)
+@forelse($tracks_archive as $track)
 
 <tr>
 <td>{{ $track->id }} </td>

@@ -25,8 +25,8 @@ Route::resource('trucks','TrucksController');
 Route::resource('users','UserController'); 
 
 Route::get('/edit-plant', 'TracksController@editPlant');
-Route::patch('/edit-plan/{tracks}','TracksController@updatePlant');
-Route::patch('/edit-plan/{tracks}','TracksController@updatePlantOut');
+Route::patch('/in/{tracks}','TracksController@inplant');
+Route::patch('/out/{tracks}','TracksController@outplant');
 
 
 Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);

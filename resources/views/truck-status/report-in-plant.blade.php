@@ -74,8 +74,7 @@
 
                             <td>
 
-                                {{  ($track->out_plant->format('Y-m-d h:i:s A')  == '-0001-11-30 12:00:00 AM' ?  $track->entry_plant->diffInHours($base_time).' Hour(s)' :   $track->entry_plant->diffInHours($track->out_plant).' Hour(s)'   ) }}
-
+                              {{  ($track->out_plant == '-0001-11-30 00:00:00' || $track->entry_plant == '-0001-11-30 00:00:00'  ? ($track->entry_plant->diffInHours($base_time) >= 407835 ? 'CANNOT DETERMINE' : $track->entry_plant->diffInHours($base_time) )  : $track->entry_plant->diffInHours($track->out_plant)) }}
                             </td>
 
                             <td>

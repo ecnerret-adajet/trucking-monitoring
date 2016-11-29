@@ -15,7 +15,7 @@
 <tbody>
 @forelse($tracks as $track)
 
-@if (($track->entry_plant  !=  '-0001-11-30 00:00:00' && $track->out_plant  ==  '-0001-11-30 00:00:00') || ($track->entry_plant  ==  '-0001-11-30 00:00:00' && $track->out_plant  !=  '-0001-11-30 00:00:00'))
+@if (($track->entry_plant  !=  '-0001-11-30 00:00:00' && $track->out_plant  ==  '-0001-11-30 00:00:00'))
 
 
 
@@ -65,7 +65,7 @@
         Are you sure you want to save changes? 
       </div>
       <div class="modal-footer">
-           {!! Form::model($track, ['method' => 'PATCH', 'action' => ['TracksController@updatePlantOut', $track->id],  'files' => true, 'name' => 'autoSumForm' ]) !!} 
+           {!! Form::model($track, ['method' => 'PATCH', 'action' => ['TracksController@outplant', $track->id],  'files' => true, 'name' => 'autoSumForm' ]) !!} 
        {!! csrf_field() !!}
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 

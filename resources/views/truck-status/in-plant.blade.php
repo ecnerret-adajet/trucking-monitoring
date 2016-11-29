@@ -1,7 +1,6 @@
  <table  id="track-plant"  class="dt-responsive nowrap display table-responsive table-hover table" width="100%">
                 <thead>
                       <tr>
-                          <th></th>
                           <th>TRUCK #</th>    
                           <th>DESTINATION</th>    
                           <th>ATL Dispatch</th>    
@@ -13,7 +12,6 @@
                 </thead> 
             <tfoot>
                  <tr>
-                    <th></th>
                     <th>TRUCK #</th>    
                     <th>DESTINATION</th>    
                     <th>ATL Dispatch</th>    
@@ -30,12 +28,7 @@
        <tr class="{{ ($track->in_plant == '-0001-11-30 00:00:00' || $track->out_plant == '-0001-11-30 00:00:00' ? ( $track->in_plant->diffInHours($base_time) > $total ? 'danger' : '') : 'info') }}">
 
                     
-                         <td>
-                          @foreach($track->trucks as $truck)
-                        <img class="img-responsive img-circle" style="width: 30px; height:auto;" src="{{asset('/img/trucks/'.$truck->truck_avatar)}}">
-                        @endforeach
-                         </td>
-                           
+                  
                         
                         
                     

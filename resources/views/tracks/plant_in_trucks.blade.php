@@ -67,7 +67,7 @@
         Are you sure you want to save changes? 
       </div>
       <div class="modal-footer">
-           {!! Form::model($track, ['method' => 'PATCH', 'action' => ['TracksController@updatePlant', $track->id],  'files' => true, 'name' => 'autoSumForm' ]) !!} 
+           {!! Form::model($track, ['method' => 'PATCH', 'action' => ['TracksController@inplant', $track->id],  'files' => true, 'name' => 'autoSumForm' ]) !!} 
     {!! csrf_field() !!}
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 

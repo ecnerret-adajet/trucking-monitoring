@@ -1,6 +1,12 @@
 
 $(function () {
 
+
+ $('#archive-plants').DataTable({
+    "order": [[ 0, "desc" ]]
+ });
+
+
  $('#list-truck').DataTable();
  $('#track-plant').DataTable();
   $('#transit-customer').DataTable();

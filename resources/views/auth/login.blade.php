@@ -100,7 +100,6 @@
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/register') }}">Register Here</a>
                             </div>
                         </div>
                     </form>
