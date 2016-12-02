@@ -19,7 +19,7 @@ class Report extends Command
      *
      * @var string
      */
-    protected $description = 'Send drip e-mail to a user';
+    protected $description = 'Send daily email report to admin';
 
     /**
      * Create a new command instance.
@@ -29,20 +29,17 @@ class Report extends Command
     public function __construct()
     {
         parent::__construct();
-
     }
 
-    /** 
+    /**
      * Execute the console command.
      *
      * @return mixed
      */
     public function handle()
     {
-        // $this->drip->send(User::find($this->argument('user')));
-
-         $data = array('name'=>"Admin");
-         Mail::send('emails.report', $data, function($message) {
+        $data = array('name'=>"Admin");
+         Mail::send('email.report', $data, function($message) {
          $message->to('admin@lafilgroup.com', 'Trucking Monitoring')
                   ->subject('Trucking Monitoring Report');
          $message->from('trucking@trucking.com','Terrence Tejada');
