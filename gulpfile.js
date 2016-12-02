@@ -28,7 +28,8 @@ elixir(function(mix) {
         'select2-bootstrap.min.css',
         'style.css',
         'font-awesome.min.css',
-        'ionicons.min.css'
+        'ionicons.min.css',
+        'loader.css'
     ],'public/css/all.css');
 
     mix.scripts([

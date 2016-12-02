@@ -12,7 +12,7 @@
     <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet'>
     <!-- All styles   -->
     <link href="{{ asset('/css/all.css') }}" rel="stylesheet" >
-      
+    <link rel="stylesheet" href="{{asset('/css/loader.css')}}">      
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -22,10 +22,21 @@
 </head>
    
  <body class="skin-blue sidebar-mini">
+  <div id="load_screen">
+ <div id="loading">
+
+   <div  class="coffee_cup"></div>
+   <div class="text-center loader-style">Loading...</div>
+
+ </div>
+ </div>
+
     <div class="wrapper">
 
-      <header class="main-header">
-        <!-- Logo -->
+
+
+      <header class="main-header">        
+      <!-- Logo -->
         <div class="logo">
     
          <span class="pull-left">
@@ -221,6 +232,13 @@
      <!-- filesystem -->
      <script src="{{asset('/js/bootstrap-filestyle.min.js')}}" type="text/javascript"></script>
 
+
+     <script type="text/javascript">
+       window.addEventListener("load", function() {
+        var load_screen = document.getElementById("load_screen");
+        document.body.removeChild(load_screen);
+       });
+     </script>
 
       @include ('footer')
       @yield('footer')
