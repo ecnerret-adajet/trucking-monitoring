@@ -11,7 +11,8 @@
         "laracasts/utilities": "^2.1",
         "intervention/image": "^2.3",
         "zizaco/entrust": "5.2.x-dev",
-        "mercuryseries/flashy": "^1.0"
+        "mercuryseries/flashy": "^1.0",
+        "guzzlehttp/guzzle": "~5.3|~6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -78,9 +78,9 @@ class Report extends Command
         ];
 
          Mail::send('email.report', $data, function($message) {
-         $message->to('admin@lafilgroup.com', 'Trucking Monitoring')
+         $message->to('tejada.terrence@gmail.com', 'Trucking Monitoring')
                   ->subject('Trucking Monitoring Report');
-         $message->from('trucking@trucking.com','Terrence Tejada');
+         $message->from('trucking@trucking.com','Trucking Monitoring Report');
       });
     }
 }
