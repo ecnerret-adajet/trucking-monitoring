@@ -33,6 +33,7 @@
                         
                     
                             <td>
+                            {{$track->id}} -
                             <a style="color: #3498db;" class="bootstrap-modal-form-open" data-toggle="modal" data-target=".bs-edit{{$track->id}}-modal-lg" href="">
                             @foreach($track->trucks as $truck)
                          {{ $truck->plate_no }}

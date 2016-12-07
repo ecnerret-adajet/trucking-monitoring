@@ -1,5 +1,9 @@
 <?php
 
+use App\Track;
+use App\Truck;
+use Carbon\Carbon;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,8 +16,16 @@
 */
 
  Route::get('/', function () {
-    return view('auth.login');
+    	return view('auth.login');
 });
+
+ /**
+ * START Trucking Monitoring SMS Notification
+ */
+
+Route::get('/smsnotification', 'SmsNotificationsController@sms');
+
+
 
 Route::auth(); 
 
@@ -46,5 +58,8 @@ Route::get('/report', 'HomeController@getreport');
 
 Route::get('/manage', 'PagesController@manage');
 Route::get('/documentation', 'PagesController@documentation');
+
+
+
 
 });
