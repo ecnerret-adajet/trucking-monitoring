@@ -62,15 +62,13 @@
              
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="{{asset('/img/avatars/'.Auth::user()->avatar)}}" class="user-image" alt="User Image" />
-                  <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                <li>
+                <a href="{{url('/logout')}}">
+                  <strong>
+                  <i class="ion-android-exit" style="font-size: 15px; margin-right: 5px;" aria-hidden="true"></i> Sign Out
+                  </strong>
                 </a>
-                <ul class="dropdown-menu" style="width:200px; border-left: 1px solid #95a5a6; border-bottom: 1px solid #95a5a6; border-radius:0;">
-                  <!-- User image -->
-                    <li><a href="{{url('/logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a></li>
-
-                </ul>
+                </li>
               </li>
              
 

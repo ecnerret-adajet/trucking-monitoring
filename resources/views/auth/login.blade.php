@@ -9,7 +9,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    <link href="https://fonts.googleapis.com/css?family=Miriam+Libre:400,700" rel="stylesheet">
 
      <!-- Ionicons 2.0.0 -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
@@ -19,9 +19,44 @@
      <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
      <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-    <style>s
+    <style>
+        html{
+            height: 100%;
+
+        }
         body {
-            font-family: 'Lato';
+           font-family: 'Miriam Libre', sans-serif;
+           background-color: #ecf0f1;
+           height: 100%;
+           
+
+            overflow-x: hidden;
+
+        }
+
+        h1, h2, h3, h4, h5, h6{
+            font-family: 'Miriam Libre', sans-serif;
+        }
+
+        .login_bg{
+         background: url('../public/img/web/truck-bg.jpg') no-repeat center center fixed;  
+         background-size: cover; 
+         color: #fff;
+         padding: 100px;
+         
+        }
+
+        .row {
+            height: 100% ! important;
+            min-width: 100%;
+            display: table;
+          
+        }
+
+        .row .no-float {
+          display: table-cell;
+          float: none;
+
         }
 
         .fa-btn {
@@ -39,18 +74,18 @@
 </head>
    
  <body>
-<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
-    <div class="row text-center">
-        <div class="col-md-8 col-md-offset-2">
-             <span class="logo-front"><i class="ion-ios-settings"></i> Trucking Monitoring</span>
-        </div>
-    </div>
-</div>
 
-<div class="container">
+
+
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+        <div class="col-md-4 no-float" style="padding: 100px 50px 50px 50px;">
+       
+            <span class="logo-front">
+            <img class="img-responsive" src="{{asset('img/web/delivery-truck.png')}}" style=" display: inline-block; height: 50px; width: auto;">
+            Trucking Monitoring
+            </span>
+
+            <div class="panel panel-primary" style="margin-top: 20px;">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
@@ -59,8 +94,8 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            <div class="col-md-8">
+                                <input id="email" type="email" class="form-control" name="email" placeholder="example@email.com" value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -73,7 +108,7 @@
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-8">
                                 <input id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
@@ -84,19 +119,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-block btn-primary">
                                     <i class="fa fa-btn fa-sign-in"></i> Login
                                 </button>
 
@@ -105,9 +131,31 @@
                     </form>
                 </div>
             </div>
+
+           
         </div>
-    </div>
-</div>
+
+        <div class="col-md-8 no-float login_bg">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+       
+                 <em>
+                 <h2>
+                {{ Illuminate\Foundation\Inspiring::quote() }}
+                </h2>
+                  </em>
+            
+        </div>
+          
+
+         </div>
+
 
 
  <!-- JavaScripts -->

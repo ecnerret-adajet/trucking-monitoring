@@ -1,9 +1,5 @@
 <?php
 
-use App\Track;
-use App\Truck;
-use Carbon\Carbon;
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
