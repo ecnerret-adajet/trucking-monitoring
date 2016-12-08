@@ -28,7 +28,17 @@
   
   </strong>, 
   
-  please attend immediately number <span style="color: #000"> {{ ($truck->phone == '' ? 'NO NUMBER' : $truck->phone)}}  </span>
+  please attend immediately number <span style="color: #000"> 
+
+  <button class="pull-right btn btn-sm btn-primary" 
+          style="position:absolute; right: 100px; top: 8px;"
+          data-toggle="modal" 
+          data-target=".bs-confirm{{$track->id}}-modal-lg"
+  >
+  Mark as resolve
+  </button>  
+
+  </span>
 
   @endforeach 
 </div>
@@ -427,12 +437,65 @@
 
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->      
+</div><!-- /.modal -->
+
+
+
+
+
+<!-- Mark an truck as safe method modal -->
+<div class="modal fade bs-confirm{{$track->id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Mark as safe</h4>
+      </div>
+      <div class="modal-body">
+              <div class="row">
+        <div class="col-md-12">
+        <div class="panel-body text-center"> 
+    
+        <h4>  
+           Are you sure you want to mark as safe?
+        </h4>
+    
+     {!! Form::open(['method' => 'PATCH', 'action' =>                                    ['TracksController@markSafe', $track->id]  ]) !!}
+      {!! csrf_field() !!}
+                                        
+    </div>
+        </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Confirm</button>
+           
+      </div>
+      {!! Form::close() !!}
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->  
+<!-- end mark an truck as safe modal -->
+
+
+
+
+
+
+
+
+
+
+
+
        @endforeach
 <!-- end show data for trucks and customer -->
-    
 
 
+
+
+  
      
     
     

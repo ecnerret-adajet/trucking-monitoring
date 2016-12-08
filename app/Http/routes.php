@@ -39,6 +39,7 @@ Route::resource('users','UserController');
 Route::get('/edit-plant', 'TracksController@editPlant');
 Route::patch('/in/{tracks}','TracksController@inplant');
 Route::patch('/out/{tracks}','TracksController@outplant');
+Route::patch('/safe/{tracks}', 'TracksController@markSafe');
 
 
 Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);

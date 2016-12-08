@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         // Commands\Inspire::class,
         Commands\Report::class,
+        Commands\Emergency::class,
     ];
 
     /**

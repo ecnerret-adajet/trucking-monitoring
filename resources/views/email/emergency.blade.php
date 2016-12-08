@@ -17,7 +17,7 @@
             width: 100%;
             font-weight: 300;
             margin-bottom: 10px;
-            font-size: 85%;
+   
         }
 
         .report-table tr th, .report-table tr td {
@@ -124,10 +124,11 @@ $style = [
                                                 <th>Vendor Name</th>
                                                 <th>Going to</th>
                                                 <th>Driver</th>
+                                                <th>Plate No</th>
                                                 <th>Phone Number</th>
                                               </tr>
 
-                                              @foreach($tracks as $track)
+                                            @foreach($tracks as $track)
                                                       <tr>
                                                         <td>
                                                         @foreach($track->trucks as $truck)
@@ -141,17 +142,24 @@ $style = [
                                                         </td>
                                                         <td>
                                                         @foreach($track->trucks as $truck)
-                                                            @foreach($truck->drivers as $driver)
-                                                                {{$driver->name}}
-                                                            @endforeach
+                                                            {{$truck->driver}}
+                                                        @endforeach
+                                                
+                                                        </td>
+
+                                                        <td>
+                                                        @foreach($track->trucks as $truck)
+                                                         {{ $truck->plate_no }}
                                                         @endforeach
                                                         </td>
+
                                                         <td>
-                                                        {{$phone_number}}
+                                                        {{$num}}
                                                         </td>
                                                       </tr>
                                                 
                                               @endforeach  
+                                         
 
                                             </table>
                                        

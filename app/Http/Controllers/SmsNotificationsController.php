@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Truck;
 use App\Track;
+use App\Customer;
 use DB;
 use Carbon\Carbon;
 use Mail;
@@ -16,10 +17,10 @@ class SmsNotificationsController extends Controller
     public function sms(Request $request, Track $track)
     {
         // get from SMS gateway API
-    	$num = $request->num;
-    	$post = $request->port;
-    	$message = $request->message;
-    	$time = $request->time;
+        $num = $request->num;
+        $post = $request->port;
+        $message = $request->message;
+        $time = $request->time;
 
         // filter and remove the coded messages 
         $message_to_lower = strtolower($message); // force to convert text to lowercase 
@@ -29,6 +30,7 @@ class SmsNotificationsController extends Controller
             'plant_out' => 'plant-out-',
             'customer_in' => 'customer-in-',
             'customer_out' => 'customer-out-',
+            'back_to_plant' => 'back-plant-',
             'help' => 'help-'
         ];
 
@@ -96,11 +98,11 @@ class SmsNotificationsController extends Controller
 
                                     // update the entry plant with current date and time
                                     $track = Track::find($z);
-                                    $track->out_plant = Carbon::now()->setTimezone('Asia/Manila');
+                                    $track->in_customer = Carbon::now()->setTimezone('Asia/Manila');
                                     $track->save();
 
                                      //sending sms to driver 
-                                    $container =urlencode(mb_convert_encoding("Truck successfully 'plant out'", 'utf-8', 'gb2312'));  
+                                    $container =urlencode(mb_convert_encoding("Truck successfully 'customer in'", 'utf-8', 'gb2312'));  
                                     // create a new cURL resource
                                     $ch = curl_init();
                                     // set URL and other appropriate options
@@ -117,11 +119,11 @@ class SmsNotificationsController extends Controller
 
                                     // update the entry plant with current date and time
                                     $track = Track::find($z);
-                                    $track->out_plant = Carbon::now()->setTimezone('Asia/Manila');
+                                    $track->out_customer = Carbon::now()->setTimezone('Asia/Manila');
                                     $track->save();
 
                                      //sending sms to driver 
-                                    $container =urlencode(mb_convert_encoding("Truck successfully 'plant out'", 'utf-8', 'gb2312'));  
+                                    $container =urlencode(mb_convert_encoding("Truck successfully 'customer out'", 'utf-8', 'gb2312'));  
                                     // create a new cURL resource
                                     $ch = curl_init();
                                     // set URL and other appropriate options
@@ -132,6 +134,26 @@ class SmsNotificationsController extends Controller
                               
                         }
 
+                         elseif(str_is('back plant*', $message_to_lower)){
+
+                                    // update the entry plant with current date and time
+                                    $track = Track::find($z);
+                                    $track->back_plant = Carbon::now()->setTimezone('Asia/Manila');
+                                    $track->save();
+
+                                     //sending sms to driver 
+                                    $container =urlencode(mb_convert_encoding("Truck successfully 'back to plant'", 'utf-8', 'gb2312'));  
+                                    // create a new cURL resource
+                                    $ch = curl_init();
+                                    // set URL and other appropriate options
+                                    curl_setopt($ch, CURLOPT_URL, "http://10.96.2.20:80/sendsms?username=admin&password=P@ssw0rd123&phonenumber=$num&message=$container");
+                                    curl_setopt($ch, CURLOPT_HEADER, 0);
+                                    curl_exec($ch);
+                                    curl_close($ch);
+                              
+                        }
+
+
                         elseif(str_is('help*', $message_to_lower)){
 
                                     // update the entry plant with current date and time
@@ -139,25 +161,18 @@ class SmsNotificationsController extends Controller
                                     $track->help = 1;
                                     $track->save();
 
-                                    // set the necessary data for email notification
-                                    $find_tracks = Track::findOrFail($z);
-                                    $find_truck = Truck::wil('find_tracks');
-
-                                    $data = [
-                                            'name' => 'Admin',
-                                            'tracks' => $find_tracks;
-                                            'phone_number' => $num;
-                                    ];
+                                    // find the texter's hauler that will be pass to email notification
+                                     $tracks = Track::where('id', $z)->get();
 
                                     // send an emergency email to line manager.
-                                     Mail::send('email.emergency', $data, function($message) {
+                                     Mail::send('email.emergency', ['tracks' => $tracks, 'num' => $num], function($message) use ($tracks) {
                                      $message->to('tejada.terrence@gmail.com', 'Trucking Monitoring')
                                               ->subject('Emergency Email');
                                      $message->from('trucking@trucking.com','Trucking Monitoring Report');
                                     });
 
                                      //sending sms to driver 
-                                    $container =urlencode(mb_convert_encoding("Alert: This is to corfirm that you activated the emergency code, please be attentive to your phone at any moment an personnel will call you.", 'utf-8', 'gb2312'));  
+                                    $container =urlencode(mb_convert_encoding("Alert: This is to corfirm that you activated the emergency code, please be attentive to your phone. any moment an personnel will call you.", 'utf-8', 'gb2312'));  
                                     // create a new cURL resource
                                     $ch = curl_init();
                                     // set URL and other appropriate options
