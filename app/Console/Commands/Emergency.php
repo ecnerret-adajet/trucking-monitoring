@@ -57,6 +57,7 @@ class Emergency extends Command
     // send an emergency email to line manager.
      Mail::send('email.emergency', ['tracks' => $tracks, 'num' => $num], function($message) use ($tracks) {
      $message->to('tejada.terrence@gmail.com', 'Trucking Monitoring')
+              ->cc('ecnerret.adajet@gmail.com','Trucking Monitoring')
               ->subject('Emergency Email');
      $message->from('trucking@trucking.com','Trucking Monitoring Report');
     });

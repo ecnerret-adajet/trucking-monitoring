@@ -114,7 +114,7 @@ $style = [
                                         <!-- Intro -->
                                       
                                             <p style="{{ $style['paragraph'] }}">
-                                                Kindly see the table below for today's trucking monitoring status report.
+                                                Kindly see the table below for today's trucking monitoring status report to this day.
                                             </p>
 
 

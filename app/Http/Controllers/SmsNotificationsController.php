@@ -200,7 +200,7 @@ class SmsNotificationsController extends Controller
         }else{
 
              //sending sms to driver 
-            $container =urlencode(mb_convert_encoding("Trucking Monitoring: No plate number found from dispatch trucks, please confirm.", 'utf-8', 'gb2312'));  
+            $container =urlencode(mb_convert_encoding("Trucking Monitoring: No plate number found from dispatch trucks, please confirm to your dispatcher.", 'utf-8', 'gb2312'));  
             // create a new cURL resource
             $ch = curl_init();
             // set URL and other appropriate options
