@@ -25,7 +25,7 @@ class TruckRequest extends Request
     {
             return [
             'location' => 'required',
-            'plate_no' => 'required',
+            'plate_no' => 'required|unique:trucks',
         ];
     }
 }

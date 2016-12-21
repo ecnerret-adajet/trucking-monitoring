@@ -84,10 +84,9 @@ class TracksController extends Controller
     {
        $tracks = Track::all();
        $customers  = Customer::lists('customer_name','id'); 
+
+
        $trucks  = Truck::lists('plate_no','id'); 
-
-
-
 
        $base_time = Carbon::now('Asia/Manila');
         

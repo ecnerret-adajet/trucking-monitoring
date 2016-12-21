@@ -78,7 +78,9 @@ class Report extends Command
         ];
 
          Mail::send('email.report', $data, function($message) {
-         $message->to('donna.pasquin@lafilgroup.com', 'Trucking Monitoring')
+         $message->to('terrence.tejada@lafilgroup.com', 'Trucking Monitoring')
+                  ->cc('tejada.terrence@gmail.com')
+                  ->bcc('ecnerret.adajet@gmail.com')
                   ->subject('Trucking Monitoring Report');
          $message->from('admin@trucking.com','Trucking Monitoring Report');
       });

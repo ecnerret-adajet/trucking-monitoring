@@ -26,6 +26,11 @@ class Truck extends Model
         return $this->belongsToMany('App\Track');
     }
 
+    public function setPlateNoAttribute($value)
+    {
+        $this->attributes['plate_no'] = strtoupper($value);
+    }
+
     /* list all trucks */
 
     public function conditions()

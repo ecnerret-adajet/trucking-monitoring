@@ -31,7 +31,7 @@
 
                 <div class="box-body">
                   
-    {!! Form::model($track = new \App\track,  ['class' => 'form-horizontal',  'url' => 'tracks',  'files' => 'true', 'enctype'=>'multipart/form-data', 'novalidate' => 'novalidate', 'id' => 'main'])!!}
+    {!! Form::model($track = new \App\Track,  ['class' => 'form-horizontal',  'url' => 'tracks',  'files' => 'true', 'enctype'=>'multipart/form-data', 'novalidate' => 'novalidate', 'id' => 'main'])!!}
     {!! csrf_field() !!}
                     
                     

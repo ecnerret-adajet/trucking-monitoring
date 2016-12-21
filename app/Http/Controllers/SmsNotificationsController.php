@@ -166,7 +166,8 @@ class SmsNotificationsController extends Controller
 
                                     // send an emergency email to line manager.
                                      Mail::send('email.emergency', ['tracks' => $tracks, 'num' => $num], function($message) use ($tracks) {
-                                     $message->to('tejada.terrence@gmail.com', 'Trucking Monitoring')
+                                     $message->to('albin.bravo@amigologisticscorp.com', 'Trucking Monitoring')
+                                              ->cc('tejada.terrence@gmail.com', 'Trucking Monitoring')
                                               ->subject('Emergency Email');
                                      $message->from('trucking@trucking.com','Trucking Monitoring Report');
                                     });
@@ -200,7 +201,7 @@ class SmsNotificationsController extends Controller
         }else{
 
              //sending sms to driver 
-            $container =urlencode(mb_convert_encoding("Trucking Monitoring: No plate number found from dispatch trucks, please confirm to your dispatcher.", 'utf-8', 'gb2312'));  
+            $container =urlencode(mb_convert_encoding("Trucking Monitoring: No plate number found from dispatch trucks or invalid format. kindly coordinate with your dispatcher.", 'utf-8', 'gb2312'));  
             // create a new cURL resource
             $ch = curl_init();
             // set URL and other appropriate options

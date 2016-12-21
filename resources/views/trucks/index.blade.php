@@ -38,9 +38,9 @@
                           <th>PLATE NO</th>    
                           <th>TRUCK TYPE</th>    
                           <th>VENDOR NAME</th>    
-                          <th>SCHEDULE</th> 
-                          <th>EDIT</th>
-                          <th>DELETE</th>
+                          <th>HISTORY</th> 
+                          <th class="text-center">ACTION</th>
+                      
 
                      </tr>       
                 </thead> 
@@ -52,9 +52,9 @@
                           <th>PLATE NO</th>    
                           <th>TRUCK TYPE</th>    
                           <th>VENDOR NAME</th>    
-                          <th>SCHEDULE</th> 
-                          <th>EDIT</th>
-                          <th>DELETE</th>
+                          <th>HISTORY</th> 
+                          <th class="text-center">ACTION</th>
+                         
                </tr>
         </tfoot>   
                     
@@ -68,14 +68,31 @@
                       <td>{{$truck->truck_type}}</td>   
                       <td>{{$truck->vendor_name}}</td>   
                       <td>
-                      @foreach($truck->schedules as $schedule)
-                        {{ $schedule->name }}
-                      @endforeach
+                        <a class="btn btn-primary" href="#">
+                        <i class="fa fa-history" aria-hidden="true"></i>
+                        History Log
+                        </a>
                       </td>   
-                        <td><a href="{{url('trucks/'.$truck->id.'/edit')}}"> <i class="fa fa-cog action" aria-hidden="true"></i></a></td>
-      <td><a href="#"><i class="fa fa-trash action" aria-hidden="true"></i> </td>
+                      <td width="20%">
+
+                      <div class="btn-group btn-group-justified">
+                          <a class="btn btn-info" href="{{url('trucks/'.$truck->id.'/edit')}}"> 
+                             <i class="fa fa-cog action" aria-hidden="true" style="color: #fff;"></i> Edit
+                          </a>
+                        @role('Administrator')
+                            <a class="btn btn-primary"  href="#">
+                            <i class="fa fa-trash action" aria-hidden="true" style="color: #fff;"></i>
+                            Delete
+                            </a>
+                        @endrole
+                      </div>
+
+                      
+
+                      </td>
+                     
                         
-                    </tr>
+                      </tr>
                     @endforeach
                     
                 </table>
