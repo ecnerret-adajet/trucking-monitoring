@@ -180,6 +180,7 @@
    @include('flashy::message')
    <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
+
        <!-- datatables   -->  
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>

@@ -29,17 +29,10 @@
               <h3 class="box-title">Deploy Truck</h3>
             </div><!-- /.box-header -->
 
-                <div class="box-body">
+                <div class="box-body" id="form-app">
                   
-    {!! Form::model($track = new \App\Track,  ['class' => 'form-horizontal',  'url' => 'tracks',  'files' => 'true', 'enctype'=>'multipart/form-data', 'novalidate' => 'novalidate', 'id' => 'main'])!!}
+    {!! Form::model($track = new \App\Track,  ['class' => 'form-horizontal',  'url' => 'tracks',  'files' => 'true', 'enctype'=>'multipart/form-data', 'novalidate' => 'novalidate'])!!}
     {!! csrf_field() !!}
-                    
-                    
-                    
-        
-                    
-                    
-                    
                     
     @include('tracks.form', ['submitButtonText' => 'Submit'])
 

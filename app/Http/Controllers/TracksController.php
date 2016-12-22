@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TrackRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Collection;
 use App\Track;
 use App\Truck;
 use App\Customer;
@@ -82,11 +82,16 @@ class TracksController extends Controller
      */
    public function create()
     {
-       $tracks = Track::all();
+       
        $customers  = Customer::lists('customer_name','id'); 
+       $trucks  = Truck::where('availability',0)->lists('plate_no', 'id');
 
+       // $trucks = Truck::with('tracks', function($q){
+       //  $q->where('availability',1)->get();
+       // })->lists('plate_no','id');
 
-       $trucks  = Truck::lists('plate_no','id'); 
+  
+
 
        $base_time = Carbon::now('Asia/Manila');
         
@@ -106,11 +111,25 @@ class TracksController extends Controller
 
     public function store(TrackRequest $request)
     {
-        $track = Auth::user()->tracks()->create($request->all());
-    
+        $initial_input['dispatch'] = Carbon::now()->setTimezone('Asia/Manila');
+        $initial_input['availability'] = 1;
+
+        $track = Auth::user()->tracks()->create($initial_input);
         $track->trucks()->attach($request->input('truck_list'));
         $track->customers()->attach($request->input('customer_list'));
-         flashy()->success('Dispatch Successfully !');
+
+        $tracks = Track::all();
+        foreach($tracks as $track){
+            foreach($track->trucks->reverse()->take(1) as $truck){
+                    $id = $truck->id;
+            }
+       }
+
+        $truck = Truck::findOrFail($id);
+        $truck->availability = 1;
+        $truck->save();
+
+        flashy()->success('Dispatch Successfully !');
         return redirect('tracks');
     }
     /**

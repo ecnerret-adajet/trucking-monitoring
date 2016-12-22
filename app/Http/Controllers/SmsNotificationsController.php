@@ -141,6 +141,14 @@ class SmsNotificationsController extends Controller
                                     $track->back_plant = Carbon::now()->setTimezone('Asia/Manila');
                                     $track->save();
 
+                                    foreach($track->trucks as $truck){
+                                        $back_id = $truck->id;
+                                    }
+
+                                    $truck = Truck::findOrFail($back_id);
+                                    $truck->availability = 0;
+                                    $truck->save();
+
                                      //sending sms to driver 
                                     $container =urlencode(mb_convert_encoding("Truck successfully 'back to plant'", 'utf-8', 'gb2312'));  
                                     // create a new cURL resource

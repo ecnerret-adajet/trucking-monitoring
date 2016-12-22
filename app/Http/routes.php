@@ -11,8 +11,10 @@
 |
 */
 
+
+
  Route::get('/', function () {
-    	return view('auth.login');
+ 	return view('auth.login');
 });
 
  /**
@@ -27,9 +29,25 @@ Route::auth();
 
 Route::group(['middleware' => ['auth']], function() {
 
-Route::resource('tracks','TracksController');    
+/**
+ * Tracks setup routes
+ */
+Route::resource('tracks','TracksController');
+
+
 Route::resource('customers','CustomersController');  
+
+/**
+ * Trucks controller setup
+ */
 Route::resource('trucks','TrucksController');  
+
+
+
+
+/**
+ * User controller route setup
+ */
 Route::resource('users','UserController'); 
 
 Route::get('/edit-plant', 'TracksController@editPlant');

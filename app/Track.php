@@ -15,7 +15,12 @@ class Track extends Model
         'dispatch',
         'help',
         'entry_plant',
-        'back_plant'
+        'back_plant',
+        'availability'
+    ];
+
+    protected $casts = [
+        'availability' => 'boolean',
     ];
     
     
@@ -29,7 +34,6 @@ class Track extends Model
         'base_time',
         'back_plant'
     ];
-
 
         
     /* user list */

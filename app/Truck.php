@@ -18,7 +18,8 @@ class Truck extends Model
         'subcon_vendor',
         'type_goods',
         'truck_avatar',
-        'vehicle_type'
+        'vehicle_type',
+        'availability'
     ];
     
     public function tracks()

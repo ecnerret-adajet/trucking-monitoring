@@ -4,7 +4,7 @@
 {!! Form::label('truck_list', 'Truck Plate #:')  !!} 
 </label>
 <div class="col-md-6">
-{!! Form::select('truck_list', $trucks, null, ['class' => 'form-control select', 'placeholder' => 'Select truck', 'v-model' => 'searchQuery']) !!}
+{!! Form::select('truck_list', $trucks, null, ['class' => 'form-control select', 'placeholder' => 'Select truck']) !!}
 
 @if ($errors->has('truck_list'))
 <span class="help-block">
@@ -15,14 +15,15 @@
 </div>
 
 
-<div class="form-group hide">
+
+<!-- <div class="form-group hide">
 <label class="col-md-4 control-label"> 
 {!! Form::label('dispatch', 'Entry Date:')  !!}
 </label>
 <div class="col-md-6">
 {!! Form::input('date', 'dispatch', Carbon\Carbon::now()->format('Y-m-d H:m:s'), ['class' => 'form-control']) !!}         
 </div>
-</div>
+</div> -->
 
  
 <hr/>
