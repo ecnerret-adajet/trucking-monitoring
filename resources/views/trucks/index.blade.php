@@ -68,7 +68,7 @@
                       <td>{{$truck->truck_type}}</td>   
                       <td>{{$truck->vendor_name}}</td>   
                       <td>
-                        <a class="btn btn-primary" href="#">
+                        <a class="btn btn-primary" href="{{url('trucks/'.$truck->id)}}">
                         <i class="fa fa-history" aria-hidden="true"></i>
                         History Log
                         </a>

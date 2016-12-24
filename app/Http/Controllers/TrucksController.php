@@ -78,9 +78,8 @@ class TrucksController extends Controller
      */
     public function show(Truck $truck)
     {
-
-        $schedules = Schedule::lists('name','id');
-        return view('trucks.show', compact('truck','schedules'));
+        $base_time = Carbon::now()->setTimezone('Asia/Manila');
+        return view('trucks.show', compact('truck','base_time'));
     }
 
     /**
@@ -129,4 +128,5 @@ class TrucksController extends Controller
         $truck->delete();
         return redirect('trucks');
     }
+
 }

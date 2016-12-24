@@ -40,9 +40,7 @@ Route::resource('customers','CustomersController');
 /**
  * Trucks controller setup
  */
-Route::resource('trucks','TrucksController');  
-
-
+Route::resource('trucks','TrucksController'); 
 
 
 /**
