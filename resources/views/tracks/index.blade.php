@@ -18,7 +18,7 @@
         @foreach($tracks as $track)
         @if(  $track->help != 1 )
         @else
-          
+
          <div class="alert alert-dismissible alert-danger">
   <button type="button" class="close" data-dismiss="alert">&times;</button>
    @foreach($track->trucks as $truck)
@@ -49,15 +49,9 @@
           </div>
 
 
-
-
-
-
-
-
           <section class="content">
   
- <div class="row">
+          <div class="row">
             <!-- Left col -->
             <section class="col-lg-12 connectedSortable">
               <!-- Custom tabs (Charts with tabs)-->
@@ -67,11 +61,11 @@
                   <li ><a href="#transit_plant" data-toggle="tab">Transit to plant</a></li>
                   <li><a href="#in_customer" data-toggle="tab">In customer</a></li>
                   <li><a href="#transit_customer" data-toggle="tab">Transit to customer</a></li>
-                  <li class="active" ><a href="#in_plant" data-toggle="tab">In plant</a></li>
+                  <li class="active" ><a href="#in_plant" data-toggle="tab">Dispatch Trucks</a></li>
 
 
 
-                  <li class="pull-left header"><i class="fa fa-map-o"></i> Overview - Today's dispatch</li>
+                  <li class="pull-left header"><i class="fa fa-map-o"></i> Hauler Overview</li>
                 </ul>
 
 
@@ -120,7 +114,7 @@
                     </div><!--end box-body -->
 
                   </div>
-                </div>
+                </div><!-- end tab content -->
               </div><!-- /.nav-tabs-custom -->
 
           

@@ -5980,6 +5980,29 @@ font-size: 10px;
   cursor: pointer;
 }
 
+/***********************
+ Search file
+************************/
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+     border-top-right-radius: 20px;
+     border-bottom-right-radius: 20px;
+}
+
+.stylish-input-group .form-control{
+  border-right:0; 
+  box-shadow:0 0 0; 
+  border-color:#ccc;
+  border-top-left-radius: 20px ! important;
+  border-bottom-left-radius: 20px  ! important;
+}
+
+
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
 
 
 

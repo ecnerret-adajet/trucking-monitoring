@@ -141,7 +141,7 @@ class SmsNotificationsController extends Controller
                                     $track->back_plant = Carbon::now()->setTimezone('Asia/Manila');
                                     $track->save();
 
-                                    foreach($track->trucks as $truck){
+                                    foreach($track->trucks->take(1) as $truck){
                                         $back_id = $truck->id;
                                     }
 

@@ -102,7 +102,7 @@ class TrucksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TruckRequest $request, Truck $truck)
+    public function update(Request $request, Truck $truck)
     {
         $truck->update($request->all());
 

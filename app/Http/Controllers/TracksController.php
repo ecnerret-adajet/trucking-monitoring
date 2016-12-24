@@ -36,7 +36,7 @@ class TracksController extends Controller
     public function index()
     {
 
-       $tracks = Track::latest('created_at')->where('created_at', '>=' ,Carbon::now()->subDays(2))->get();
+       $tracks = Track::latest('created_at')->where('created_at', '>=' ,Carbon::now()->subDays(2))->paginate(5);
        /*   
             Carbon::now()->subDays(5)->diffForHumans();   
             ->where('created_at', '<=', Carbon::now()) 
