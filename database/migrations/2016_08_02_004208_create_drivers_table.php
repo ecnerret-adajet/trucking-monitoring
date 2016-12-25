@@ -24,8 +24,8 @@ class CreateDriversTable extends Migration
         });
 
         Schema::create('driver_truck', function (Blueprint $table){
-            $table->integer('driver_truck')->unsigned()->index();
-            $table->foreign('driver_truck')->references('id')->on('drivers')->onDelete('cascade');
+            $table->integer('driver_id')->unsigned()->index();
+            $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
 
             $table->integer('truck_id')->unsigned()->index();
             $table->foreign('truck_id')->references('id')->on('trucks')->onDelete('cascade');

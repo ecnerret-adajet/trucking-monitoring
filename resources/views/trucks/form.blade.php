@@ -1,8 +1,3 @@
-                         <div class="form-group">
-                            <div class="col-md-offset-3 col-md-5">                                
-                            <input name="truck_avatar" type="file" class="filestyle" data-size="sm" data-buttonName="btn-primary" data-buttonBefore="true">
-                            </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('schedule_list') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label"> 
@@ -19,37 +14,35 @@
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('driver_list') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label"> 
-                        {!! Form::label('location', 'Location:')  !!}
+                        {!! Form::label('driver_list', 'Driver:')  !!}
                         </label>
                            <div class="col-md-4">
-                        {!! Form::text('location', null,  ['class' => 'form-control']) !!}     
-
-                        @if ($errors->has('location'))
+                        {!! Form::select('driver_list[]', $drivers, null,  ['class' => 'form-control']) !!}     
+                        @if ($errors->has('driver_list'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('location') }}</strong>
+                        <strong>{{ $errors->first('driver_list') }}</strong>
                         </span>
                         @endif
                         </div>
                         </div>
 
 
-                        <div class="form-group{{ $errors->has('driver') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('operator') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label"> 
-                        {!! Form::label('driver', 'Driver:')  !!}
+                        {!! Form::label('operator', 'Operator:')  !!}
                         </label>
                            <div class="col-md-4">
-                        {!! Form::text('driver', null,  ['class' => 'form-control']) !!}     
+                        {!! Form::text('operator', null,  ['class' => 'form-control', 'value' => "{{ old('operator') }}"]) !!}     
 
-                        @if ($errors->has('driver'))
+                        @if ($errors->has('operator'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('driver') }}</strong>
+                        <strong>{{ $errors->first('operator') }}</strong>
                         </span>
                         @endif
                         </div>
                         </div>
-
 
 
                         <div class="form-group{{ $errors->has('plate_no') ? ' has-error' : '' }}">
@@ -67,36 +60,22 @@
                         </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+
+                        <div class="form-group{{ $errors->has('vehicle_type') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label"> 
-                        {!! Form::label('phone', 'Phone Number:')  !!}
+                        {!! Form::label('vehicle_type', 'Vehicle Type:')  !!}
                         </label>
                         <div class="col-md-4 ">
-                        {!! Form::text('phone', null,  ['class' => 'form-control']) !!}     
+                        {!! Form::text('vehicle_type', null,  ['class' => 'form-control']) !!}     
 
-                        @if ($errors->has('phone'))
+                        @if ($errors->has('vehicle_type'))
                         <span class="help-block">
-                        <strong>{{ $errors->first('phone') }}</strong>
+                        <strong>{{ $errors->first('vehicle_type') }}</strong>
                         </span>
                         @endif
                         </div>
                         </div>
 
-
-                        <div class="form-group{{ $errors->has('truck_type') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label"> 
-                        {!! Form::label('truck_type', 'Truck Type:')  !!}
-                        </label>
-                           <div class="col-md-4">
-                        {!! Form::text('truck_type', null,  ['class' => 'form-control']) !!}     
-
-                        @if ($errors->has('truck_type'))
-                        <span class="help-block">
-                        <strong>{{ $errors->first('truck_type') }}</strong>
-                        </span>
-                        @endif
-                        </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('capacity') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label"> 
@@ -113,67 +92,6 @@
                         </div>
                         </div>
 
-
-                        <div class="form-group{{ $errors->has('vendor_name') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label"> 
-                        {!! Form::label('vendor_name', 'Vendor Name:')  !!}
-                        </label>
-                           <div class="col-md-4">
-                        {!! Form::text('vendor_name', null,  ['class' => 'form-control']) !!}     
-
-                        @if ($errors->has('vendor_name'))
-                        <span class="help-block">
-                        <strong>{{ $errors->first('vendor_name') }}</strong>
-                        </span>
-                        @endif
-                        </div>
-                        </div>
-
-
-                        <div class="form-group{{ $errors->has('subcon_vendor') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label"> 
-                        {!! Form::label('subcon_vendor', 'Subcon Vendor:')  !!}
-                        </label>
-                           <div class="col-md-4">
-                        {!! Form::text('subcon_vendor', null,  ['class' => 'form-control']) !!}     
-
-                        @if ($errors->has('subcon_vendor'))
-                        <span class="help-block">
-                        <strong>{{ $errors->first('subcon_vendor') }}</strong>
-                        </span>
-                        @endif
-                        </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('type_goods') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label"> 
-                        {!! Form::label('type_goods', 'Type of goods:')  !!}
-                        </label>
-                           <div class="col-md-4">
-                        {!! Form::text('type_goods', null,  ['class' => 'form-control']) !!}     
-
-                        @if ($errors->has('type_goods'))
-                        <span class="help-block">
-                        <strong>{{ $errors->first('type_goods') }}</strong>
-                        </span>
-                        @endif
-                        </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('vehicle_type') ? ' has-error' : '' }}">
-                        <label class="col-md-4 control-label"> 
-                        {!! Form::label('vehicle_type', 'Vichele type:')  !!}
-                        </label>
-                           <div class="col-md-4">
-                        {!! Form::text('vehicle_type', null,  ['class' => 'form-control']) !!}     
-
-                        @if ($errors->has('vehicle_type'))
-                        <span class="help-block">
-                        <strong>{{ $errors->first('vehicle_type') }}</strong>
-                        </span>
-                        @endif
-                        </div>
-                        </div>
 
 
                           <div class="col-md-3 col-md-offset-4">

@@ -50,6 +50,48 @@
 
 
           <section class="content">
+
+
+          <div class="row">
+              <div class="col-md-3">
+                     <div class="info-box  bg-aqua">
+                <span class="info-box-icon"><i class="ion ion-ios-paper-outline"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Trucks</span>
+                  <span class="info-box-number">{{ $trucks->count() }}</span>
+                 
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+              </div>
+
+              <div class="col-md-3">
+                  <div class="info-box  bg-aqua">
+                <span class="info-box-icon"><i class="ion ion-ios-bolt-outline"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Customer</span>
+                  <span class="info-box-number">{{$customers->count()}}</span>
+                  
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+
+
+              </div>
+
+              <div class="col-md-3">
+                              <div class="info-box  bg-aqua">
+                <span class="info-box-icon"><i class="ion ion-ios-people-outline"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Total Users</span>
+                  <span class="info-box-number">{{ $users->count()}}</span>
+                  
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+
+              </div>
+
+          </div>
+
+
   
           <div class="row">
             <!-- Left col -->
@@ -214,41 +256,7 @@
 
     </div><!-- end col-md-4 -->
 
-    <div class="col-md-4">
-          <!-- Info Boxes Style 2 -->
-              <div class="info-box  bg-aqua">
-                <span class="info-box-icon"><i class="ion ion-ios-paper-outline"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Total Trucks</span>
-                  <span class="info-box-number">{{ $trucks->count() }}</span>
-                 
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-              <div class="info-box  bg-aqua">
-                <span class="info-box-icon"><i class="ion ion-ios-bolt-outline"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Total Customer</span>
-                  <span class="info-box-number">{{$customers->count()}}</span>
-                  
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-
-              <div class="info-box  bg-aqua">
-                <span class="info-box-icon"><i class="ion ion-ios-people-outline"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Total Users</span>
-                  <span class="info-box-number">{{ $users->count()}}</span>
-                  
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-
-       
-
-         
-
-              
-
-    </div>
+   
 
     </div><!-- end row graph -->
 

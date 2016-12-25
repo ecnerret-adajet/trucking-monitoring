@@ -17,10 +17,10 @@ class CreateCustomersTable extends Migration
             $table->string('origin');
             $table->string('customer_name');
             $table->string('destination');
-            $table->integer('time_to_customer');
-            $table->integer('time_to_origin');
-            $table->string('phones');
+            $table->string('province');
             $table->integer('total_hours');
+            $table->string('contact_number');
+            $table->boolean('availability')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

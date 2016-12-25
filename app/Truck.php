@@ -8,20 +8,25 @@ use Carbon\Carbon;
 class Truck extends Model
 {
    protected $fillable = [
-        'location',
-        'driver',
-        'plate_no',
-        'phone',
-        'truck_type',
-        'capacity',
-        'vendor_name',
-        'subcon_vendor',
-        'type_goods',
-        'truck_avatar',
-        'vehicle_type',
-        'availability'
+            'operator',
+            'origin',
+            'plate_no',
+            'vehicle_type',
+            'capacity',
+            'availability',
     ];
+
+
+    /**
+     * Set truck belongs to user
+     */
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
     
+    /**
+     * Set truck model belongsToMany to tracks model
+     */
     public function tracks()
     {
         return $this->belongsToMany('App\Track');
@@ -51,7 +56,7 @@ class Truck extends Model
 
     public function getDriverListAttribute()
     {
-        return $this->drivers->lists('id')->all();
+        return $this->drivers->pluck('id')->all();
     }
 
 

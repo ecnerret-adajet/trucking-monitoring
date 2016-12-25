@@ -16,6 +16,7 @@ use Carbon\Carbon;
 use User;
 use Image;
 use App\Schedule;
+use App\Driver;
 
 class TrucksController extends Controller
 {
@@ -43,7 +44,8 @@ class TrucksController extends Controller
     public function create()
     {
         $schedules = Schedule::lists('name','id');
-        return view('trucks.create', compact('schedules'));
+        $drivers = Driver::lists('name','id');
+        return view('trucks.create', compact('schedules','drivers'));
     }
 
     /**
@@ -57,6 +59,7 @@ class TrucksController extends Controller
           $truck = Truck::create($request->all());
 
           $truck->schedules()->attach($request->input('schedule_list'));
+          $truck->drivers()->attach($request->input('driver_list'));
 
         if($request->hasFile('truck_avatar')){
             $truck_avatar = $request->file('truck_avatar');

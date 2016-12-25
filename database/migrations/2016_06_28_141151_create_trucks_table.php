@@ -14,17 +14,18 @@ class CreateTrucksTable extends Migration
     {
         Schema::create('trucks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('location');
-            $table->string('driver');
+            $table->integer('user_id')->unsigned();
+
+            $table->string('operator');
+            $table->string('origin');
             $table->string('plate_no');
-            $table->string('truck_type');
-            $table->string('capacity');
-            $table->string('vendor_name');
-            $table->string('subcon_vendor');
-            $table->string('type_goods');
             $table->string('vehicle_type');
-            $table->string('phone');
-            $table->string('truck_avatar')->default('driver-avatar.png');
+            $table->string('capacity');
+            $table->boolean('availability')->default(0);
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade');
+
             $table->timestamps();
         });
         
