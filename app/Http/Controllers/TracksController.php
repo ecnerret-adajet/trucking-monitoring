@@ -20,6 +20,7 @@ use Input;
 use DateTime;
 use App\Schedule;
 use Flashy;
+use App\Driver;
 
 class TracksController extends Controller
 {
@@ -41,7 +42,7 @@ class TracksController extends Controller
             Carbon::now()->subDays(5)->diffForHumans();   
             ->where('created_at', '<=', Carbon::now()) 
        */
-  
+        $drivers  = Driver::all();
        $users = User::all();
        $trucks  = Truck::lists('plate_no','id'); 
        $customers = Customer::lists('customer_name', 'id');
@@ -68,6 +69,7 @@ class TracksController extends Controller
             'trackings',
             'trucks',
             'customers',
+            'drivers',
             'schedules'));
     }
 

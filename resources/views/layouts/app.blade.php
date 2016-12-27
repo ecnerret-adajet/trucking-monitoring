@@ -126,7 +126,7 @@
             </li>
               <li>
               <a href="{{url('drivers')}}">
-                <i class="fa fa-truck"></i> <span>Drivers</span>
+                <i class="fa ion-android-person"></i> <span>Drivers</span> 
               </a>
         
             </li>
@@ -158,7 +158,7 @@
             </li>
                    <li>
               <a href="{{url('drivers')}}">
-                <i class="fa fa-truck"></i> <span>Drivers</span>
+                <i class="fa ion-android-person"></i> <span>Drivers</span>
               </a>
         
             </li>

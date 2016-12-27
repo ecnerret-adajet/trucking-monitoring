@@ -35,6 +35,7 @@
 <table  id="list-truck" class="table table-bordered  table-hover table-padding">
                 <thead>
                       <tr>
+
                           <th>NAME</th>    
                           <th>OPERATOR</th>    
                           <th>PHONE NUMBER</th>    
@@ -53,7 +54,18 @@
                     
                     @foreach($drivers as $driver)
                     <tr>
-                      <td>{{$driver->name}}</td>   
+             
+                      <td>
+                      <div class="row">
+                          <div class="col-md-2">
+                           <img class="img-circle" style="height: 50px; width: auto;" src="{{asset('img/drivers/'.$driver->avatar)}}">
+                          </div>
+                          <div class="col-md-10 text-left">
+                              {{$driver->name}}
+                          </div>
+                      </div> 
+                    
+                      </td>   
                       <td>{{$driver->operator}}</td>   
                       <td>{{$driver->phone}}</td>   
                       <td width="20%">

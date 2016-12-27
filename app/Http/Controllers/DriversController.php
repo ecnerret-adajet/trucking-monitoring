@@ -7,6 +7,8 @@ use App\Driver;
 use Illuminate\Support\Facades\Collection;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Flashy;
+use Image;
 
 use App\Http\Requests;
 
@@ -46,7 +48,15 @@ class DriversController extends Controller
         ]);
 
         $driver = Auth::user()->drivers()->create($request->all());
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' .$avatar->getClientOriginalExtension();
+            Image::make($avatar)->resize(300,300)->save( public_path('/img/drivers/' . $filename ) ); 
+            $driver->avatar = $filename;
+            $driver->save();
+        }
 
+        flashy()->success('Driver Successfully Added !');
         return redirect('drivers');
         
     }

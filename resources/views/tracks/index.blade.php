@@ -95,7 +95,7 @@
                 <span class="info-box-icon"><i class="ion ion-ios-people-outline"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Drivers</span>
-                  <span class="info-box-number"></span>
+                  <span class="info-box-number">{{ $drivers->count()}}</span>
                   
                 </div><!-- /.info-box-content -->
               </div><!-- /.info-box -->

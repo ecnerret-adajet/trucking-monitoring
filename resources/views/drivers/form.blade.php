@@ -1,4 +1,10 @@
 
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-5">                                
+                            <input name="truck_avatar" type="file" class="filestyle" data-size="sm" data-buttonName="btn-primary" data-buttonBefore="true">
+                            </div>
+                        </div>
+                        
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label"> 
