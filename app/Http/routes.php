@@ -20,29 +20,25 @@
  /**
  * START Trucking Monitoring SMS Notification
  */
-
 Route::get('/smsnotification', 'SmsNotificationsController@sms');
-
-
-
 Route::auth(); 
-
 Route::group(['middleware' => ['auth']], function() {
-
 /**
  * Tracks setup routes
  */
 Route::resource('tracks','TracksController');
-
-
+/**
+ * customer setup routes
+ */
 Route::resource('customers','CustomersController');  
-
 /**
  * Trucks controller setup
  */
 Route::resource('trucks','TrucksController'); 
-
-
+/**
+ * drivers controller setup
+ */
+Route::resource('drivers','DriversController'); 
 /**
  * User controller route setup
  */

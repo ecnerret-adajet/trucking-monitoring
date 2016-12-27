@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Truck');
     }
+
+    public function drivers()
+    {
+        return $this->hasMany('App\Driver');
+    }
 }

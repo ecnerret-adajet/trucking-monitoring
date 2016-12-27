@@ -8,14 +8,21 @@ class Driver extends Model
 {
     protected $fillable = [
     	'name',
-    	'driver_license',
+    	'operator',
     	'phone',
     	'phone_backup',
-    	'address',
     	'avatar'
     ];
 
     public function trucks(){
     	return $this->belongsToMany('App\Truck');
+    }
+
+    /**
+     * User created a driver model
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

@@ -30,6 +30,8 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('tracks', 'App\Track');
         $router->model('customers', 'App\Customer');
         $router->model('trucks', 'App\Truck');
+        $router->model('drivers', 'App\Driver');
+
 
          $router->bind('statuses', function($name){
             return \App\Status::where('name',$name)->firstOrFail();

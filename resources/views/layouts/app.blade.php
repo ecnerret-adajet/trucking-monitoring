@@ -124,6 +124,13 @@
                  
               </ul>
             </li>
+              <li>
+              <a href="{{url('drivers')}}">
+                <i class="fa fa-truck"></i> <span>Drivers</span>
+              </a>
+        
+            </li>
+
              @endrole  
 
 
@@ -148,6 +155,12 @@
                 <li><a href="{{url('/trucks/create')}}"><i class="fa fa-circle-o"></i>Add Trucks</a></li>
                  
               </ul>
+            </li>
+                   <li>
+              <a href="{{url('drivers')}}">
+                <i class="fa fa-truck"></i> <span>Drivers</span>
+              </a>
+        
             </li>
             <li><a href="{{url('/summary')}}"><i class="fa fa-line-chart"></i> <span>Reports</span></a></li>
 
