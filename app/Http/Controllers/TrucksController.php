@@ -15,8 +15,10 @@ use App\Track;
 use Carbon\Carbon;
 use User;
 use Image;
-use App\Schedule;
+use Flashy;
 use App\Driver;
+use App\Assignment;
+use App\Status;
 
 class TrucksController extends Controller
 {
@@ -32,8 +34,7 @@ class TrucksController extends Controller
     public function index()
     {
         $trucks = Truck::all();
-        $schedules = Schedule::lists('name','id');
-        return view('trucks.index', compact('trucks','schedules'));
+        return view('trucks.index', compact('trucks'));
     }
 
     /**
@@ -43,9 +44,8 @@ class TrucksController extends Controller
      */
     public function create()
     {
-        $schedules = Schedule::lists('name','id');
         $drivers = Driver::lists('name','id');
-        return view('trucks.create', compact('schedules','drivers'));
+        return view('trucks.create', compact('drivers'));
     }
 
     /**
@@ -58,7 +58,6 @@ class TrucksController extends Controller
     {
           $truck = Truck::create($request->all());
 
-          $truck->schedules()->attach($request->input('schedule_list'));
           $truck->drivers()->attach($request->input('driver_list'));
 
         if($request->hasFile('truck_avatar')){
@@ -93,8 +92,7 @@ class TrucksController extends Controller
      */
     public function edit(Truck $truck)
     {
-        $schedules = Schedule::lists('name','id');
-        return view('trucks.edit',compact('truck','schedules'));
+        return view('trucks.edit',compact('truck'));
     }
 
     /**
@@ -108,7 +106,8 @@ class TrucksController extends Controller
     {
         $truck->update($request->all());
 
-        $truck->schedules()->sync((!$request->input('schedule_list') ? [] : $request->input('schedule_list')));
+        $truck->drivers()->sync((!$request->input('driver_list') ? [] : $request->input('driver_list')));
+        $truck->statuses()->sync((!$request->input('status_list') ? [] : $request->input('status_list')));
 
             if($request->hasFile('truck_avatar')){
             $truck_avatar = $request->file('truck_avatar');
@@ -117,6 +116,8 @@ class TrucksController extends Controller
             $truck->truck_avatar = $filename;
             $truck->save();
         }
+
+        flashy()->success('truck successfully updated !');
         return redirect('trucks');
     }
 

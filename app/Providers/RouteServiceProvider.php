@@ -37,9 +37,7 @@ class RouteServiceProvider extends ServiceProvider
             return \App\Status::where('name',$name)->firstOrFail();
         });
 
-        $router->bind('conditions', function($name){
-            return \App\Condition::where('name',$name)->firstOrFail();
-        });
+
     }
 
     /**

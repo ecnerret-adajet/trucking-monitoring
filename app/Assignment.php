@@ -4,14 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Condition extends Model
+class Assignment extends Model
 {
     protected $fillable = [
-    	'name'
+    	'name',
     ];
-
-    public function trucks()
-    {
+    
+    public function trucks(){
     	return $this->belongsToMany('App\Truck');
     }
 }

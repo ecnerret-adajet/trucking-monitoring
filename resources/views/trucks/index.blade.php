@@ -39,22 +39,22 @@
                           <th>OPERATOR</th>    
                           <th>DRIVER NAME</th>    
                           <th>PLATE NO</th>    
+                          <th>ASIGNMENT</th>    
                           <th>TRUCK TYPE</th>    
-                          <th>CAPACITY</th>    
-                          <th>HISTORY</th> 
+                          <th>COUNT</th> 
                           <th class="text-center">ACTION</th>                      
                      </tr>       
                 </thead> 
             <tfoot>
-            <tr>
+                      <tr>
                           <th>OPERATOR</th>    
                           <th>DRIVER NAME</th>    
                           <th>PLATE NO</th>    
+                          <th>ASIGNMENT</th>    
                           <th>TRUCK TYPE</th>    
-                          <th>CAPACITY</th>    
-                          <th>HISTORY</th> 
+                          <th>COUNT</th> 
                           <th class="text-center">ACTION</th>                      
-                     </tr> 
+                     </tr>    
         </tfoot>   
                     
                     
@@ -67,8 +67,12 @@
                       @endforeach
                       </td>   
                       <td>{{$truck->plate_no}}</td>   
+                      <td>
+                      @foreach($truck->assignments as $assignment)
+                        {{$assignment->name}}
+                      @endforeach
+                      </td>   
                       <td>{{$truck->vehicle_type}}</td>   
-                      <td>{{$truck->capacity}}</td>   
                       <td>
                         <a class="btn btn-primary" href="{{url('trucks/'.$truck->id)}}">
                         <i class="fa fa-history" aria-hidden="true"></i>

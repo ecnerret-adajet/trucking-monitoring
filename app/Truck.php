@@ -38,18 +38,6 @@ class Truck extends Model
     }
 
     /* list all trucks */
-
-    public function conditions()
-    {
-        return $this->belongsToMany('App\Condition')->withTimestamps();
-    }
-
-    public function getConditionListAttribute()
-    {
-        return $this->conditions->lists('id')->all();
-    }
-
-    /* list all trucks */
     public function drivers(){
         return $this->belongsToMany('App\Driver')->withTimestamps();
     }
@@ -59,15 +47,29 @@ class Truck extends Model
         return $this->drivers->pluck('id')->all();
     }
 
-
-    /* list all schdule trucks */
-    public function schedules()
+    /**
+     * List assignment model to trucks model
+     */
+    public function assignments()
     {
-        return $this->belongsToMany('App\Schedule')->withTimestamps();
+        return $this->belongsToMany('App\Assignement')->withTimestamps();
     }
 
-    public function getScheduleListAttribute()
+    public function getAssignmentListAttribute()
     {
-        return $this->schedules->lists('id')->all();
+        return $this->assignements->pluck('id')->all();
+    }
+
+    /**
+     * Status model belongs to many truck model
+     */
+    public function statuses()
+    {
+        return $this->belongsToMany('App\Status')->withTimestamps();
+    }
+
+    public function getStatusListAttribute()
+    {
+        return  $this->statuses->pluck('id')->all();
     }
 }

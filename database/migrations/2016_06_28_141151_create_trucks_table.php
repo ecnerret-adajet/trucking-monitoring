@@ -15,12 +15,12 @@ class CreateTrucksTable extends Migration
         Schema::create('trucks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-
             $table->string('operator');
             $table->string('origin');
             $table->string('plate_no');
             $table->string('vehicle_type');
             $table->string('capacity');
+            $table->integer('odometer');
             $table->boolean('availability')->default(0);
 
             $table->foreign('user_id')->references('id')->on('users')
