@@ -37,8 +37,8 @@
                 <thead>
                       <tr>
                           <th>OPERATOR</th>    
-                          <th>DRIVER NAME</th>    
                           <th>PLATE NO</th>    
+                          <th>DRIVER NAME</th>  
                           <th>ASIGNMENT</th>    
                           <th>TRUCK TYPE</th>    
                           <th>COUNT</th> 
@@ -48,8 +48,8 @@
             <tfoot>
                       <tr>
                           <th>OPERATOR</th>    
-                          <th>DRIVER NAME</th>    
                           <th>PLATE NO</th>    
+                            <th>DRIVER NAME</th>  
                           <th>ASIGNMENT</th>    
                           <th>TRUCK TYPE</th>    
                           <th>COUNT</th> 
@@ -61,12 +61,13 @@
                     @foreach($trucks as $truck)
                     <tr>
                       <td>{{$truck->operator}}</td>   
-                      <td>
+                      
+                      <td>{{$truck->plate_no}}</td>   
+                        <td>
                       @foreach($truck->drivers as $driver)
                         {{$driver->name}}
                       @endforeach
-                      </td>   
-                      <td>{{$truck->plate_no}}</td>   
+                      </td> 
                       <td>
                       @foreach($truck->assignments as $assignment)
                         {{$assignment->name}}

@@ -13,6 +13,7 @@ class Truck extends Model
             'plate_no',
             'vehicle_type',
             'capacity',
+            'odometer',
             'availability',
     ];
 
@@ -52,7 +53,7 @@ class Truck extends Model
      */
     public function assignments()
     {
-        return $this->belongsToMany('App\Assignement')->withTimestamps();
+        return $this->belongsToMany('App\Assignment')->withTimestamps();
     }
 
     public function getAssignmentListAttribute()

@@ -10,11 +10,11 @@ class Customer extends Model
   protected $fillable= [
         'origin',
         'customer_name',
-        'destination',
-        'time_to_customer',
-        'time-to_origin',
-        'phones',
-        'total_hours'
+        'city',
+        'province',
+        'total_hours',
+        'contact_number',
+        'availability'
     ];
     
     
@@ -23,17 +23,12 @@ class Customer extends Model
         return $this->belongsToMany('App\Track');
     }
 
-
-    public function schedules()
+    /**
+     * Customer belongs to user
+     */
+    public function user()
     {
-        return $this->belongsToMany('App\Schedule')->withTimestamps();
+        return $this->belongsTo('App\User');
     }
-
-    public function getScheduleListAttribute()
-    {
-        return $this->schedules->lists('id')->all();
-    }
-
-
 
 }

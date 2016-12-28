@@ -18,7 +18,6 @@ use DB;
 use Response;
 use Input;
 use DateTime;
-use App\Schedule;
 use Flashy;
 use App\Driver;
 
@@ -51,8 +50,6 @@ class TracksController extends Controller
        $all_customers = Customer::has('tracks')
                 ->take(5)
                 ->get();
-
-      $schedules = Schedule::with('trucks')->get();
       $total = 0;
 
       $base_time = Carbon::now()->setTimezone('Asia/Manila');

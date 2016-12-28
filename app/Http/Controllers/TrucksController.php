@@ -60,15 +60,6 @@ class TrucksController extends Controller
 
           $truck->drivers()->attach($request->input('driver_list'));
 
-        if($request->hasFile('truck_avatar')){
-            $truck_avatar = $request->file('truck_avatar');
-            $filename = time() . '.' .$truck_avatar->getClientOriginalExtension();
-            Image::make($truck_avatar)->resize(300,300)->save( public_path('/img/trucks/' . $filename ) ); 
-            $truck->truck_avatar = $filename;
-            $truck->save();
-        }
-
-
         return redirect('trucks');
     }
 
@@ -92,7 +83,8 @@ class TrucksController extends Controller
      */
     public function edit(Truck $truck)
     {
-        return view('trucks.edit',compact('truck'));
+        $drivers = Driver::lists('name','id');
+        return view('trucks.edit',compact('truck','drivers'));
     }
 
     /**
@@ -108,14 +100,6 @@ class TrucksController extends Controller
 
         $truck->drivers()->sync((!$request->input('driver_list') ? [] : $request->input('driver_list')));
         $truck->statuses()->sync((!$request->input('status_list') ? [] : $request->input('status_list')));
-
-            if($request->hasFile('truck_avatar')){
-            $truck_avatar = $request->file('truck_avatar');
-            $filename = time() . '.' .$truck_avatar->getClientOriginalExtension();
-            Image::make($truck_avatar)->resize(300,300)->save( public_path('/img/trucks/' . $filename ) ); 
-            $truck->truck_avatar = $filename;
-            $truck->save();
-        }
 
         flashy()->success('truck successfully updated !');
         return redirect('trucks');

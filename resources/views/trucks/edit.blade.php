@@ -29,11 +29,6 @@
 
 
 
-                      <center>
-                        <img class="img-responsive img-circle" style="width: 150px; height:150px; margin-bottom: 20px;"  src="{{asset('/img/trucks/'.$truck->truck_avatar)}}">
-                      </center>
-
-
                    {!! Form::model($truck, ['method' => 'PATCH', 'action' => ['TrucksController@update', $truck->id], 'class' => 'form-horizontal',  'files' => true, 'name' => 'autoSumForm' ]) !!} 
     {!! csrf_field() !!}
                     
