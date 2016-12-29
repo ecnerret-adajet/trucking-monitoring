@@ -94,16 +94,16 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            @role('Personnel')
+            @role('personnel')
               <li><a href="{{url('/edit-plant')}}"><i class="fa fa-truck"></i> <span>Truck list</span></i></a></li>
               @endrole
               
-            @role(['Dispatcher'])
+            @role(['dispatcher'])
             <li><a href="{{url('/tracks')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
             <li><a href={{url('/tracks/create')}} ><i class="fa fa-plus" ></i> <span>Deploy truck</span></a></li>   
              @endrole     
 
-            @role(['Monitoring'])
+            @role(['customer-service'])
             <li><a href="{{url('/tracks')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
                         <li class="treeview">
               <a href="#">
@@ -119,9 +119,7 @@
                 <i class="fa fa-truck"></i> <span>Manage Trucks</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{url('/trucks')}}"><i class="fa fa-circle-o"></i>All Trucks</a></li>
-                <li><a href="{{url('/trucks/create')}}"><i class="fa fa-circle-o"></i>Add Trucks</a></li>
-                 
+                <li><a href="{{url('/trucks')}}"><i class="fa fa-circle-o"></i>All Trucks</a></li>                 
               </ul>
             </li>
               <li>

@@ -61,16 +61,11 @@ class Truck extends Model
         return $this->assignements->pluck('id')->all();
     }
 
-    /**
-     * Status model belongs to many truck model
-     */
-    public function statuses()
+
+    public function logs()
     {
-        return $this->belongsToMany('App\Status')->withTimestamps();
+        return $this->hasMany('App\Log','truck_id');
     }
 
-    public function getStatusListAttribute()
-    {
-        return  $this->statuses->pluck('id')->all();
-    }
+    
 }

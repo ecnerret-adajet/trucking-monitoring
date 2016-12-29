@@ -35,7 +35,6 @@
                           <th>CITY</th>    
                           <th>CONTACT</th>    
                           <th>ETA</th>    
-                          <th>SCHEDULE</th>    
                           <th>EDIT</th> 
                         
 
@@ -48,7 +47,6 @@
                           <th>CITY</th>    
                           <th>CONTACT</th>    
                           <th>ETA</th>    
-                          <th>SCHEDULE</th>    
                           <th>EDIT</th> 
                         
                </tr>
@@ -62,11 +60,6 @@
                       <td>{{$customer->destination}}</td>   
                       <td>{{$customer->phones}}</td>   
                       <td>{{$customer->total_hours}}</td>   
-                      <td>
-                      @foreach($customer->schedules as $schedule)
-                        {{ $schedule->name }}
-                      @endforeach
-                      </td>   
                         <td>
                         <a href="{{url('customers/'.$customer->id.'/edit')}}"> <i class="fa fa-cog action" aria-hidden="true"></i></a>
                         </td>

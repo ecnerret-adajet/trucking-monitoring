@@ -3,20 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\CustomerRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Collection;
-use App\Customer;
+use Flashy;
+use App\Log;
 use App\Truck;
-use App\Track;
+use App\Status;
 use Carbon\Carbon;
-use User;
 
-class CustomersController extends Controller
+class LogsController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -28,9 +24,7 @@ class CustomersController extends Controller
      */
     public function index()
     {
-
-           $customers = Customer::all();
-         return view('customers.index', compact('customers'));
+        //
     }
 
     /**
@@ -40,7 +34,7 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        return view('customers.create');
+        //
     }
 
     /**
@@ -49,11 +43,25 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomerRequest $request)
+    public function store($id, Request $request)
     {
-        $customer = Customer::create($request->all());
+        
+        $truck = Truck::find($id);
 
-        return redirect('customers');
+        $log = new Log;
+        $log->name = $request->input('name');
+        $log->location = $request->input('location');
+        $log->dr_date = $request->input('dr_date');
+        $log->customer = $request->input('customer');
+        $log->customer_address = $request->input('customer_address');
+        $log->commodities = $request->input('commodities');
+        $log->truck()->associate($truck);
+        $log->save();
+
+       
+
+        flashy()->success('Successfully Updated a truck status');
+        return redirect('trucks');
     }
 
     /**
@@ -62,9 +70,9 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customer)
+    public function show($id)
     {
-        return view('customers.show', compact('customer'));
+        //
     }
 
     /**
@@ -73,9 +81,9 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Customer $customer)
+    public function edit($id)
     {
-        return view('customers.edit',compact('customer'));
+        //
     }
 
     /**
@@ -85,10 +93,9 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CustomerRequest $request, Customer $customer)
+    public function update(Request $request, $id)
     {
-        $customer->update($request->all());
-        return redirect('customers');
+        //
     }
 
     /**
@@ -97,9 +104,8 @@ class CustomersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
-        $customer->delete();
-        return redirect('customers');
+        //
     }
 }

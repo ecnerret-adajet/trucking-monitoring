@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TruckRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Collection;
 use App\Customer;
 use App\Truck;
 use App\Track;
@@ -19,6 +19,7 @@ use Flashy;
 use App\Driver;
 use App\Assignment;
 use App\Status;
+use App\Log;
 
 class TrucksController extends Controller
 {
@@ -33,8 +34,10 @@ class TrucksController extends Controller
      */
     public function index()
     {
-        $trucks = Truck::all();
-        return view('trucks.index', compact('trucks'));
+        $trucks = Truck::orderBy('created_at','INCR')->get();
+
+        $stats = Status::pluck('name', 'name');
+        return view('trucks.index', compact('trucks','stats'));
     }
 
     /**
@@ -99,7 +102,6 @@ class TrucksController extends Controller
         $truck->update($request->all());
 
         $truck->drivers()->sync((!$request->input('driver_list') ? [] : $request->input('driver_list')));
-        $truck->statuses()->sync((!$request->input('status_list') ? [] : $request->input('status_list')));
 
         flashy()->success('truck successfully updated !');
         return redirect('trucks');

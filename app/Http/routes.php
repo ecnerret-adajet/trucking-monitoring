@@ -43,6 +43,14 @@ Route::resource('drivers','DriversController');
  * User controller route setup
  */
 Route::resource('users','UserController'); 
+/**
+ * status truck setup routes
+ */
+Route::resource('logs', 'LogsController', ['except' => [
+   'store'
+]]);
+Route::post('logs/{id}', 'LogsController@store');
+
 
 Route::get('/edit-plant', 'TracksController@editPlant');
 Route::patch('/in/{tracks}','TracksController@inplant');

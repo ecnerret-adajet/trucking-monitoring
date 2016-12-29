@@ -493,17 +493,6 @@
 </div><!-- /.modal -->  
 <!-- end mark an truck as safe modal -->
 
-
-
-
-
-
-
-
-
-
-
-
        @endforeach
 <!-- end show data for trucks and customer -->
 

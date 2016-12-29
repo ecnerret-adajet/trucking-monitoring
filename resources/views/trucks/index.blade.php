@@ -15,7 +15,7 @@
 
 
 
-
+        
 
 
       <section class="content">
@@ -23,9 +23,11 @@
           <div class="box">
                  <div class="box-header with-border">
               <h3 class="box-title">All Trucks
+              @role(['Administrator'])
               <a class="btn btn-primary" href="{{url('trucks/create')}}">
               Add Truck
               </a>
+              @endrole
               </h3>
             </div><!-- /.box-header -->
 
@@ -41,20 +43,22 @@
                           <th>DRIVER NAME</th>  
                           <th>ASIGNMENT</th>    
                           <th>TRUCK TYPE</th>    
-                          <th>COUNT</th> 
-                          <th class="text-center">ACTION</th>                      
+                          <th>STATUS</th>    
+                          <th>ODOMETER</th>    
+                          <th width="15%">ACTION</th>
                      </tr>       
                 </thead> 
             <tfoot>
-                      <tr>
+                         <tr>
                           <th>OPERATOR</th>    
                           <th>PLATE NO</th>    
-                            <th>DRIVER NAME</th>  
+                          <th>DRIVER NAME</th>  
                           <th>ASIGNMENT</th>    
                           <th>TRUCK TYPE</th>    
-                          <th>COUNT</th> 
-                          <th class="text-center">ACTION</th>                      
-                     </tr>    
+                          <th>STATUS</th>    
+                          <th>ODOMETER</th>    
+                          <th width="15%">ACTION</th>
+                     </tr>       
         </tfoot>   
                     
                     
@@ -63,40 +67,48 @@
                       <td>{{$truck->operator}}</td>   
                       
                       <td>{{$truck->plate_no}}</td>   
+
                         <td>
                       @foreach($truck->drivers as $driver)
                         {{$driver->name}}
                       @endforeach
                       </td> 
+
                       <td>
                       @foreach($truck->assignments as $assignment)
                         {{$assignment->name}}
                       @endforeach
-                      </td>   
-                      <td>{{$truck->vehicle_type}}</td>   
+                      </td>  
+
                       <td>
-                        <a class="btn btn-primary" href="{{url('trucks/'.$truck->id)}}">
-                        <i class="fa fa-history" aria-hidden="true"></i>
-                        History Log
-                        </a>
+                      {{$truck->vehicle_type}}
                       </td>   
-                      <td width="20%">
 
-                      <div class="btn-group btn-group-justified">
-                          <a class="btn btn-info" href="{{url('trucks/'.$truck->id.'/edit')}}"> 
-                             <i class="fa fa-cog action" aria-hidden="true" style="color: #fff;"></i> Edit
-                          </a>
-                        @role('Administrator')
-                            <a class="btn btn-primary"  href="#">
-                            <i class="fa fa-trash action" aria-hidden="true" style="color: #fff;"></i>
-                            Delete
-                            </a>
-                        @endrole
-                      </div>
+                      <td>  
+                               @foreach($truck->logs as $log)
+              {{$log->name}}
+          @endforeach
+                    </td>
 
-                      
+                      <td>
+                      {{$truck->odometer}}
+                      </td>  
+                  
 
+                      <td>
+                          <div class="btn-group">
+                          <a href="#" class="btn btn-warning">Option</a>
+                          <a href="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+                          <ul class="dropdown-menu">
+                            <li><a  class="bootstrap-modal-form-open" data-toggle="modal" data-target=".bs-edit{{$truck->id}}-modal-lg" href="">Change Status</a></li>
+                            <li><a  href="{{url('trucks/'.$truck->id)}}">History Log</a></li>
+                            <li><a href="{{url('trucks/'.$truck->id.'/edit')}}">Edit Truck</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Delete Truck</a></li>
+                          </ul>
+                        </div>
                       </td>
+              
                      
                         
                       </tr>
@@ -120,7 +132,52 @@
 
 </section>
 
+
+
+ <!-- show trucks and customer data -->
+ @foreach($trucks as $truck)
+<!-- modal edit form -->
+<div class="modal fade bs-edit{{$truck->id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span class="modal-title">TRUCKS STATUS</span>
+      </div>
+      <div class="modal-body">
+              <div class="row">
+        <div class="col-md-12">
+                <div class="panel-body"> 
+
+            {!! Form::model($log = new \App\Log,  ['class' => 'form-horizontal',  'url' => 'logs/'.$truck->id, 'enctype'=>'multipart/form-data'])!!}
+            {!! csrf_field() !!}
+                    
+
+
+
+            @include('logs.form')
+
+
+     
+                    
+                </div>
+        </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
           
+               
+      </div>
+      {!! Form::close() !!}
+    </div><!-- /.modal-content -->  
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+       @endforeach
+<!-- end show data for trucks and customer -->
+
+
 
 
 
