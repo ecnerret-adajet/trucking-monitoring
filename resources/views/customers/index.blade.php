@@ -30,24 +30,24 @@
              <table  id="list-truck" class="table table-bordered  table-hover table-padding">
                 <thead>
                       <tr>
+                          <th>CUSTOMER NAME</th>   
                           <th>ORIGIN</th>    
-                          <th>CUSTOMER NAME</th>    
                           <th>CITY</th>    
-                          <th>CONTACT</th>    
-                          <th>ETA</th>    
-                          <th>EDIT</th> 
+                          <th>PROVINCE</th>    
+                          <th>ETA / HOURS</th>    
+                          <th>ACTION</th> 
                         
 
                      </tr>       
                 </thead> 
             <tfoot>
                  <tr>
-                      <th>ORIGIN</th>    
-                          <th>CUSTOMER NAME</th>    
+                          <th>CUSTOMER NAME</th>   
+                          <th>ORIGIN</th>    
                           <th>CITY</th>    
-                          <th>CONTACT</th>    
-                          <th>ETA</th>    
-                          <th>EDIT</th> 
+                          <th>PROVINCE</th>    
+                          <th>ETA / HOURS</th>    
+                          <th>ACTION</th> 
                         
                </tr>
         </tfoot>   
@@ -55,14 +55,14 @@
                     
                     @foreach($customers as $customer)
                     <tr>
-                      <td>{{$customer->origin}}</td>   
                       <td>{{$customer->customer_name}}</td>   
-                      <td>{{$customer->destination}}</td>   
-                      <td>{{$customer->phones}}</td>   
+                      <td>{{$customer->origin}}</td>   
+                      <td>{{$customer->city}}</td>   
+                      <td>{{$customer->province}}</td>   
                       <td>{{$customer->total_hours}}</td>   
-                        <td>
-                        <a href="{{url('customers/'.$customer->id.'/edit')}}"> <i class="fa fa-cog action" aria-hidden="true"></i></a>
-                        </td>
+                      <td>
+                        <a class="btn btn-primary" href="{{url('customers/'.$customer->id.'/edit')}}"><i class="fa fa-cog action" aria-hidden="true"></i> Edit Customer </a>
+                      </td>
                         
                     </tr>
                     @endforeach

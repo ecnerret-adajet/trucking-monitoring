@@ -37,16 +37,25 @@ class TracksController extends Controller
     {
 
        $tracks = Track::latest('created_at')->where('created_at', '>=' ,Carbon::now()->subDays(2))->paginate(5);
-       /*   
-            Carbon::now()->subDays(5)->diffForHumans();   
-            ->where('created_at', '<=', Carbon::now()) 
-       */
+ 
         $drivers  = Driver::all();
        $users = User::all();
        $trucks  = Truck::lists('plate_no','id'); 
        $customers = Customer::lists('customer_name', 'id');
        $all_trucks = Truck::with('tracks')->get();
        $trackings = Track::orderBy('created_at', 'desc')->take(6)->get();
+
+
+       $top_drivers = Truck::with('tracks')
+                        ->take(6)
+                        ->get();
+
+       $top_region = Customer::with('tracks')
+                    ->take(6)
+                    ->get();
+
+
+
        $all_customers = Customer::has('tracks')
                 ->take(5)
                 ->get();
@@ -67,7 +76,8 @@ class TracksController extends Controller
             'trucks',
             'customers',
             'drivers',
-            'schedules'));
+            'top_drivers',
+            'top_region'));
     }
 
 
@@ -84,18 +94,10 @@ class TracksController extends Controller
        
        $customers  = Customer::lists('customer_name','id'); 
        $trucks  = Truck::where('availability',0)->lists('plate_no', 'id');
-
-       // $trucks = Truck::with('tracks', function($q){
-       //  $q->where('availability',1)->get();
-       // })->lists('plate_no','id');
-
-  
-
-
        $base_time = Carbon::now('Asia/Manila');
         
-        return view('tracks.create', 
-            compact('trucks',
+        return view('tracks.create', compact(
+                'trucks',
                 'customers',
                 'tracks'));
     }

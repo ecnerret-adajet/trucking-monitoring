@@ -178,6 +178,8 @@
     </div><!-- end row table -->
 
     <div class="row">
+
+
     <div class="col-md-4">
              <div class="box box-default">
                 <div class="box-header with-border">
@@ -189,44 +191,19 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                  
-
-          
-          
-
- <div id="container">
-<table id="datatable-destination" class="hide">
-   <thead>
-        <tr>
-            <th></th>
-            <th>Total</th>
-        </tr>
-    </thead>
-
-    <tbody>
-     @foreach($all_customers as $all_customer)
-        <tr>
-            <th>{{ $all_customer->destination }}</th>
-            <td>
-          {{ $all_customer->tracks->count() }}
-            </td>
-        </tr> 
-     @endforeach
-</tbody>
-</table><!-- end table -->
-</div><!-- end container datatable -->
-               
-                    
-                   
-                    
-                    
-                  
-               
-
-
+                <table class="table no-border">
+                  @foreach($top_region as $top)
+                  <tr>
+                      <td>{{$top->customer_name}}</td>
+                      <td>{{$top->tracks->count()}}</td>
+                  </tr> 
+                  @endforeach
+                </table>
+        
                 </div><!-- /.box-body -->
           
               </div><!-- /.box -->
-    </div><!-- end column -->
+    </div><!-- end col-md-4 -->
 
     <div class="col-md-4">
              <!-- PRODUCT LIST -->
@@ -243,18 +220,41 @@
                   @foreach($trackings as $tracking)
                     <li class="item">
                       <div class="product-info">
-                        <a href="javascript::;" class="product-title">
+                          <div class="row">
+                                  <div class="col-md-2">
+                            @foreach($tracking->trucks as $truck)
+                                   @forelse($truck->drivers as $driver)
+                          <img class="img-circle" style="width: 50px; height: auto" src="{{asset('img/drivers/'.$driver->avatar)}}">
+                                   @empty
+                          <img class="img-circle" style="width: 50px; height: auto" src="{{asset('img/drivers/avatar.png')}}">
+                                   @endforelse
+                              @endforeach
+
+                                  </div>
+
+                                  <div class="col-md-10">
+                                             <a href="javascript::;" class="product-title">
                        @foreach($tracking->customers as $customer)
-                      <span  style="color: #000 ! important" > 
-                       {{$customer->customer_name}}
-                       </span>
+                                <span  style="color: #000 ! important" > 
+                               {{str_limit($customer->customer_name, 20)}}
+                               </span>
                        @endforeach
-                        <span class="label label-warning pull-right">{{$tracking->created_at->diffForHumans()}}</span></a>
-                        <span class="product-description">
-                        @foreach($tracking->trucks as $truck)
-                       Driver: {{$truck->driver}}
-                        @endforeach
-                        </span>
+                        <span class="label label-warning pull-right">{{$tracking->created_at->diffForHumans()}}</span>
+                      </a>
+                            <span class="product-description">
+                              @foreach($tracking->trucks as $truck)
+                                   @forelse($truck->drivers as $driver)
+                                         {{$driver->name}}
+                                   @empty
+                                        NO DRIVER
+                                   @endforelse
+                              @endforeach
+                            </span>
+                                  </div>
+
+                          </div>
+
+                     
                       </div>
                     </li><!-- /.item -->
                   @endforeach
@@ -267,6 +267,39 @@
               </div><!-- /.box -->
 
 
+    </div><!-- end col-md-4 -->
+
+ <div class="col-md-4">
+             <div class="box box-default">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Top Driver</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+
+
+                                <table class="table no-border">
+                  @foreach($top_drivers as $top_driver)
+                  <tr>
+                      <td>
+                      @forelse($top_driver->drivers as $driver)
+                        {{$driver->name}}
+                      @empty
+                        NO DRIVER
+                      @endforelse
+                      </td>
+                      <td>{{$top_driver->tracks->count()}}</td>
+                  </tr> 
+                  @endforeach
+                </table>
+     
+        
+                </div><!-- /.box-body -->
+          
+              </div><!-- /.box -->
     </div><!-- end col-md-4 -->
 
    

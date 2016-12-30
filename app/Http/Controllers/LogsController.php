@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\LogRequest;
 use App\Http\Requests;
 use Flashy;
 use App\Log;
@@ -43,11 +44,9 @@ class LogsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id, Request $request)
-    {
-        
+    public function store($id, LogRequest $request)
+    {      
         $truck = Truck::find($id);
-
         $log = new Log;
         $log->name = $request->input('name');
         $log->location = $request->input('location');
@@ -57,8 +56,6 @@ class LogsController extends Controller
         $log->commodities = $request->input('commodities');
         $log->truck()->associate($truck);
         $log->save();
-
-       
 
         flashy()->success('Successfully Updated a truck status');
         return redirect('trucks');

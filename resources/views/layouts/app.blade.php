@@ -222,6 +222,9 @@
    @include('flashy::message')
    <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
+    <!--laravel boostrap modal form -->
+     <script src="{{ asset('/js/laravel-bootstrap-modal-form.js') }}"></script>
+
 
        <!-- datatables   -->  
     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
@@ -258,8 +261,7 @@
     <script src="{{asset('/plugins/fastclick/fastclick.min.js')}}"></script>
     <!--select 2 -->
     <script src="{{ asset('/js/select2.min.js') }}"></script>
-    <!--laravel boostrap modal form -->
-     <script src="{{ asset('/js/laravel-bootstrap-modal-form.js') }}"></script>
+   
       <!-- Highchartjs -->
      <script src="{{asset('js/highcharts.js')}}"></script>
     <script src="{{asset('js/data.js')}}"></script>

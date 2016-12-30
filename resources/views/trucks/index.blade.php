@@ -100,7 +100,7 @@
                           <a href="#" class="btn btn-warning">Option</a>
                           <a href="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a  class="bootstrap-modal-form-open" data-toggle="modal" data-target=".bs-edit{{$truck->id}}-modal-lg" href="">Change Status</a></li>
+                            <li><a class="bootstrap-modal-form-open" data-toggle="modal" data-target=".bs-edit{{$truck->id}}-modal-lg" href="">Change Status</a></li>
                             <li><a  href="{{url('trucks/'.$truck->id)}}">History Log</a></li>
                             <li><a href="{{url('trucks/'.$truck->id.'/edit')}}">Edit Truck</a></li>
                             <li class="divider"></li>
@@ -149,7 +149,7 @@
         <div class="col-md-12">
                 <div class="panel-body"> 
 
-            {!! Form::model($log = new \App\Log,  ['class' => 'form-horizontal',  'url' => 'logs/'.$truck->id, 'enctype'=>'multipart/form-data'])!!}
+            {!! Form::model($log = new \App\Log,  ['class' => 'form-horizontal bootstrap-modal-form',  'url' => 'logs/'.$truck->id,  'files' => 'true', 'enctype'=>'multipart/form-data'])!!}
             {!! csrf_field() !!}
                     
 
