@@ -205,6 +205,43 @@
               </div><!-- /.box -->
     </div><!-- end col-md-4 -->
 
+
+     <div class="col-md-4">
+             <div class="box box-default">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Top Driver</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+
+
+                                <table class="table no-border">
+                  @foreach($top_drivers as $top_driver)
+                  <tr>
+                      <td>
+                      @forelse($top_driver->drivers as $driver)
+                        {{$driver->name}}
+                      @empty
+                        NO DRIVER
+                      @endforelse
+                      </td>
+                      <td>{{$top_driver->tracks->count()}}</td>
+                  </tr> 
+                  @endforeach
+                </table>
+     
+        
+                </div><!-- /.box-body -->
+          
+              </div><!-- /.box -->
+    </div><!-- end col-md-4 -->
+
+
+
+
     <div class="col-md-4">
              <!-- PRODUCT LIST -->
               <div class="box box-default">
@@ -269,38 +306,7 @@
 
     </div><!-- end col-md-4 -->
 
- <div class="col-md-4">
-             <div class="box box-default">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Top Driver</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
 
-
-                                <table class="table no-border">
-                  @foreach($top_drivers as $top_driver)
-                  <tr>
-                      <td>
-                      @forelse($top_driver->drivers as $driver)
-                        {{$driver->name}}
-                      @empty
-                        NO DRIVER
-                      @endforelse
-                      </td>
-                      <td>{{$top_driver->tracks->count()}}</td>
-                  </tr> 
-                  @endforeach
-                </table>
-     
-        
-                </div><!-- /.box-body -->
-          
-              </div><!-- /.box -->
-    </div><!-- end col-md-4 -->
 
    
 

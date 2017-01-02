@@ -7,6 +7,9 @@ use Carbon\Carbon;
 
 class Truck extends Model
 {
+
+use \Venturecraft\Revisionable\RevisionableTrait;
+
    protected $fillable = [
             'operator',
             'origin',

@@ -38,7 +38,7 @@ class TracksController extends Controller
 
        $tracks = Track::latest('created_at')->where('created_at', '>=' ,Carbon::now()->subDays(2))->paginate(5);
  
-        $drivers  = Driver::all();
+       $drivers  = Driver::all();
        $users = User::all();
        $trucks  = Truck::lists('plate_no','id'); 
        $customers = Customer::lists('customer_name', 'id');
@@ -49,6 +49,8 @@ class TracksController extends Controller
        $top_drivers = Truck::with('tracks')
                         ->take(6)
                         ->get();
+
+
 
        $top_region = Customer::with('tracks')
                     ->take(6)

@@ -7,6 +7,9 @@ use Carbon\Carbon;
 
 class Log extends Model
 {
+
+use \Venturecraft\Revisionable\RevisionableTrait;
+    
     protected $fillable = [
         'name',
     	'location',

@@ -38,8 +38,8 @@
                    <table  id="list-truck" class="table table-bordered  table-hover table-padding">
                 <thead>
                       <tr>
+                          <th>PLATE NO</th>
                           <th>OPERATOR</th>    
-                          <th>PLATE NO</th>    
                           <th>DRIVER NAME</th>  
                           <th>ASIGNMENT</th>    
                           <th>TRUCK TYPE</th>    
@@ -50,8 +50,8 @@
                 </thead> 
             <tfoot>
                          <tr>
-                          <th>OPERATOR</th>    
                           <th>PLATE NO</th>    
+                           <th>OPERATOR</th>    
                           <th>DRIVER NAME</th>  
                           <th>ASIGNMENT</th>    
                           <th>TRUCK TYPE</th>    
@@ -64,9 +64,20 @@
                     
                     @foreach($trucks as $truck)
                     <tr>
+
+                      <td>
+                      <a class="bootstrap-modal-form-open" 
+                        data-toggle="modal" 
+                        data-target=".bs-show{{$truck->id}}-modal-lg" 
+                        style="color: #3498db" 
+                        href="">
+                        {{$truck->plate_no}}
+                      </a>
+                      </td>   
+
+
                       <td>{{$truck->operator}}</td>   
                       
-                      <td>{{$truck->plate_no}}</td>   
 
                         <td>
                       @foreach($truck->drivers as $driver)
@@ -171,6 +182,41 @@
                
       </div>
       {!! Form::close() !!}
+    </div><!-- /.modal-content -->  
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+  
+<!-- end show data for trucks and customer -->
+
+
+
+<!-- modal show truck information  -->
+<div class="modal fade bs-show{{$truck->id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span class="modal-title">TRUCKS INFORMATION</span>
+      </div>
+      <div class="modal-body">
+              <div class="row">
+        <div class="col-md-12">
+                <div class="panel-body"> 
+
+
+
+
+          
+
+     
+                    
+                </div>
+        </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div><!-- /.modal-content -->  
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
