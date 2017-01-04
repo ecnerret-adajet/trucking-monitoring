@@ -64,7 +64,6 @@ $(function () {
         ]
     } );
 
-
     // input mask
       $("[data-mask]").inputmask();
 

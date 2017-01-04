@@ -5804,6 +5804,11 @@ font-weight: 400;
 font-size: 13px;
 }
 
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Miriam Libre', sans-serif;
+font-weight: 400;
+}
+
 .fa-btn {
 margin-right: 6px;
 }

@@ -24,8 +24,10 @@ class TruckRequest extends Request
     public function rules()
     {
             return [
-            'location' => 'required',
-            'plate_no' => 'required|unique:trucks',
+            'operator' => 'required',
+            'driver_list' => 'required',
+            'assignment_list' => 'required',
+            'plate_no' => 'required|min:6|unique:trucks',
         ];
     }
 }

@@ -61,7 +61,7 @@ use \Venturecraft\Revisionable\RevisionableTrait;
 
     public function getAssignmentListAttribute()
     {
-        return $this->assignements->pluck('id')->all();
+        return $this->assignments->pluck('id')->all();
     }
 
 

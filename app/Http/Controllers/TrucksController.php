@@ -48,7 +48,8 @@ class TrucksController extends Controller
     public function create()
     {
         $drivers = Driver::lists('name','id');
-        return view('trucks.create', compact('drivers'));
+        $assignments = Assignment::lists('name','id');
+        return view('trucks.create', compact('drivers','assignments'));
     }
 
     /**
@@ -59,11 +60,12 @@ class TrucksController extends Controller
      */
     public function store(TruckRequest $request)
     {
-          $truck = Truck::create($request->all());
-
+          $truck = Auth::user()->trucks()->create($request->all());
           $truck->drivers()->attach($request->input('driver_list'));
+          $truck->assignments()->attach($request->input('assignment_list'));
 
-        return redirect('trucks');
+          flashy()->success('Sucessfully Added new truck!');
+          return redirect('trucks');
     }
 
     /**
@@ -75,6 +77,7 @@ class TrucksController extends Controller
     public function show(Truck $truck)
     {
         $base_time = Carbon::now()->setTimezone('Asia/Manila');
+
         return view('trucks.show', compact('truck','base_time'));
     }
 
@@ -116,6 +119,7 @@ class TrucksController extends Controller
     public function destroy(Truck $truck)
     {
         $truck->delete();
+        flashy()->success('Successfully deleted a truck!');
         return redirect('trucks');
     }
 

@@ -113,9 +113,6 @@
               <div class="nav-tabs-custom">
                 <!-- Tabs within a box -->
                 <ul class="nav nav-tabs pull-right">
-                  <li ><a href="#transit_plant" data-toggle="tab">Transit to plant</a></li>
-                  <li><a href="#in_customer" data-toggle="tab">In customer</a></li>
-                  <li><a href="#transit_customer" data-toggle="tab">Transit to customer</a></li>
                   <li class="active" ><a href="#in_plant" data-toggle="tab">Dispatch Trucks</a></li>
 
 
@@ -126,36 +123,7 @@
 
                 <div class="tab-content no-padding">
                   <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane" id="transit_plant">
-                      <div class="box-body">
-
-
-                       @include('truck-status.transit-plant')
-
-
-                      </div>
-                  </div>
-
-
-                  <div class="chart tab-pane" id="in_customer">
-                      <div class="box-body">
-
-
-                  @include('truck-status.in-customer')
-
-
-                      </div>
-                  </div><!-- end in_cusotmer table -->
-
-                <div class="chart tab-pane" id="transit_customer">
-                <div class="box-body">
-
-
-                @include('truck-status.transit-customer')
-
-
-                </div><!-- end box-body -->
-                </div><!--end transit customer -->
+           
                 
 
                 <div class="chart tab-pane active" id="in_plant" >
@@ -181,17 +149,53 @@
 
 
     <div class="col-md-4">
-             <div class="box box-default">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Top Region</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+
+              <div class="row">
+            <!-- Left col -->
+            <section class="col-lg-12 connectedSortable">
+              <!-- Custom tabs (Charts with tabs)-->
+              <div class="nav-tabs-custom">
+                <!-- Tabs within a box -->
+                <ul class="nav nav-tabs pull-right">
+                  <li ><a href="#weekly" data-toggle="tab" style="font-size: 10px">WEEKLY</a></li>
+                  <li><a href="#monthly" data-toggle="tab" style="font-size: 10px">MONTHLY</a></li>
+                  <li class="active"><a href="#all" data-toggle="tab" style="font-size: 10px">ALL</a></li>
+           
+
+
+
+                  <li class="pull-left header" style="font-size: 18px;"><i class="fa fa-map-o"></i> Region</li>
+                </ul>
+
+
+                <div class="tab-content no-padding">
+                  <!-- Morris chart - Sales -->
+                  <div class="chart tab-pane " id="weekly">
+                      <div class="box-body">
+
+                       <h4 class="text-center" style="color: grey;">
+                    Coming Soon
+                    </h4>
+                      </div>
                   </div>
-                </div><!-- /.box-header -->
+
+
+                  <div class="chart tab-pane" id="monthly">
+                      <div class="box-body">
+
+
+                    <h4 class="text-center" style="color: grey;">
+                    Coming Soon
+                    </h4>
+
+
+                      </div>
+                  </div><!-- end in_cusotmer table -->
+
+                <div class="chart tab-pane active" id="all">
                 <div class="box-body">
-                 
-                <table class="table no-border">
+
+                                  <table class="table no-border">
                   @foreach($top_region as $top)
                   <tr>
                       <td>{{$top->customer_name}}</td>
@@ -199,26 +203,78 @@
                   </tr> 
                   @endforeach
                 </table>
-        
-                </div><!-- /.box-body -->
+
+
+                       <a class="btn btn-default btn-sm btn-block" href="">
+                See More
+                </a>
+                
+
+
+                </div><!-- end box-body -->
+                </div><!--end transit customer -->
+                
+
           
-              </div><!-- /.box -->
+                </div><!-- end tab content -->
+              </div><!-- /.nav-tabs-custom -->
+
+          
+            </section><!-- /.Left col -->
+
+    </div><!-- end row table -->
+
     </div><!-- end col-md-4 -->
 
 
      <div class="col-md-4">
-             <div class="box box-default">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Top Driver</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+
+           <div class="row">
+            <!-- Left col -->
+            <section class="col-lg-12 connectedSortable">
+              <!-- Custom tabs (Charts with tabs)-->
+              <div class="nav-tabs-custom">
+                <!-- Tabs within a box -->
+                <ul class="nav nav-tabs pull-right">
+                  <li ><a href="#weekly_driver" data-toggle="tab" style="font-size: 10px">WEEKLY</a></li>
+                  <li><a href="#monthly_driver" data-toggle="tab" style="font-size: 10px">MONTHLY</a></li>
+                  <li class="active"><a href="#all_driver" data-toggle="tab" style="font-size: 10px">ALL</a></li>
+           
+
+                  <li class="pull-left header" style="font-size: 18px;"><i class="fa fa-id-card-o"></i> Driver</li>
+                </ul>
+
+
+                <div class="tab-content no-padding">
+                  <!-- Morris chart - Sales -->
+                  <div class="chart tab-pane" id="weekly_driver">
+                      <div class="box-body">
+
+                            <h4 class="text-center" style="color: grey;">
+                    Coming Soon
+                    </h4>
+                            
+                      </div>
                   </div>
-                </div><!-- /.box-header -->
+
+
+                  <div class="chart tab-pane" id="monthly_driver">
+                      <div class="box-body">
+
+
+                    <h4 class="text-center" style="color: grey;">
+                    Coming Soon
+                    </h4>
+
+
+                      </div>
+                  </div><!-- end in_cusotmer table -->
+
+                <div class="chart tab-pane active" id="all_driver">
                 <div class="box-body">
 
 
-                                <table class="table no-border">
+                <table class="table no-border">
                   @foreach($top_drivers as $top_driver)
                   <tr>
                       <td>
@@ -232,11 +288,27 @@
                   </tr> 
                   @endforeach
                 </table>
-     
-        
-                </div><!-- /.box-body -->
+
+
+                       <a class="btn btn-default btn-sm btn-block" href="">
+                See More
+                </a>
+
+
+                </div><!-- end box-body -->
+                </div><!--end transit customer -->
+                
+
           
-              </div><!-- /.box -->
+                </div><!-- end tab content -->
+              </div><!-- /.nav-tabs-custom -->
+
+          
+            </section><!-- /.Left col -->
+
+    </div><!-- end row table -->
+
+
     </div><!-- end col-md-4 -->
 
 
@@ -330,11 +402,7 @@
                 <div class="panel-body"> 
 
 
-                <center style="padding-bottom: 20px;">
-          @foreach($track->trucks as $truck)
-             <img class="img-responsive img-circle" style="width: 100px; height:auto;" src="{{asset('/img/trucks/'.$truck->truck_avatar)}}">
-          @endforeach      
-          </center>
+
 
 
   <ul class="nav nav-tabs">

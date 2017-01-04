@@ -26,11 +26,11 @@ class SmsNotificationsController extends Controller
         $message_to_lower = strtolower($message); // force to convert text to lowercase 
 
         $code_messages = [
-            'plant_in' => 'plant-in-',
-            'plant_out' => 'plant-out-',
-            'customer_in' => 'customer-in-',
-            'customer_out' => 'customer-out-',
-            'back_to_plant' => 'back-plant-',
+            'p in' => 'p-in-',
+            'p out' => 'p-out-',
+            'c in' => 'c-in-',
+            'c out' => 'c-out-',
+            'b' => 'b-',
             'help' => 'help-'
         ];
 
@@ -54,7 +54,7 @@ class SmsNotificationsController extends Controller
                 $z = $find_id_pass->id;
                          //filter text message then send then return result via sms.
                         // should return plant-in-aaa-000
-                        if(str_is('plant in*', $message_to_lower)){
+                        if(str_is('p in*', $message_to_lower)){
 
                                     // update the entry plant with current date and time
                                     $track = Track::find($z);
@@ -74,7 +74,7 @@ class SmsNotificationsController extends Controller
                               
                         } 
 
-                        elseif(str_is('plant out*', $message_to_lower)){
+                        elseif(str_is('p out*', $message_to_lower)){
 
                                     // update the entry plant with current date and time
                                     $track = Track::find($z);
@@ -94,7 +94,7 @@ class SmsNotificationsController extends Controller
                               
                         }
 
-                        elseif(str_is('customer in*', $message_to_lower)){
+                        elseif(str_is('c in*', $message_to_lower)){
 
                                     // update the entry plant with current date and time
                                     $track = Track::find($z);
@@ -115,7 +115,7 @@ class SmsNotificationsController extends Controller
                               
                         }
 
-                        elseif(str_is('customer out*', $message_to_lower)){
+                        elseif(str_is('c out*', $message_to_lower)){
 
                                     // update the entry plant with current date and time
                                     $track = Track::find($z);
@@ -134,7 +134,7 @@ class SmsNotificationsController extends Controller
                               
                         }
 
-                         elseif(str_is('back plant*', $message_to_lower)){
+                         elseif(str_is('b*', $message_to_lower)){
 
                                     // update the entry plant with current date and time
                                     $track = Track::find($z);
@@ -209,7 +209,7 @@ class SmsNotificationsController extends Controller
         }else{
 
              //sending sms to driver 
-            $container =urlencode(mb_convert_encoding("Trucking Monitoring: No plate number found from dispatch trucks or invalid format. kindly coordinate with your dispatcher.", 'utf-8', 'gb2312'));  
+            $container =urlencode(mb_convert_encoding("Trucking Monitoring: No plate number found or invalid format. kindly refer to example format. ( 'c in AAA 000' to customer in, 'c out AAA 000' to customer out and 'b AAA 000 to back plant')", 'utf-8', 'gb2312'));  
             // create a new cURL resource
             $ch = curl_init();
             // set URL and other appropriate options

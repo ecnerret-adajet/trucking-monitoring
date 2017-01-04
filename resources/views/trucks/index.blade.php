@@ -115,7 +115,9 @@
                             <li><a  href="{{url('trucks/'.$truck->id)}}">History Log</a></li>
                             <li><a href="{{url('trucks/'.$truck->id.'/edit')}}">Edit Truck</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Delete Truck</a></li>
+                            @role(['Administrator'])
+                            <li><a href="" data-toggle="modal" data-target=".bs-delete{{$truck->id}}-modal-lg">Delete Truck</a></li>
+                            @endrole
                           </ul>
                         </div>
                       </td>
@@ -169,7 +171,7 @@
             @include('logs.form')
 
 
-     
+  
                     
                 </div>
         </div>
@@ -202,14 +204,34 @@
               <div class="row">
         <div class="col-md-12">
                 <div class="panel-body"> 
-
-
-
-
-          
-
-     
-                    
+                <table class="table  table-hover table-responsive" width="100%">
+                  <tbody>
+                      <tr>
+                          <th>Operator</th>
+                          <td>{{$truck->operator}}</td>
+                      </tr>
+                        <tr>
+                          <th>Origin</th>
+                          <td>{{$truck->origin}}</td>
+                      </tr>
+                       <tr>
+                          <th>Plate Number</th>
+                          <td>{{$truck->plate_no}}</td>
+                      </tr>                          
+                      <tr>
+                          <th>Vehicle Type</th>
+                          <td>{{$truck->vehicle_type}}</td>
+                      </tr>                       
+                      <tr>
+                          <th>Capacity</th>
+                          <td>{{$truck->capacity}}</td>
+                      </tr>                      
+                       <tr>
+                          <th>Odometer</th>
+                          <td>{{$truck->odometer}}</td>
+                      </tr>                                      
+                    </tbody>
+                </table>
                 </div>
         </div>
     </div>
@@ -220,12 +242,52 @@
     </div><!-- /.modal-content -->  
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-       @endforeach
+
+
+<!-- delete modal truck information  -->
+<div class="modal fade bs-delete{{$truck->id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span class="modal-title">Delete a truck</span>
+      </div>
+      <div class="modal-body">
+              <div class="row">
+        <div class="col-md-12">
+                <div class="panel-body"> 
+
+                   <h4>  
+            Are you sure you want to delete a Truck ?
+        </h4>
+        <em>
+        <small>This will affect other data that belongs to truck</small>
+        </em>
+
+                    
+                </div>
+        </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+    {{ Form::open(['method' => 'DELETE', 'route' => ['trucks.destroy', $truck->id]]) }}
+    {!! csrf_field() !!}
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        {!! Form::close() !!}
+      </div>
+    </div><!-- /.modal-content -->  
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+@endforeach
 <!-- end show data for trucks and customer -->
-
-
-
-
-
-
 @endsection

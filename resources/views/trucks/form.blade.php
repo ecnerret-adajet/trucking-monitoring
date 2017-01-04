@@ -5,10 +5,25 @@
                         {!! Form::label('driver_list', 'Driver:')  !!}
                         </label>
                            <div class="col-md-4">
-                        {!! Form::select('driver_list[]', $drivers, null,  ['class' => 'form-control select', 'placeholder' => 'Assign Driver']) !!}     
+                        {!! Form::select('driver_list', $drivers, null,  ['class' => 'form-control select', 'placeholder' => 'Assign Driver']) !!}     
                         @if ($errors->has('driver_list'))
                         <span class="help-block">
                         <strong>{{ $errors->first('driver_list') }}</strong>
+                        </span>
+                        @endif
+                        </div>
+                        </div>
+
+
+                        <div class="form-group{{ $errors->has('assignment_list') ? ' has-error' : '' }}">
+                        <label class="col-md-4 control-label"> 
+                        {!! Form::label('assignment_list', 'Assignment:')  !!}
+                        </label>
+                           <div class="col-md-4">
+                        {!! Form::select('assignment_list', $assignments, null,  ['class' => 'form-control select', 'placeholder' => 'Assignment']) !!}     
+                        @if ($errors->has('assignment_list'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('assignment_list') }}</strong>
                         </span>
                         @endif
                         </div>
@@ -36,7 +51,7 @@
                         {!! Form::label('plate_no', 'Plate Number:')  !!}
                         </label>
                            <div class="col-md-4">
-                        {!! Form::text('plate_no', null,  ['class' => 'form-control']) !!}     
+                        {!! Form::text('plate_no', null,  ['class' => 'form-control', "data-inputmask" => "'mask': '[AAA 999]'", 'data-mask' ]) !!}     
 
                         @if ($errors->has('plate_no'))
                         <span class="help-block">
@@ -84,5 +99,7 @@
 
                         {!! Form::submit($submitButtonText, ['class' => 'btn btn-sm btn-primary'])  !!}
 
-                         {!! Form::reset('Cancel', ['class' => 'btn btn-sm btn-default']) !!}
+                         <a class="btn btn-default" href="{{url('trucks')}}">
+                         Cancel
+                         </a>
                        </div>

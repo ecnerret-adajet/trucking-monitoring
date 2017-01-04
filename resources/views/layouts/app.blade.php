@@ -105,23 +105,7 @@
 
             @role(['customer-service'])
             <li><a href="{{url('/tracks')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></i></a></li>
-                        <li class="treeview">
-              <a href="#">
-                <i class="fa fa-heart"></i> <span>Manage Customer</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="{{url('/customers')}}"><i class="fa fa-circle-o"></i>All Customers</a></li>
-                <li><a href="{{url('/customers/create')}}"><i class="fa fa-circle-o"></i>Add Customer</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-truck"></i> <span>Manage Trucks</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="{{url('/trucks')}}"><i class="fa fa-circle-o"></i>All Trucks</a></li>                 
-              </ul>
-            </li>
+             <li><a href={{url('/trucks')}} ><i class="fa fa-truck"></i> <span>Manage trucks</span></a></li>  
               <li>
               <a href="{{url('drivers')}}">
                 <i class="fa ion-android-person"></i> <span>Drivers</span> 
@@ -144,16 +128,8 @@
                 <li><a href="{{url('/customers/create')}}"><i class="fa fa-circle-o"></i>Add Customer</a></li>
               </ul>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-truck"></i> <span>Manage Trucks</span> <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="{{url('/trucks')}}"><i class="fa fa-circle-o"></i>All Trucks</a></li>
-                <li><a href="{{url('/trucks/create')}}"><i class="fa fa-circle-o"></i>Add Trucks</a></li>
-                 
-              </ul>
-            </li>
+    
+            <li><a href={{url('/trucks')}} ><i class="fa fa-truck"></i> <span>Manage trucks</span></a></li>  
                    <li>
               <a href="{{url('drivers')}}">
                 <i class="fa ion-android-person"></i> <span>Drivers</span>

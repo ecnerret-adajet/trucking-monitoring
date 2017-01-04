@@ -45,22 +45,28 @@ class TracksController extends Controller
        $all_trucks = Truck::with('tracks')->get();
        $trackings = Track::orderBy('created_at', 'desc')->take(6)->get();
 
-
-       $top_drivers = Truck::with('tracks')
+       $top_drivers = Truck::whereHas('tracks', function($q){
+                        $q->orderBy('id','INCR');
+                        })
                         ->take(6)
                         ->get();
 
-
-
-       $top_region = Customer::with('tracks')
+       $top_region = Customer::whereHas('tracks', function($q){
+                        $q->orderBy('id','INCR');
+                    })
                     ->take(6)
                     ->get();
+
+
+
 
 
 
        $all_customers = Customer::has('tracks')
                 ->take(5)
                 ->get();
+
+
       $total = 0;
 
       $base_time = Carbon::now()->setTimezone('Asia/Manila');
