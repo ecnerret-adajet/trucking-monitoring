@@ -35,7 +35,6 @@ class TrucksController extends Controller
     public function index()
     {
         $trucks = Truck::orderBy('created_at','INCR')->get();
-
         $stats = Status::pluck('name', 'name');
         return view('trucks.index', compact('trucks','stats'));
     }

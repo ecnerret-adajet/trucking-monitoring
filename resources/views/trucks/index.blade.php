@@ -26,7 +26,8 @@
               @role(['Administrator'])
               <a class="btn btn-primary" href="{{url('trucks/create')}}">
               Add Truck
-              </a>
+              </a>             
+
               @endrole
               </h3>
             </div><!-- /.box-header -->
@@ -46,6 +47,7 @@
                           <th>STATUS</th>    
                           <th>ODOMETER</th>    
                           <th width="15%">ACTION</th>
+                          <th>DISPATCH</th>
                      </tr>       
                 </thead> 
             <tfoot>
@@ -58,6 +60,7 @@
                           <th>STATUS</th>    
                           <th>ODOMETER</th>    
                           <th width="15%">ACTION</th>
+                           <th>DISPATCH</th>
                      </tr>       
         </tfoot>   
                     
@@ -120,6 +123,30 @@
                             @endrole
                           </ul>
                         </div>
+                      </td>
+
+                      <td>
+                          
+                      @if(count($truck->tracks))
+                     
+                        @foreach($truck->tracks as $track)
+                          <a class="btn btn-success btn-block" href="" data-toggle="modal" data-target=".bs-finish{{$truck->id}}-modal-lg">
+                            On dispatch
+                          </a>
+
+                        @endforeach
+                
+
+                      @else
+                      <a class="btn btn-default btn-block" href="">
+                        Not dispatch
+                      </a>
+                      @endif
+
+
+                      
+                        
+
                       </td>
               
                      
@@ -275,6 +302,47 @@
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         <button type="submit" class="btn btn-primary">Submit</button>
         {!! Form::close() !!}
+      </div>
+    </div><!-- /.modal-content -->  
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<!-- manual finish cycle hauler -->
+<div class="modal fade bs-finish{{$truck->id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span class="modal-title">Manual Release</span>
+      </div>
+      <div class="modal-body">
+              <div class="row">
+        <div class="col-md-12">
+                <div class="panel-body"> 
+
+                   <h4>  
+            Are you sure you want to release this Truck ?
+        </h4>
+        <em>
+        <small>This will record a back to plant time base from this action</small>
+        </em>
+
+                    
+                </div>
+        </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+   
+
+           <form method="POST" action="{{url('release/'.$track->id.'/'.$truck->id)}}">
+        {!! csrf_field() !!}
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+       </form>
       </div>
     </div><!-- /.modal-content -->  
   </div><!-- /.modal-dialog -->

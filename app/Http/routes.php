@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth']], function() {
  * Tracks setup routes
  */
 Route::resource('tracks','TracksController');
+Route::post('release/{id}/{back_id}','TracksController@release');
 /**
  * customer setup routes
  */

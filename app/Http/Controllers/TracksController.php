@@ -141,6 +141,25 @@ class TracksController extends Controller
         flashy()->success('Dispatch Successfully !');
         return redirect('tracks');
     }
+
+
+    /**
+     * Manual Finish a truck hauler cycle
+     */
+    public function release($id, $back_id, Request $request)
+    {
+        $track = Track::findOrFail($id);
+        $track->back_plant = Carbon::now();
+        $track->save();
+
+        $truck = Truck::findOrFail($back_id);
+        $truck->availability = 0;
+        $truck->save();
+
+        flashy()->success('Successfully release a truck!');
+        return redirect('trucks');
+    }
+
     /**
      * Display the specified resource.
      *

@@ -1,10 +1,10 @@
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label class="col-md-3 control-label"> 
-                        {!! Form::label('name', 'Driver:')  !!}
+                        {!! Form::label('name', 'Truck Status:')  !!}
                         </label>
                            <div class="col-md-9">
-                        {!! Form::select('name', $stats, null,  ['class' => 'form-control', 'placeholder' => 'Assign Driver']) !!}     
+                        {!! Form::select('name', $stats, null,  ['class' => 'form-control', 'placeholder' => 'Select Truck Status']) !!}     
                         @if ($errors->has('name'))
                         <span class="help-block">
                         <strong>{{ $errors->first('name') }}</strong>
