@@ -97,9 +97,50 @@
 
                           <div class="col-md-3 col-md-offset-4">
 
-                        {!! Form::submit($submitButtonText, ['class' => 'btn btn-sm btn-primary'])  !!}
+                         <a href="" data-toggle="modal" data-target=".bs-submit-modal-lg" class="btn btn-primary">
+                            Submit
+                         </a> 
+                       
 
                          <a class="btn btn-default" href="{{url('trucks')}}">
                          Cancel
                          </a>
                        </div>
+
+
+
+
+
+
+    <!-- Confirm truck form submittion -->
+<div class="modal fade bs-submit-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span class="modal-title">Confirm Changes</span>
+      </div>
+      <div class="modal-body">
+              <div class="row">
+        <div class="col-md-12">
+                <div class="panel-body"> 
+
+                   <h4>  
+            Are you sure you want to save changes  ?
+        </h4>
+
+                    
+                </div>
+        </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+   
+
+        {!! Form::submit($submitButtonText, ['class' => 'btn btn-sm btn-primary'])  !!}
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       
+      </div>
+    </div><!-- /.modal-content -->  
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

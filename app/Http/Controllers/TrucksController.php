@@ -89,7 +89,8 @@ class TrucksController extends Controller
     public function edit(Truck $truck)
     {
         $drivers = Driver::lists('name','id');
-        return view('trucks.edit',compact('truck','drivers'));
+         $assignments = Assignment::lists('name','id');
+        return view('trucks.edit',compact('truck','drivers','assignments'));
     }
 
     /**
@@ -99,11 +100,12 @@ class TrucksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Truck $truck)
+    public function update(TruckRequest $request, Truck $truck)
     {
         $truck->update($request->all());
 
-        $truck->drivers()->sync((!$request->input('driver_list') ? [] : $request->input('driver_list')));
+        $truck->drivers()->sync( (array) $request->get('driver_list') );
+        $truck->assignments()->sync( (array) $request->get('assignment_list') );
 
         flashy()->success('truck successfully updated !');
         return redirect('trucks');
