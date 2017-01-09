@@ -9,6 +9,7 @@ use Flashy;
 use App\Log;
 use App\Truck;
 use App\Status;
+use App\Condition;
 use Carbon\Carbon;
 
 class LogsController extends Controller
@@ -53,6 +54,7 @@ class LogsController extends Controller
         $log->dr_date = $request->input('dr_date');
         $log->customer = $request->input('customer');
         $log->customer_address = $request->input('customer_address');
+        $log->conditions()->attach( (array) $request->input('condition_list'));
         $log->commodities = $request->input('commodities');
         $log->truck()->associate($truck);
         $log->save();

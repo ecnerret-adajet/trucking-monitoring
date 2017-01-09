@@ -18,6 +18,8 @@ use \Venturecraft\Revisionable\RevisionableTrait;
             'capacity',
             'odometer',
             'availability',
+            'vendor_name',
+            'types_goods',
     ];
 
 

@@ -102,6 +102,21 @@
                         </div>
 
 
+                        <div class="form-group{{ $errors->has('condition_list') ? ' has-error' : '' }}">
+                        <label class="col-md-3 control-label"> 
+                        {!! Form::label('condition_list', 'Truck Condition:')  !!}
+                        </label>
+                        <div class="col-md-9">
+                        {!! Form::select('condition_list', $conditions, null,  ['class' => 'form-control', 'placeholder' => '---- Select Condition ----', ]) !!}     
+                        @if ($errors->has('condition_list'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('condition_list') }}</strong>
+                        </span>
+                        @endif
+                        </div>
+                        </div>
+
+
 
 
 

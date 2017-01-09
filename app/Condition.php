@@ -3,9 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
-class Status extends Model
+class Condition extends Model
 {
     protected $fillable = [
     	'name'
@@ -13,6 +12,8 @@ class Status extends Model
 
     public function logs()
     {
-        return $this->belongsToMany('App\Log');
+    	return $this->belongsToMany('App\Log');
     }
 }
+
+

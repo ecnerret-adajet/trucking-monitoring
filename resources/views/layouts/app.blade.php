@@ -195,6 +195,22 @@
 
     <!-- JavaScripts -->
    <script src="{{asset('js/jquery.min.js')}}"></script>
+
+           <script>
+          $(document).ready(function(){
+              $('#deploy').on('change', function() {
+                if ( this.value == '2')
+                {
+                  $("#deploy_truck").hide();
+                }
+                else
+                {
+                  $("#deploy_truck").show();
+                }
+             });          
+          });
+        </script>
+
    @include('flashy::message')
    <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
@@ -244,6 +260,7 @@
     <script src="{{asset('js/exporting.js')}}"></script>
     <script src="{{asset('js/export-csv.js')}}"></script>
     <script src="{{asset('js/highcharts-more.js')}}"></script>
+    
        <!-- InputMask -->
     <script src="{{asset('/plugins/input-mask/jquery.inputmask.js')}}" ></script>
     <script src="{{asset('/plugins/input-mask/jquery.inputmask.date.extensions.js')}}" ></script>
@@ -261,6 +278,13 @@
 
       @include ('footer')
       @yield('footer')
+
+
+
+
+
+
+
     
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>

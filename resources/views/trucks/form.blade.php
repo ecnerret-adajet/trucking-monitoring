@@ -15,6 +15,7 @@
                         </div>
 
 
+
                         <div class="form-group{{ $errors->has('assignment_list') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label"> 
                         {!! Form::label('assignment_list', 'Assignment:')  !!}
@@ -30,9 +31,27 @@
                         </div>
 
 
+
+                        <div class="form-group{{ $errors->has('vendor_name') ? ' has-error' : '' }}">
+                        <label class="col-md-4 control-label"> 
+                        {!! Form::label('vendor_name', 'Vendor Name:')  !!}
+                        </label>
+                           <div class="col-md-4">
+                        {!! Form::text('vendor_name', null,  ['class' => 'form-control', 'value' => "{{ old('vendor_name') }}"]) !!}     
+
+                        @if ($errors->has('vendor_name'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('vendor_name') }}</strong>
+                        </span>
+                        @endif
+                        </div>
+                        </div>
+
+
+
                         <div class="form-group{{ $errors->has('operator') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label"> 
-                        {!! Form::label('operator', 'Operator:')  !!}
+                        {!! Form::label('operator', 'Operator/Subcon Vendor:')  !!}
                         </label>
                            <div class="col-md-4">
                         {!! Form::text('operator', null,  ['class' => 'form-control', 'value' => "{{ old('operator') }}"]) !!}     
@@ -44,6 +63,7 @@
                         @endif
                         </div>
                         </div>
+
 
 
                         <div class="form-group{{ $errors->has('plate_no') ? ' has-error' : '' }}">
@@ -78,6 +98,22 @@
                         </div>
 
 
+                        <div class="form-group{{ $errors->has('types_goods') ? ' has-error' : '' }}">
+                        <label class="col-md-4 control-label"> 
+                        {!! Form::label('types_goods', 'Types of goods:')  !!}
+                        </label>
+                           <div class="col-md-4">
+                        {!! Form::text('types_goods', null,  ['class' => 'form-control', 'value' => "{{ old('types_goods') }}"]) !!}     
+
+                        @if ($errors->has('types_goods'))
+                        <span class="help-block">
+                        <strong>{{ $errors->first('types_goods') }}</strong>
+                        </span>
+                        @endif
+                        </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('capacity') ? ' has-error' : '' }}">
                         <label class="col-md-4 control-label"> 
                         {!! Form::label('capacity', 'Capacity:')  !!}
@@ -92,6 +128,8 @@
                         @endif
                         </div>
                         </div>
+
+
 
 
 

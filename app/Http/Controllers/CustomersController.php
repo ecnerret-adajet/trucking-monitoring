@@ -51,8 +51,7 @@ class CustomersController extends Controller
      */
     public function store(CustomerRequest $request)
     {
-        $customer = Customer::create($request->all());
-
+        $customer = Auth::user()->customers()->create($request->all());
         return redirect('customers');
     }
 

@@ -1,5 +1,21 @@
 
-<div class="form-group{{ $errors->has('truck_list') ? ' has-error' : '' }}">
+<div class="form-group{{ $errors->has('type_list') ? ' has-error' : '' }}">
+<label class="col-md-4 control-label"> 
+{!! Form::label('type_list', 'Deploy type:')  !!} 
+</label>
+<div class="col-md-6">
+{!! Form::select('type_list', $types, null, ['id' => 'deploy', 'class' => 'form-control']) !!}
+
+@if ($errors->has('type_list'))
+<span class="help-block">
+<strong>{{ $errors->first('type_list') }}</strong>
+</span>
+@endif
+</div>
+</div>
+
+
+<div class="form-group{{ $errors->has('truck_list') ? ' has-error' : '' }}" id="deploy_truck">
 <label class="col-md-4 control-label"> 
 {!! Form::label('truck_list', 'Truck Plate #:')  !!} 
 </label>
@@ -13,17 +29,6 @@
 @endif
 </div>
 </div>
-
-
-
-<!-- <div class="form-group hide">
-<label class="col-md-4 control-label"> 
-{!! Form::label('dispatch', 'Entry Date:')  !!}
-</label>
-<div class="col-md-6">
-{!! Form::input('date', 'dispatch', Carbon\Carbon::now()->format('Y-m-d H:m:s'), ['class' => 'form-control']) !!}         
-</div>
-</div> -->
 
  
 <hr/>
@@ -52,6 +57,9 @@
 {!! Form::submit($submitButtonText, ['class' => 'btn btn-sm btn-primary'])  !!}
  {!! Form::reset('Cancel', ['class' => 'btn btn-sm btn-default']) !!}
 </div>
+
+
+
 
 
 

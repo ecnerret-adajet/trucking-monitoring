@@ -58,4 +58,14 @@ use \Venturecraft\Revisionable\RevisionableTrait;
         return $this->statuses->pluck('name')->all();
     }
 
+    public function conditions()
+    {
+        return $this->belongsToMany('App\Condition')->withTimestamps();
+    }
+
+    public function getConditionListAttribute()
+    {
+        return $this->conditions->pluck('id')->all();
+    }
+
  }

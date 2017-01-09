@@ -3,16 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 
-class Status extends Model
+class Type extends Model
 {
     protected $fillable = [
     	'name'
     ];
 
-    public function logs()
+    public function tracks()
     {
-        return $this->belongsToMany('App\Log');
+    	return $this->belongsToMany('App\Track');
     }
+
 }

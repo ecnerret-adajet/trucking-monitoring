@@ -152,6 +152,19 @@ class Track extends Model
     {
        return Carbon::parse($date);
     }
+
+
+    /* deploy hauler category type */
+
+    public function types()
+    {
+        return $this->belongsToMany('App\Type')->withTimestamps();
+    }
+
+    public function getTypeListAttribute()
+    {
+        return $this->types->pluck('id')->all();
+    }
   
     
    

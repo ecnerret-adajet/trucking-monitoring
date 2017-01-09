@@ -24,8 +24,8 @@ class TrackRequest extends Request
     public function rules()
     {
           return [
-            'truck_list' => 'required',
-            'customer_list' => 'required'
+            'customer_list' => 'required',
+            'type_list' => 'required'
         ];
     }
     public function messages()
@@ -33,7 +33,7 @@ class TrackRequest extends Request
         return [
             
             'customer_list.required' => 'This field is required',
-            'truck_list.required' => 'This field is required'
+            'type_list.required' => 'This field is required'
         ];
     }
 }

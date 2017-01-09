@@ -309,7 +309,7 @@
 
 
 
-
+ @if(count($truck->tracks))
 <!-- manual finish cycle hauler -->
 <div class="modal fade bs-finish{{$truck->id}}-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog">
@@ -347,7 +347,11 @@
     </div><!-- /.modal-content -->  
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+@else
 
+
+
+@endif
 
 
 

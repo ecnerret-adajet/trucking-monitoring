@@ -20,6 +20,7 @@ use App\Driver;
 use App\Assignment;
 use App\Status;
 use App\Log;
+use App\Condition;
 
 class TrucksController extends Controller
 {
@@ -36,7 +37,8 @@ class TrucksController extends Controller
     {
         $trucks = Truck::orderBy('created_at','INCR')->get();
         $stats = Status::pluck('name', 'name');
-        return view('trucks.index', compact('trucks','stats'));
+        $conditions = Condition::pluck('name','id');
+        return view('trucks.index', compact('trucks','stats','conditions'));
     }
 
     /**

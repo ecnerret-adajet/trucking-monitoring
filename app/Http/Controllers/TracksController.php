@@ -20,6 +20,7 @@ use Input;
 use DateTime;
 use Flashy;
 use App\Driver;
+use App\Type;
 
 class TracksController extends Controller
 {
@@ -103,10 +104,12 @@ class TracksController extends Controller
        $customers  = Customer::lists('customer_name','id'); 
        $trucks  = Truck::where('availability',0)->lists('plate_no', 'id');
        $base_time = Carbon::now('Asia/Manila');
+       $types = Type::pluck('name','id');
         
         return view('tracks.create', compact(
                 'trucks',
                 'customers',
+                'types',
                 'tracks'));
     }
 
@@ -124,19 +127,33 @@ class TracksController extends Controller
         $initial_input['availability'] = 1;
 
         $track = Auth::user()->tracks()->create($initial_input);
-        $track->trucks()->attach($request->input('truck_list'));
         $track->customers()->attach($request->input('customer_list'));
+        $track->types()->attach($request->input('type_list'));
 
         $tracks = Track::all();
-        foreach($tracks as $track){
-            foreach($track->trucks->reverse()->take(1) as $truck){
-                    $id = $truck->id;
-            }
-       }
 
-        $truck = Truck::findOrFail($id);
-        $truck->availability = 1;
-        $truck->save();
+
+        foreach($tracks->take(1) as $track){
+            foreach($track->types as $type){
+                if($type->id  == 1){
+                      $track->trucks()->attach($request->input('truck_list'));
+                }
+            }
+        }
+
+      
+        if(count($track->trucks)){
+            foreach($tracks as $track){
+                foreach($track->trucks->take(1) as $truck){
+                        $id = $truck->id;
+                }
+           }
+
+            $truck = Truck::findOrFail($id);
+            $truck->availability = 1;
+            $truck->save();
+        }
+
 
         flashy()->success('Dispatch Successfully !');
         return redirect('tracks');
