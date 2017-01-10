@@ -32,6 +32,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('trucks', 'App\Truck');
         $router->model('drivers', 'App\Driver');
         $router->model('statuses', 'App\Status');
+        $router->model('odometers', 'App\Odometer');
 
 
          $router->bind('statuses', function($name){

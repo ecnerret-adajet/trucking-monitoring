@@ -16,7 +16,6 @@ use \Venturecraft\Revisionable\RevisionableTrait;
             'plate_no',
             'vehicle_type',
             'capacity',
-            'odometer',
             'availability',
             'vendor_name',
             'types_goods',
@@ -70,6 +69,15 @@ use \Venturecraft\Revisionable\RevisionableTrait;
     public function logs()
     {
         return $this->hasMany('App\Log','truck_id');
+    }
+
+    /**
+     * Odometer to list belongs to truck model
+     */
+
+    public function odometers()
+    {
+        return $this->hasMany('App\Odometer');
     }
 
     

@@ -71,7 +71,7 @@
                         {!! Form::label('plate_no', 'Plate Number:')  !!}
                         </label>
                            <div class="col-md-4">
-                        {!! Form::text('plate_no', null,  ['class' => 'form-control', "data-inputmask" => "'mask': '[AAA 999]'", 'data-mask' ]) !!}     
+                        {!! Form::text('plate_no', null,  ['class' => 'form-control' ]) !!}     
 
                         @if ($errors->has('plate_no'))
                         <span class="help-block">

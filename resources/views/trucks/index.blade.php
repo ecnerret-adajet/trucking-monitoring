@@ -47,7 +47,9 @@
                           <th>STATUS</th>    
                           <th>ODOMETER</th>    
                           <th width="15%">ACTION</th>
+                           @role(['Administrator'])  
                           <th>DISPATCH</th>
+                          @endrole
                      </tr>       
                 </thead> 
             <tfoot>
@@ -60,7 +62,9 @@
                           <th>STATUS</th>    
                           <th>ODOMETER</th>    
                           <th width="15%">ACTION</th>
+                           @role(['Administrator'])  
                            <th>DISPATCH</th>
+                           @endrole
                      </tr>       
         </tfoot>   
                     
@@ -105,7 +109,11 @@
                     </td>
 
                       <td>
-                      {{$truck->odometer}}
+                        @forelse($truck->odometers as $odometer)
+                          {{$odometer->odometer_count}}
+                        @empty
+                          0
+                        @endforelse
                       </td>  
                   
 
@@ -115,6 +123,11 @@
                           <a href="#" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
                           <ul class="dropdown-menu">
                             <li><a class="bootstrap-modal-form-open" data-toggle="modal" data-target=".bs-edit{{$truck->id}}-modal-lg" href="">Change Status</a></li>
+                            @if(count($truck->odometers))
+                            <li><a  href="{{url('odometers/'.$odometer->id.'/edit/')}}">Update Odometer</a></li>
+                            @else
+                             <li><a  href="{{url('odometers/create/'.$truck->id)}}">Update Odometer</a></li>
+                            @endif
                             <li><a  href="{{url('trucks/'.$truck->id)}}">History Log</a></li>
                             <li><a href="{{url('trucks/'.$truck->id.'/edit')}}">Edit Truck</a></li>
                             <li class="divider"></li>
@@ -124,9 +137,8 @@
                           </ul>
                         </div>
                       </td>
-
+                       @role(['Administrator'])  
                       <td>
-                          
                       @if(count($truck->tracks))
                      
                         @foreach($truck->tracks as $track)
@@ -142,12 +154,8 @@
                         Not dispatch
                       </a>
                       @endif
-
-
-                      
-                        
-
                       </td>
+                      @endrole
               
                      
                         

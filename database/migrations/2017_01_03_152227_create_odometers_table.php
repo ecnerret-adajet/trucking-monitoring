@@ -16,6 +16,8 @@ class CreateOdometersTable extends Migration
             $table->increments('id');
             $table->integer('truck_id')->unsigned();
             $table->integer('odometer_count');
+            $table->integer('distance_travel');
+            $table->integer('fuel_loaded');
             $table->foreign('truck_id')->references('id')  
                 ->on('trucks')->onDelete('cascade');
             $table->timestamps();

@@ -132,14 +132,12 @@ class TracksController extends Controller
 
         $tracks = Track::all();
 
-
-        foreach($tracks->take(1) as $track){
-            foreach($track->types as $type){
-                if($type->id  == 1){
-                      $track->trucks()->attach($request->input('truck_list'));
-                }
+        foreach($track->types as $type){
+            if($type->id == 1){
+                    $track->trucks()->attach($request->input('truck_list'));
             }
         }
+
 
       
         if(count($track->trucks)){

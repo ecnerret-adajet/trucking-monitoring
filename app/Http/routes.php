@@ -77,7 +77,13 @@ Route::get('/report', 'HomeController@getreport');
 Route::get('/manage', 'PagesController@manage');
 Route::get('/documentation', 'PagesController@documentation');
 
-
-
+/**
+ * Odometer route setup
+ */
+Route::resource('odometers', 'OdometersController', ['except' => [
+   'store','create'
+]]);
+Route::get('odometers/create/{id}','OdometersController@create');
+Route::post('odometers/{id}','OdometersController@store');
 
 });
