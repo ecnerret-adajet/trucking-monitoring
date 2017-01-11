@@ -86,4 +86,15 @@ Route::resource('odometers', 'OdometersController', ['except' => [
 Route::get('odometers/create/{id}','OdometersController@create');
 Route::post('odometers/{id}','OdometersController@store');
 
+/**
+ * Perfomre live search with vue js
+ */
+Route::get('/tracks/list/data', [
+        'as' => 'tracksListData', 'uses' => 'TracksController@livedata'
+    ]);
+
+
+
+
+
 });

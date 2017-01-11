@@ -90,6 +90,11 @@ class TracksController extends Controller
     }
 
 
+    public function livedata()
+    {
+        $trackslive = Track::latest('created_at')->where('created_at', '>=' ,Carbon::now()->subDays(2))->paginate(5);
+         return $trackslive;
+    }
 
 
 
