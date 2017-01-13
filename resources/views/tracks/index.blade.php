@@ -132,6 +132,8 @@
 
                  @include('truck-status.in-plant')
 
+                 @include('truck-status.search')
+
 
 
                     </div><!--end box-body -->

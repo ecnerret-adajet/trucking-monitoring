@@ -196,6 +196,40 @@
     <!-- JavaScripts -->
    <script src="{{asset('js/jquery.min.js')}}"></script>
 
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.8/vue.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.1.17/vue-resource.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/locale/af.js"></script>
+
+
+      <script>
+        Vue.component('tracks', {
+    template: '#tasks-template',
+
+    data: function () {
+        return {
+            list: [],
+        };
+    },
+
+    created: function () { // component is innitially crea= ted
+        this.fetchTaskList();
+    },
+
+    methods: {
+        fetchTaskList: function () {
+            this.$http.get('tracks/list/data', function(tracks) {
+              this.list = tracks;
+            }.bind(this));
+        }
+    }
+});
+
+new Vue({
+    el: '#app'
+
+});
+    </script>
+
            <script>
           $(document).ready(function(){
               $('#deploy').on('change', function() {
@@ -278,6 +312,11 @@
 
       @include ('footer')
       @yield('footer')
+
+
+
+
+    
 
     
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
